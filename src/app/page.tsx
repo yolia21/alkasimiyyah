@@ -18,7 +18,7 @@ import {
 } from "@/components/Widgets";
 
 // Main Portal Tabs
-type TabID = "home" | "government" | "history" | "culture" | "relations";
+type TabID = "home" | "government" | "history" | "culture" | "relations" | "documents";
 
 interface TabItem {
   id: TabID;
@@ -36,7 +36,7 @@ export default function Home() {
       const tabParam = params.get("tab") as TabID;
       if (
         tabParam &&
-        ["home", "government", "history", "culture", "relations"].includes(tabParam)
+        ["home", "government", "history", "culture", "relations", "documents"].includes(tabParam)
       ) {
         setActiveTab(tabParam);
       }
@@ -58,6 +58,7 @@ export default function Home() {
     { id: "history", label: "History & Lineage", arabicLabel: "التاريخ والنسب" },
     { id: "culture", label: "Culture & Military", arabicLabel: "الثقافة والجيش" },
     { id: "relations", label: "Foreign Relations", arabicLabel: "العلاقات الخارجية" },
+    { id: "documents", label: "State Documents", arabicLabel: "الوثائق الرسمية" },
   ];
 
   // Detailed Historical Eras Accordion
@@ -474,6 +475,101 @@ export default function Home() {
                 <CurrencyConverter />
               </section>
 
+              {/* Official Documents Registry */}
+              <section className="space-y-4">
+                <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
+                  Official State Archives & Registry
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Constitution Card */}
+                  <div className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4 hover:border-brass-gold-400 transition-all duration-300 group relative overflow-hidden">
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-brass-gold-500 opacity-80" />
+                    
+                    <div className="flex items-start justify-between">
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block">Supreme Law</span>
+                        <h4 className="font-serif text-lg font-bold text-stone-850">
+                          The Imperial Constitution
+                        </h4>
+                        <p className="text-xs text-stone-600 font-sans">
+                          Codified constitution establishing the structure of the Sultanate, vizierate, legislative assemblies, and citizen charters.
+                        </p>
+                      </div>
+                      <div className="p-2.5 rounded-lg bg-ivory-100 text-ottoman-red-800 shrink-0">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                      </div>
+                    </div>
+                    
+                    <div className="flex space-x-3 pt-2">
+                      <a
+                        href="/Full-Constitution-of-the-Kasimid-Sultanate.docx-2.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center text-xs font-semibold bg-ottoman-red-900 hover:bg-ottoman-red-800 text-white py-2 rounded-lg transition-colors border border-transparent shadow-sm"
+                      >
+                        View Constitution (PDF)
+                      </a>
+                      <a
+                        href="/Full-Constitution-of-the-Kasimid-Sultanate.docx-2.pdf"
+                        download
+                        className="text-center text-xs font-semibold bg-ivory-100 hover:bg-brass-gold-100 text-stone-700 px-3 py-2 rounded-lg transition-colors border border-ivory-300 flex items-center justify-center"
+                        title="Download PDF"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Census Report Card */}
+                  <div className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4 hover:border-brass-gold-400 transition-all duration-300 group relative overflow-hidden">
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-brass-gold-500 opacity-80" />
+                    
+                    <div className="flex items-start justify-between">
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block">Demographic Record</span>
+                        <h4 className="font-serif text-lg font-bold text-stone-850">
+                          2026 Kasimid Census Report
+                        </h4>
+                        <p className="text-xs text-stone-600 font-sans">
+                          Detailed survey of national statistics covering the 104 registered citizens, documenting ethnic origins and religious backgrounds.
+                        </p>
+                      </div>
+                      <div className="p-2.5 rounded-lg bg-ivory-100 text-ottoman-red-800 shrink-0">
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
+                        </svg>
+                      </div>
+                    </div>
+                    
+                    <div className="flex space-x-3 pt-2">
+                      <a
+                        href="/2026-kasimid-sultanate-census-report-1.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center text-xs font-semibold bg-ottoman-red-900 hover:bg-ottoman-red-800 text-white py-2 rounded-lg transition-colors border border-transparent shadow-sm"
+                      >
+                        View Census Report (PDF)
+                      </a>
+                      <a
+                        href="/2026-kasimid-sultanate-census-report-1.pdf"
+                        download
+                        className="text-center text-xs font-semibold bg-ivory-100 hover:bg-brass-gold-100 text-stone-700 px-3 py-2 rounded-lg transition-colors border border-ivory-300 flex items-center justify-center"
+                        title="Download PDF"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
             </div>
           )}
 
@@ -789,6 +885,162 @@ export default function Home() {
                 </div>
 
               </section>
+
+            </div>
+          )}
+
+          {/* TAB 6: STATE DOCUMENTS */}
+          {activeTab === "documents" && (
+            <div className="space-y-8 animate-fadeIn">
+
+              {/* Section Header */}
+              <div className="text-center space-y-2 pb-4 border-b border-ivory-300">
+                <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block">
+                  دیوانِ اعلیٰ سلطنتِ القاسميه
+                </span>
+                <h2 className="text-3xl font-serif font-bold text-ottoman-red-950">
+                  Official State Archives & Registry
+                </h2>
+                <p className="text-sm text-stone-500 font-sans max-w-lg mx-auto">
+                  Foundational legal documents and official records of the Kasimid Sultanate, sealed and published by order of the Royal Diwan.
+                </p>
+              </div>
+
+              {/* Document Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                {/* Constitution Card */}
+                <div className="relative bg-gradient-to-br from-ottoman-red-950 to-ottoman-red-900 rounded-2xl border-2 border-brass-gold-500 shadow-lg overflow-hidden group">
+                  {/* Decorative dot pattern */}
+                  <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#c29b38_1.5px,transparent_1.5px)] [background-size:20px_20px]" />
+
+                  <div className="relative z-10 p-7 flex flex-col h-full space-y-5">
+                    {/* Icon + badge */}
+                    <div className="flex items-start justify-between">
+                      <div className="p-3 bg-brass-gold-500/20 border border-brass-gold-500/40 rounded-xl">
+                        <svg className="w-8 h-8 text-brass-gold-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                      </div>
+                      <span className="text-[9px] font-bold text-brass-gold-400 uppercase tracking-widest bg-brass-gold-500/10 border border-brass-gold-500/30 px-2 py-1 rounded-full">
+                        Supreme Law
+                      </span>
+                    </div>
+
+                    {/* Title & description */}
+                    <div className="space-y-2 flex-1">
+                      <h3 className="font-serif text-2xl font-bold text-ivory-50 leading-snug">
+                        The Imperial Constitution
+                      </h3>
+                      <p className="font-arabic text-brass-gold-300 text-base leading-relaxed" dir="rtl">
+                        الدستور الإمبراطوري لسلطنة القاسمية
+                      </p>
+                      <p className="text-sm text-ivory-200/80 font-sans leading-relaxed pt-1">
+                        The supreme law of the Kasimid Sultanate — codifying the monarchy's structure, the vizierate, legislative Shura assemblies, citizen charters, and the foundational rights of all registered nationals.
+                      </p>
+                    </div>
+
+                    {/* File meta */}
+                    <div className="bg-ottoman-red-950/60 border border-brass-gold-500/20 rounded-lg px-4 py-3 flex items-center justify-between text-xs font-sans text-brass-gold-300">
+                      <span>📄 PDF Document</span>
+                      <span className="text-ivory-300/60">Full-Constitution-of-the-Kasimid-Sultanate.pdf</span>
+                    </div>
+
+                    {/* Buttons */}
+                    <div className="flex gap-3 pt-1">
+                      <a
+                        href="/Full-Constitution-of-the-Kasimid-Sultanate.docx-2.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center text-sm font-semibold bg-brass-gold-500 hover:bg-brass-gold-400 text-ottoman-red-950 py-3 rounded-xl transition-all duration-200 shadow-sm"
+                      >
+                        📖 View Constitution
+                      </a>
+                      <a
+                        href="/Full-Constitution-of-the-Kasimid-Sultanate.docx-2.pdf"
+                        download
+                        className="text-center text-sm font-semibold bg-ottoman-red-800/60 hover:bg-ottoman-red-700/80 text-brass-gold-300 px-4 py-3 rounded-xl transition-all duration-200 border border-brass-gold-500/30 flex items-center justify-center gap-1.5"
+                        title="Download PDF"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Download
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Census Report Card */}
+                <div className="relative bg-gradient-to-br from-ottoman-red-950 to-ottoman-red-900 rounded-2xl border-2 border-brass-gold-500 shadow-lg overflow-hidden group">
+                  <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#c29b38_1.5px,transparent_1.5px)] [background-size:20px_20px]" />
+
+                  <div className="relative z-10 p-7 flex flex-col h-full space-y-5">
+                    {/* Icon + badge */}
+                    <div className="flex items-start justify-between">
+                      <div className="p-3 bg-brass-gold-500/20 border border-brass-gold-500/40 rounded-xl">
+                        <svg className="w-8 h-8 text-brass-gold-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
+                        </svg>
+                      </div>
+                      <span className="text-[9px] font-bold text-brass-gold-400 uppercase tracking-widest bg-brass-gold-500/10 border border-brass-gold-500/30 px-2 py-1 rounded-full">
+                        Demographic Record
+                      </span>
+                    </div>
+
+                    {/* Title & description */}
+                    <div className="space-y-2 flex-1">
+                      <h3 className="font-serif text-2xl font-bold text-ivory-50 leading-snug">
+                        2026 Kasimid Census Report
+                      </h3>
+                      <p className="font-arabic text-brass-gold-300 text-base leading-relaxed" dir="rtl">
+                        تقرير إحصاء السكان ١٤٤٧
+                      </p>
+                      <p className="text-sm text-ivory-200/80 font-sans leading-relaxed pt-1">
+                        A comprehensive national survey of all 104 registered citizens of the Kasimid Sultanate, documenting ethnic origins, religious affiliations, and demographic distributions across both wilayat provinces.
+                      </p>
+                    </div>
+
+                    {/* File meta */}
+                    <div className="bg-ottoman-red-950/60 border border-brass-gold-500/20 rounded-lg px-4 py-3 flex items-center justify-between text-xs font-sans text-brass-gold-300">
+                      <span>📊 PDF Report</span>
+                      <span className="text-ivory-300/60">2026-kasimid-sultanate-census-report.pdf</span>
+                    </div>
+
+                    {/* Buttons */}
+                    <div className="flex gap-3 pt-1">
+                      <a
+                        href="/2026-kasimid-sultanate-census-report-1.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center text-sm font-semibold bg-brass-gold-500 hover:bg-brass-gold-400 text-ottoman-red-950 py-3 rounded-xl transition-all duration-200 shadow-sm"
+                      >
+                        📊 View Census Report
+                      </a>
+                      <a
+                        href="/2026-kasimid-sultanate-census-report-1.pdf"
+                        download
+                        className="text-center text-sm font-semibold bg-ottoman-red-800/60 hover:bg-ottoman-red-700/80 text-brass-gold-300 px-4 py-3 rounded-xl transition-all duration-200 border border-brass-gold-500/30 flex items-center justify-center gap-1.5"
+                        title="Download PDF"
+                      >
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Download
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Seal / Note */}
+              <div className="text-center pt-4">
+                <p className="text-xs text-stone-400 font-sans italic">
+                  All documents are official state records published under the seal of Sultan Yusuf I. 
+                  These materials are archived by the Royal Diwan of the Kasimid Sultanate.
+                </p>
+              </div>
 
             </div>
           )}
