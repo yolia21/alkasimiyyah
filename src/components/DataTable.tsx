@@ -35,7 +35,7 @@ export function PoliticalPartiesTable() {
     <div className="overflow-x-auto rounded-lg border border-ivory-300 shadow-sm bg-white">
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="bg-ottoman-red-900 border-b border-brass-gold-500 text-brass-gold-100 font-serif text-sm">
+          <tr className="bg-royal-green-900 border-b border-brass-gold-500 text-brass-gold-100 font-serif text-sm">
             <th className="p-4 font-semibold">Party Faction</th>
             <th className="p-4 font-semibold">Leader</th>
             <th className="p-4 font-semibold">Ideology</th>
@@ -52,7 +52,7 @@ export function PoliticalPartiesTable() {
                 index % 2 === 0 ? "bg-white" : "bg-ivory-50"
               } hover:bg-brass-gold-50/50 transition-colors duration-150`}
             >
-              <td className="p-4 font-semibold text-ottoman-red-950 font-serif">
+              <td className="p-4 font-semibold text-royal-green-950 font-serif">
                 {party.name}
               </td>
               <td className="p-4">{party.leader}</td>
@@ -61,7 +61,7 @@ export function PoliticalPartiesTable() {
                 <span
                   className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
                     party.status === "Official Ruling"
-                      ? "bg-ottoman-red-100 text-ottoman-red-800 border border-ottoman-red-200"
+                      ? "bg-royal-green-100 text-royal-green-800 border border-royal-green-200"
                       : "bg-red-50 text-red-700 border border-red-200 animate-pulse"
                   }`}
                 >
@@ -110,7 +110,7 @@ export function ProvincesTable() {
     <div className="overflow-x-auto rounded-lg border border-ivory-300 shadow-sm bg-white">
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="bg-ottoman-red-900 border-b border-brass-gold-500 text-brass-gold-100 font-serif text-sm">
+          <tr className="bg-royal-green-900 border-b border-brass-gold-500 text-brass-gold-100 font-serif text-sm">
             <th className="p-4 font-semibold">Wilayah (Province)</th>
             <th className="p-4 font-semibold">Arabic Designation</th>
             <th className="p-4 font-semibold">Total Area</th>
@@ -125,10 +125,10 @@ export function ProvincesTable() {
                 index % 2 === 0 ? "bg-white" : "bg-ivory-50"
               } hover:bg-brass-gold-50/50 transition-colors duration-150`}
             >
-              <td className="p-4 font-semibold text-ottoman-red-950 font-serif">
+              <td className="p-4 font-semibold text-royal-green-950 font-serif">
                 {prov.name}
               </td>
-              <td className="p-4 font-arabic text-ottoman-red-800 text-base" dir="rtl">
+              <td className="p-4 font-arabic text-royal-green-800 text-base" dir="rtl">
                 {prov.arabicName}
               </td>
               <td className="p-4 font-mono">{prov.area}</td>
@@ -194,7 +194,7 @@ export function HolidaysTable() {
     <div className="overflow-x-auto rounded-lg border border-ivory-300 shadow-sm bg-white">
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="bg-ottoman-red-900 border-b border-brass-gold-500 text-brass-gold-100 font-serif text-sm">
+          <tr className="bg-royal-green-900 border-b border-brass-gold-500 text-brass-gold-100 font-serif text-sm">
             <th className="p-4 font-semibold">Holiday Name</th>
             <th className="p-4 font-semibold">Arabic / Cultural Script</th>
             <th className="p-4 font-semibold">Category</th>
@@ -209,10 +209,10 @@ export function HolidaysTable() {
                 index % 2 === 0 ? "bg-white" : "bg-ivory-50"
               } hover:bg-brass-gold-50/50 transition-colors duration-150`}
             >
-              <td className="p-4 font-semibold text-ottoman-red-950 font-serif">
+              <td className="p-4 font-semibold text-royal-green-950 font-serif">
                 {h.name}
               </td>
-              <td className="p-4 font-arabic text-ottoman-red-800 text-base" dir="rtl">
+              <td className="p-4 font-arabic text-royal-green-800 text-base" dir="rtl">
                 {h.arabicName}
               </td>
               <td className="p-4">

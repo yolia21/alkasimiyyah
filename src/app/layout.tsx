@@ -37,7 +37,7 @@ export default function RootLayout({
       lang="en"
       className={`${playfair.variable} ${inter.variable} ${notoNaskhArabic.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-ivory-100 text-stone-900 selection:bg-brass-gold-200 selection:text-ottoman-red-900">
+      <body className="min-h-full flex flex-col bg-ivory-100 text-stone-900 selection:bg-brass-gold-200 selection:text-royal-green-900">
         {children}
       </body>
     </html>

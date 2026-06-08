@@ -4,6 +4,8 @@ import React, { useState, useEffect, Suspense } from "react";
 import Flag from "@/components/Flag";
 import StatCard from "@/components/StatCard";
 import Accordion from "@/components/Accordion";
+import ProfileCard from "@/components/ProfileCard";
+import Lineage from "@/components/Lineage";
 import {
   PoliticalPartiesTable,
   ProvincesTable,
@@ -51,102 +53,75 @@ export default function Home() {
   };
 
   const tabs: TabItem[] = [
-    { id: "home", label: "Overview", arabicLabel: "نظرة عامة" },
-    { id: "government", label: "Government", arabicLabel: "الحكومة" },
-    { id: "history", label: "History & Geography", arabicLabel: "التاريخ والجغرافيا" },
-    { id: "culture", label: "Culture & Holidays", arabicLabel: "الثقافة والتقويم" },
+    { id: "home", label: "Overview & Capital", arabicLabel: "نظرة عامة والعاصمة" },
+    { id: "government", label: "Royal Court & Shura", arabicLabel: "البلاط الملكي والشورى" },
+    { id: "history", label: "History & Lineage", arabicLabel: "التاريخ والنسب" },
+    { id: "culture", label: "Culture & Military", arabicLabel: "الثقافة والجيش" },
     { id: "relations", label: "Foreign Relations", arabicLabel: "العلاقات الخارجية" },
   ];
 
-  // History timeline accordion content
-  const historyItems = [
+  // Detailed Historical Eras Accordion
+  const historyEras = [
     {
-      title: "1. Raritan Lenape Inhabitants (Pre-1999)",
-      subtitle: "Indigenous Heritage & Ancestral Guardianship",
+      title: "Pre-Modern Era: Lenape Inhabitants",
+      subtitle: "Indigenous Lands & Raritan-Navesink Stewardship",
       content: (
-        <div>
-          <p className="mb-2">
-            Prior to modern settlement, the territory of the Raritan Valley in Central New Jersey was under the ancestral stewardship of the <strong>Raritan</strong> and <strong>Navesink</strong> bands of the <strong>Lenape Nation</strong>.
+        <div className="space-y-2">
+          <p>
+            Long before the arrival of modern settlements, the geographic bounds of the Sultanate in Central New Jersey were under the ancestral guardianship of the <strong>Raritan</strong> and <strong>Navesink</strong> bands of the <strong>Lenape Nation</strong>.
           </p>
           <p>
-            The Sultanate honors this heritage, acknowledging the historical paths, rivers, and woodlands that form the geographic bedrock of the modern nation.
+            These groups lived in close harmony with the river tributaries and woodlands, cultivating the soil and utilizing seasonal migration paths. The Sultanate formally recognizes and respects their historic custody of the land.
           </p>
         </div>
       ),
     },
     {
-      title: "2. Y2K Immigration Wave (1999-2001)",
-      subtitle: "Establishment of Modern Residency & Growth",
+      title: "Immigration Wave (1999-2001)",
+      subtitle: "The Y2K Migration & Demographic Foundations",
       content: (
-        <div>
-          <p className="mb-2">
-            Between the years 1999 and 2001, a wave of immigration occurred in Central New Jersey. Families and professionals established residency in the area, laying down the early community foundations.
+        <div className="space-y-2">
+          <p>
+            During the Y2K technological boom, Central New Jersey experienced a major immigration wave, bringing families and professionals of South Asian and Middle Eastern heritage to the region.
           </p>
           <p>
-            This period was characterized by rapid suburban development and cultural diversification, establishing the demographic framework that would later form the citizenry.
+            This demographic influx established the cultural, academic, and economic foundations of the local community, creating the network of citizens that would later form the core registry of the micronation.
           </p>
         </div>
       ),
     },
     {
-      title: "3. Raritan Caliphate Period (2001-2025)",
-      subtitle: "Early Autonomous Assembly & Civil Codes",
+      title: "The Raritan Era (2014-2025)",
+      subtitle: "Hashemian National Project, Rebellion, and Espionage",
       content: (
-        <div>
-          <p className="mb-2">
-            Following the initial immigration wave, local civil assembly structures developed. This gave rise to the <strong>Raritan Caliphate</strong>, an early sovereign project aimed at organizing community representation and traditional values.
-          </p>
+        <div className="space-y-3">
           <p>
-            For over two decades, the Caliphate maintained cultural ties, managed localized affairs, and drafted early civil codes for its residents.
+            In 2014, the <strong>Hashemian National Project</strong> was launched, giving rise to Raritania. Initially organized as a principality, it was later declared a Caliphate. This era was characterized by significant political development, but also internal and external friction:
+          </p>
+          <div className="pl-4 border-l-2 border-brass-gold-400 py-1 space-y-2 text-xs bg-white rounded p-3">
+            <p>
+              <strong>• The West Qadirabad Rebellion:</strong> A territorial and administrative factional split occurred in the western suburbs. Factions demanding federal autonomy rose in defiance of centralized rule, leading to the outlawing of the Federali party and years of legal gridlock.
+            </p>
+            <p>
+              <strong>• The 2023 Espionage Scandal:</strong> National security was compromised in a high-profile incident involving <em>Maximilian Frederick</em>. Frederick was accused of conducting unauthorized surveillance, document theft, and attempting to destabilize Raritania's sovereign councils, prompting a structural overhaul.
+            </p>
+          </div>
+          <p>
+            In order to resolve these recurring structural vulnerabilities and achieve institutional stability, the Caliph of Raritania declared the formal dissolution of the old state machinery to clear the path for a constitutional monarchy.
           </p>
         </div>
       ),
     },
     {
-      title: "4. Dissolution & Proclamation of the Kasimid Sultanate (24-25 July 2025)",
-      subtitle: "Formal Transition to Sovereign Constitutional Monarchy",
+      title: "The Kasimid Era (2025-Present)",
+      subtitle: "Proclamation of Independence & Reign of Sultan Yusuf I",
       content: (
-        <div>
-          <p className="mb-2">
-            On <strong>24-25 July 2025</strong>, following a series of constitutional reforms and diplomatic restructuring, the Raritan Caliphate was formally dissolved.
+        <div className="space-y-2">
+          <p>
+            On <strong>25 July 2025</strong>, the old Caliphate structures were formally dissolved, and the sovereign <strong>Kasimid Sultanate</strong> (سلطنتِ القاسميه) was proclaimed.
           </p>
           <p>
-            In its place, the sovereign constitutional monarchy of <strong>The Kasimid Sultanate</strong> (سلطنتِ القاسميه) was officially proclaimed, establishing the Crown under Sultan Yusuf I and organizing modern ministries.
-          </p>
-        </div>
-      ),
-    },
-  ];
-
-  // Judicial/Military accordion content
-  const govAccordionItems = [
-    {
-      title: "Judiciary: The Qadi Court System",
-      subtitle: "Sharia-based Community Dispute Resolution",
-      content: (
-        <div>
-          <p className="mb-2">
-            The judicial branch of The Kasimid Sultanate is governed by the traditional <strong>Qadi System</strong>. Heavily influenced by classic Islamic jurisprudence (Sharia) adapted for a modern municipal setting, it operates as a consensus-focused arbitration board.
-          </p>
-          <p>
-            The Qadi handles civil matters, community contracts, and familial mediation, ensuring all resolutions prioritize community harmony, equity, and restorative justice.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "Defense: Jaysh al-Saltanah al-Qasimiyyah",
-      subtitle: "Imperial Protection Force & Legal Compliance",
-      content: (
-        <div>
-          <p className="mb-2">
-            The national defense is ceremonially represented by the <strong>Jaysh al-Saltanah al-Qasimiyyah</strong> (Forces of the Kasimid Sultanate).
-          </p>
-          <p className="mb-2">
-            In compliance with United States federal law, specifically the <strong>Posse Comitatus Act (18 U.S.C. § 1385)</strong>, the defense force operates exclusively in a ceremonial, civic, and cultural capacity. 
-          </p>
-          <p>
-            It is prohibited from engaging in domestic law enforcement or kinetic military actions, focusing instead on state ceremonies, environmental conservation patrols, and emergency preparedness.
+            The dynasty is named in honor of the revered ancestor <strong>Kasim al-Raniri</strong>, a historical scholar and merchant. This new era established a balanced constitution, appointed Grand Vizier Ali Al Masry to manage domestic affairs, and successfully structured the regional Wilayat.
           </p>
         </div>
       ),
@@ -156,7 +131,7 @@ export default function Home() {
   return (
     <div className="flex-1 flex flex-col">
       {/* Top Banner / Navigation Header */}
-      <header className="relative bg-ottoman-red-950 text-white border-b-4 border-brass-gold-500 shadow-lg py-8 px-4 md:px-8 overflow-hidden">
+      <header className="relative bg-royal-green-900 text-white border-b-4 border-brass-gold-500 shadow-lg py-8 px-4 md:px-8 overflow-hidden">
         {/* Subtle Geometric Background pattern overlay */}
         <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#c29b38_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
 
@@ -166,7 +141,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center gap-5 text-center md:text-left">
             <Flag width={180} height={120} />
             <div className="space-y-1">
-              <span className="block font-arabic text-brass-gold-400 text-3xl md:text-4xl leading-relaxed tracking-wide" dir="rtl">
+              <span className="block font-arabic text-brass-gold-400 text-3xl md:text-4xl leading-relaxed tracking-wide animate-pulse" dir="rtl">
                 سلطنتِ القاسميه
               </span>
               <h1 className="text-2xl md:text-3xl font-bold font-serif tracking-widest text-ivory-100">
@@ -179,7 +154,7 @@ export default function Home() {
           </div>
 
           {/* National Motto Panel */}
-          <div className="border border-brass-gold-500/40 bg-ottoman-red-900/60 rounded-xl p-4 max-w-sm text-center md:text-right shadow-inner">
+          <div className="border border-brass-gold-500/40 bg-royal-green-950/60 rounded-xl p-4 max-w-sm text-center md:text-right shadow-inner">
             <span className="block font-arabic text-brass-gold-300 text-lg mb-1 leading-normal" dir="rtl">
               "لا يوجد إلا طريق واحد، وهو طريق الله"
             </span>
@@ -201,10 +176,10 @@ export default function Home() {
               <button
                 key={tab.id}
                 onClick={() => changeTab(tab.id)}
-                className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex flex-col items-center justify-center min-w-[100px] border focus:outline-none ${
+                className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex flex-col items-center justify-center min-w-[120px] border focus:outline-none ${
                   activeTab === tab.id
-                    ? "bg-ottoman-red-900 text-brass-gold-300 border-brass-gold-500 shadow-sm font-semibold"
-                    : "bg-white text-stone-600 border-transparent hover:bg-ivory-50 hover:text-ottoman-red-800"
+                    ? "bg-royal-green-900 text-brass-gold-300 border-brass-gold-500 shadow-sm font-semibold"
+                    : "bg-white text-stone-600 border-transparent hover:bg-ivory-50 hover:text-royal-green-800"
                 }`}
               >
                 <span className="font-sans text-xs tracking-wide">{tab.label}</span>
@@ -220,33 +195,32 @@ export default function Home() {
       {/* Main Content Area */}
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 md:px-8 py-8">
         
-        {/* Render Tab Contents */}
         <Suspense fallback={<div className="text-center py-10 font-sans text-stone-600">Loading Section...</div>}>
           
           {/* TAB 1: OVERVIEW */}
           {activeTab === "home" && (
             <div className="space-y-8 animate-fadeIn">
               
-              {/* Hero / State Seal Intro */}
-              <section className="bg-gradient-to-br from-ottoman-red-950 to-ottoman-red-900 text-white rounded-2xl p-6 md:p-8 shadow-md border border-brass-gold-600/40 relative overflow-hidden">
+              {/* Hero Banner */}
+              <section className="bg-gradient-to-br from-royal-green-950 to-royal-green-900 text-white rounded-2xl p-6 md:p-8 shadow-md border border-brass-gold-600/40 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-brass-gold-500/5 rounded-full blur-3xl pointer-events-none" />
                 
                 <div className="max-w-2xl space-y-4 relative z-10">
-                  <span className="inline-block px-3 py-1 bg-brass-gold-600 text-ottoman-red-950 text-[10px] uppercase font-bold tracking-widest rounded-full">
-                    Imperial Announcement
+                  <span className="inline-block px-3 py-1 bg-brass-gold-600 text-royal-green-950 text-[10px] uppercase font-bold tracking-widest rounded-full">
+                    Sovereign Proclamation
                   </span>
                   <h2 className="text-3xl font-serif font-bold text-ivory-50 leading-tight">
                     Welcome to the Sovereign Gateway
                   </h2>
                   <p className="text-sm text-ivory-200 leading-relaxed font-sans">
-                    The Kasimid Sultanate is a sovereign constitutional micronation established in Central New Jersey. Anchored by traditional Islamic governance structures, the Sultanate combines historic legal heritage with modern civic administration, fostering a sustainable home economy and cultural enrichment for its citizens.
+                    The Kasimid Sultanate is a sovereign micronation in Central New Jersey. Anchored by traditional Islamic governance structures, the Sultanate combines historic legal heritage with modern civic administration, fostering a sustainable home economy and cultural enrichment for its citizens.
                   </p>
                   <div className="pt-2 flex flex-wrap gap-3">
-                    <span className="inline-flex items-center text-xs text-brass-gold-300 bg-ottoman-red-900/60 px-3 py-1.5 rounded-lg border border-brass-gold-600/20">
-                      Established: July 2025
+                    <span className="inline-flex items-center text-xs text-brass-gold-300 bg-royal-green-900/60 px-3 py-1.5 rounded-lg border border-brass-gold-600/20">
+                      Established: July 25, 2025
                     </span>
-                    <span className="inline-flex items-center text-xs text-brass-gold-300 bg-ottoman-red-900/60 px-3 py-1.5 rounded-lg border border-brass-gold-600/20">
-                      Capital City: Ismailabad
+                    <span className="inline-flex items-center text-xs text-brass-gold-300 bg-royal-green-900/60 px-3 py-1.5 rounded-lg border border-brass-gold-600/20">
+                      Capital: Ismailabad
                     </span>
                   </div>
                 </div>
@@ -254,14 +228,14 @@ export default function Home() {
 
               {/* Quick Stats Grid */}
               <section className="space-y-4">
-                <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
+                <h3 className="text-xl font-serif font-bold text-royal-green-900 border-b border-ivory-300 pb-2">
                   National Indicators & Fast Facts
                 </h3>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   <StatCard
                     label="Imperial Capital"
-                    value="Ismailabad"
+                    value="Ismailabad (إسماعيل آباد)"
                     subtitle="Administrative center and royal seat"
                     icon={
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -272,7 +246,7 @@ export default function Home() {
                   <StatCard
                     label="Citizen Population"
                     value="104 Citizens"
-                    subtitle="Demographic registry as of 2026"
+                    subtitle="88.46% Asian | 80.77% Islam"
                     icon={
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -281,8 +255,8 @@ export default function Home() {
                   />
                   <StatCard
                     label="Total Sovereign Area"
-                    value="0.078 sq km"
-                    subtitle="Equivalent to 0.03 square miles"
+                    value="0.078 sq km (0.03 sq mi)"
+                    subtitle="Consisting of Ghabaan & Jama’ah"
                     icon={
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
@@ -313,60 +287,94 @@ export default function Home() {
                 </div>
               </section>
 
+              {/* Capital City Profile Card */}
+              <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
+                <div className="border-b border-ivory-200 pb-3">
+                  <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest">Featured Profile</span>
+                  <h3 className="text-2xl font-serif font-bold text-royal-green-950">
+                    Ismailabad (إسماعيل آباد) — Imperial Capital
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="md:col-span-2 space-y-3 text-stone-700 text-sm leading-relaxed">
+                    <p>
+                      <strong>Ismailabad</strong> serves as the administrative capital and dynastic seat of the Sultanate. Comprising a carefully cataloged territory, it stands as the heart of governmental operations, treasury archives, and the Shura chamber.
+                    </p>
+                    <p>
+                      <strong>Etymology:</strong> The name represents a synthesis of cultural lineage and language. <em>Ismail</em> is in honor of the revered father of the current Sultan, Sidi Isma’il al-Raniri. The suffix <em>-abad</em> is derived from Persian, meaning "cultivated place," "town," or "city," symbolizing a settlement founded on prosperity and structure.
+                    </p>
+                  </div>
+                  
+                  {/* Stats Box inside Profile */}
+                  <div className="bg-ivory-50 rounded-xl border border-ivory-200 p-4 space-y-2">
+                    <h5 className="font-serif text-xs font-bold text-royal-green-950 uppercase tracking-wider border-b border-ivory-200 pb-1.5">
+                      Capital Specifications
+                    </h5>
+                    <div className="space-y-1.5 text-xs text-stone-600 font-sans">
+                      <div className="flex justify-between">
+                        <span>Demonym:</span>
+                        <strong className="text-stone-850">Ismailabadi</strong>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Total Area:</span>
+                        <strong className="text-stone-850">7,015 sq meters</strong>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Seat of:</span>
+                        <strong className="text-stone-850">The Royal Diwan</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               {/* Demographics Overview section */}
               <section className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm">
                 
                 {/* Ethnic Demographics */}
                 <div className="space-y-4">
-                  <h4 className="text-lg font-serif font-bold text-ottoman-red-950 border-b border-ivory-200 pb-2">
-                    Ethnic Demographics (2026)
+                  <h4 className="text-lg font-serif font-bold text-royal-green-950 border-b border-ivory-200 pb-2">
+                    Ethnic Registry (2026)
                   </h4>
-                  <p className="text-xs text-stone-500 font-sans mb-4">
-                    Visual registry of recognized ethnicities among the registered 104 citizens.
-                  </p>
                   
                   <div className="space-y-3">
-                    {/* Asian: 88.46% */}
                     <div>
                       <div className="flex justify-between text-xs font-semibold text-stone-700 mb-1">
                         <span>Asian</span>
                         <span className="font-mono">88.46%</span>
                       </div>
                       <div className="w-full bg-ivory-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-ottoman-red-800 h-full rounded-full transition-all duration-1000" style={{ width: "88.46%" }} />
+                        <div className="bg-royal-green-800 h-full rounded-full" style={{ width: "88.46%" }} />
                       </div>
                     </div>
 
-                    {/* White: 4.81% */}
                     <div>
                       <div className="flex justify-between text-xs font-semibold text-stone-700 mb-1">
                         <span>White</span>
                         <span className="font-mono">4.81%</span>
                       </div>
                       <div className="w-full bg-ivory-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-brass-gold-500 h-full rounded-full transition-all duration-1000" style={{ width: "4.81%" }} />
+                        <div className="bg-brass-gold-500 h-full rounded-full" style={{ width: "4.81%" }} />
                       </div>
                     </div>
 
-                    {/* Latino: 2.88% */}
                     <div>
                       <div className="flex justify-between text-xs font-semibold text-stone-700 mb-1">
                         <span>Latino</span>
                         <span className="font-mono">2.88%</span>
                       </div>
                       <div className="w-full bg-ivory-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-ottoman-red-600 h-full rounded-full transition-all duration-1000" style={{ width: "2.88%" }} />
+                        <div className="bg-royal-green-600 h-full rounded-full" style={{ width: "2.88%" }} />
                       </div>
                     </div>
 
-                    {/* MENA: 2.88% */}
                     <div>
                       <div className="flex justify-between text-xs font-semibold text-stone-700 mb-1">
-                        <span>Middle Eastern & North African (MENA)</span>
+                        <span>MENA</span>
                         <span className="font-mono">2.88%</span>
                       </div>
                       <div className="w-full bg-ivory-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-brass-gold-400 h-full rounded-full transition-all duration-1000" style={{ width: "2.88%" }} />
+                        <div className="bg-brass-gold-400 h-full rounded-full" style={{ width: "2.88%" }} />
                       </div>
                     </div>
                   </div>
@@ -374,55 +382,48 @@ export default function Home() {
 
                 {/* Religious Demographics */}
                 <div className="space-y-4">
-                  <h4 className="text-lg font-serif font-bold text-ottoman-red-950 border-b border-ivory-200 pb-2">
+                  <h4 className="text-lg font-serif font-bold text-royal-green-950 border-b border-ivory-200 pb-2">
                     Religious Registry (2026)
                   </h4>
-                  <p className="text-xs text-stone-500 font-sans mb-4">
-                    Registered religious affiliations within the sovereign boundaries of the Sultanate.
-                  </p>
 
                   <div className="space-y-3">
-                    {/* Islam: 80.77% */}
                     <div>
                       <div className="flex justify-between text-xs font-semibold text-stone-700 mb-1">
                         <span>Islam</span>
                         <span className="font-mono">80.77%</span>
                       </div>
                       <div className="w-full bg-ivory-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-ottoman-red-900 h-full rounded-full transition-all duration-1000" style={{ width: "80.77%" }} />
+                        <div className="bg-royal-green-900 h-full rounded-full" style={{ width: "80.77%" }} />
                       </div>
                     </div>
 
-                    {/* Christianity: 10.58% */}
                     <div>
                       <div className="flex justify-between text-xs font-semibold text-stone-700 mb-1">
                         <span>Christianity</span>
                         <span className="font-mono">10.58%</span>
                       </div>
                       <div className="w-full bg-ivory-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-brass-gold-500 h-full rounded-full transition-all duration-1000" style={{ width: "10.58%" }} />
+                        <div className="bg-brass-gold-500 h-full rounded-full" style={{ width: "10.58%" }} />
                       </div>
                     </div>
 
-                    {/* Hinduism: 7.69% */}
                     <div>
                       <div className="flex justify-between text-xs font-semibold text-stone-700 mb-1">
                         <span>Hinduism</span>
                         <span className="font-mono">7.69%</span>
                       </div>
                       <div className="w-full bg-ivory-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-ottoman-red-600 h-full rounded-full transition-all duration-1000" style={{ width: "7.69%" }} />
+                        <div className="bg-royal-green-600 h-full rounded-full" style={{ width: "7.69%" }} />
                       </div>
                     </div>
 
-                    {/* Sikhism: 0.96% */}
                     <div>
                       <div className="flex justify-between text-xs font-semibold text-stone-700 mb-1">
                         <span>Sikhism</span>
                         <span className="font-mono">0.96%</span>
                       </div>
                       <div className="w-full bg-ivory-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-brass-gold-400 h-full rounded-full transition-all duration-1000" style={{ width: "0.96%" }} />
+                        <div className="bg-brass-gold-400 h-full rounded-full" style={{ width: "0.96%" }} />
                       </div>
                     </div>
                   </div>
@@ -430,7 +431,7 @@ export default function Home() {
 
               </section>
 
-              {/* Currency Converter Widget */}
+              {/* Currency Converter */}
               <section className="max-w-xl mx-auto">
                 <CurrencyConverter />
               </section>
@@ -438,134 +439,101 @@ export default function Home() {
             </div>
           )}
 
-          {/* TAB 2: GOVERNMENT & POLITICS */}
+          {/* TAB 2: LEADERSHIP BIOGRAPHIES */}
           {activeTab === "government" && (
             <div className="space-y-8 animate-fadeIn">
               
-              {/* The Crown & Executive Administration */}
-              <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-6">
-                <div>
-                  <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
-                    The Crown & Executive Organs
-                  </h3>
-                  <p className="text-xs text-stone-500 font-sans tracking-wide mt-1">
-                    Administrative Structure of the Hereditary Semi-Feudal Monarchy
-                  </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  {/* Sultan card */}
-                  <div className="relative rounded-xl border border-brass-gold-300 bg-ivory-50/50 p-5 text-center group hover:border-brass-gold-500 transition-colors">
-                    <div className="absolute top-3 right-3 text-brass-gold-600 font-serif text-xs uppercase tracking-widest font-bold">
-                      Sovereign
-                    </div>
-                    <div className="w-16 h-16 bg-ottoman-red-900 text-brass-gold-300 rounded-full flex items-center justify-center mx-auto text-xl font-serif font-bold mb-4 shadow border border-brass-gold-400">
-                      Y I
-                    </div>
-                    <h4 className="font-serif text-lg font-bold text-ottoman-red-950">
-                      Sultan Yusuf I
-                    </h4>
-                    <p className="text-xs text-stone-600 mt-1 uppercase font-semibold tracking-wider">
-                      Head of State & Dynastic Crown
-                    </p>
-                    <p className="text-[10px] text-stone-500 mt-3 border-t border-ivory-200 pt-3">
-                      Holds supreme decree power and heads the stratocratic executive council.
-                    </p>
-                  </div>
-
-                  {/* Vizier card */}
-                  <div className="relative rounded-xl border border-ivory-300 bg-white p-5 text-center hover:border-brass-gold-400 transition-colors">
-                    <div className="absolute top-3 right-3 text-stone-400 font-sans text-[10px] uppercase tracking-wider font-semibold">
-                      Grand Vizier
-                    </div>
-                    <div className="w-16 h-16 bg-ottoman-red-800 text-ivory-100 rounded-full flex items-center justify-center mx-auto text-xl font-serif font-bold mb-4 shadow">
-                      AM
-                    </div>
-                    <h4 className="font-serif text-lg font-bold text-stone-850">
-                      Ali Al Masry
-                    </h4>
-                    <p className="text-xs text-stone-600 mt-1 uppercase font-semibold tracking-wider">
-                      Vizier of administration
-                    </p>
-                    <p className="text-[10px] text-stone-500 mt-3 border-t border-ivory-200 pt-3">
-                      Supervises internal affairs, treasury accounts, and civil implementation.
-                    </p>
-                  </div>
-
-                  {/* Shura Chairman card */}
-                  <div className="relative rounded-xl border border-ivory-300 bg-white p-5 text-center hover:border-brass-gold-400 transition-colors">
-                    <div className="absolute top-3 right-3 text-stone-400 font-sans text-[10px] uppercase tracking-wider font-semibold">
-                      Shura Council
-                    </div>
-                    <div className="w-16 h-16 bg-ottoman-red-800 text-ivory-100 rounded-full flex items-center justify-center mx-auto text-xl font-serif font-bold mb-4 shadow">
-                      HA
-                    </div>
-                    <h4 className="font-serif text-lg font-bold text-stone-850">
-                      Habib Al-Asad
-                    </h4>
-                    <p className="text-xs text-stone-600 mt-1 uppercase font-semibold tracking-wider">
-                      Shura Chairman
-                    </p>
-                    <p className="text-[10px] text-stone-500 mt-3 border-t border-ivory-200 pt-3">
-                      Presides over legislative deliberations and community council seats.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="p-4 bg-ottoman-red-50 rounded-xl border border-ottoman-red-200/50 text-stone-700 text-sm leading-relaxed">
-                  <span className="font-bold text-ottoman-red-900 block mb-1">Administrative Form:</span>
-                  The Kasimid Sultanate is organized as a <strong>Semi-feudal stratocratic hereditary monarchy</strong>. Legislative advisory power is held by the consultative Shura Council, with executive actions coordinated through the Grand Vizier under direct decree of the Sultan.
-                </div>
-              </section>
-
-              {/* Political Factions & Parties */}
-              <section className="space-y-4">
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-ivory-300 pb-2">
-                  <h3 className="text-xl font-serif font-bold text-ottoman-red-900">
-                    Factions & Political Parties Registry
-                  </h3>
-                  <span className="text-xs text-stone-500 font-sans font-medium mt-1 md:mt-0">
-                    Authorized and Prohibited Factions
-                  </span>
-                </div>
-                
-                <PoliticalPartiesTable />
-              </section>
-
-              {/* Judicial & Military Accordions */}
-              <section className="space-y-4">
-                <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
-                  Judicial Power & Imperial Defense
+              <div>
+                <h3 className="text-2xl font-serif font-bold text-royal-green-950">
+                  Leadership of the Sultanate
                 </h3>
+                <p className="text-xs text-stone-500 font-sans tracking-wide mt-1">
+                  Profiles of the Monarch, Vizierate, and Shura Council Leadership
+                </p>
+              </div>
 
-                <Accordion items={govAccordionItems} defaultOpenIndex={0} />
+              {/* 3-Column Profile Cards Grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+                
+                {/* The Sultan */}
+                <ProfileCard
+                  name="King Yusuf bin Isma’il al-Raniri I"
+                  arabicName="يوسف بن إسماعيل الرانيري الأول"
+                  title="Sultan of the Kasimid Sultanate"
+                  subTitle="House of Majidid"
+                  born="21 January 2008"
+                  origin="House of Majidid"
+                  association="Dynastic Crown"
+                  initials="Y I"
+                  bio="Sultan Yusuf I began his sovereign reign as the King and Caliph of Raritania from 2014 until 2025. Following constitutional negotiations and the desire to build a more stable, legacy-oriented state, he formally dissolved the Caliphate and established the constitutional monarchy of the Kasimid Sultanate on 25 July 2025, honoring his ancestor Kasim al-Raniri."
+                />
+
+                {/* Grand Vizier */}
+                <ProfileCard
+                  name="Ali Al Masry"
+                  arabicName="علي المصري"
+                  title="Grand Vizier & Prime Minister"
+                  subTitle="Leader of Al-Hizb al-Islami"
+                  born="9 February 2009"
+                  origin="Alexandria, Egypt"
+                  association="Al-Hizb al-Islami ruling party"
+                  initials="AM"
+                  bio="Ali Al Masry was born in Alexandria, Egypt, and is a key figure in the Ayal Ali clan. Serving as Grand Vizier, he leads the ruling party of the Sultanate. Outside of statecraft, he is noted for his linguistic achievements, serving as the creator of the Umaedic language, and holds administrative control over internal affairs."
+                />
+
+                {/* Chairman of the Shura */}
+                <ProfileCard
+                  name="Habibullah Mikail Al-Asad"
+                  arabicName="حبيب الله ميكائيل الأسد"
+                  title="Chairman of the consultative Shura"
+                  subTitle="Incumbent since 28 Dec 2024"
+                  born="11 September 2008"
+                  origin="Brooklyn, NY"
+                  association="Consultative Assembly"
+                  initials="HA"
+                  bio="Habibullah Mikail Al-Asad was born in Brooklyn, NY. He took office as Chairman of the Shura Council on 28 December 2024. He presides over legislative advising and coordinates council assemblies, serving as a vital bridge between the citizenry and the Grand Vizier's administration."
+                />
+
+              </div>
+
+              {/* Factions Section */}
+              <section className="space-y-4">
+                <h3 className="text-xl font-serif font-bold text-royal-green-900 border-b border-ivory-300 pb-2">
+                  Consultative Assembly & Factions Registry
+                </h3>
+                <PoliticalPartiesTable />
               </section>
 
             </div>
           )}
 
-          {/* TAB 3: HISTORY & GEOGRAPHY */}
+          {/* TAB 3: HISTORY & LINEAGE */}
           {activeTab === "history" && (
             <div className="space-y-8 animate-fadeIn">
               
+              {/* Ancestry Lineage Component */}
+              <section>
+                <Lineage />
+              </section>
+
               {/* History Timeline */}
               <section className="space-y-4">
                 <div>
-                  <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
-                    National History & Timeline
+                  <h3 className="text-2xl font-serif font-bold text-royal-green-950">
+                    Historical Eras of the Territory
                   </h3>
                   <p className="text-xs text-stone-500 font-sans tracking-wide mt-1">
-                    Chronology of sovereignty from Raritan bands to the modern Kasimid Monarchy
+                    Timeline from Raritan Lenape ancestry to the modern Kasimid dynasty
                   </p>
                 </div>
 
-                <Accordion items={historyItems} defaultOpenIndex={3} />
+                <Accordion items={historyEras} defaultOpenIndex={2} />
               </section>
 
               {/* Wilayat (Provinces) */}
               <section className="space-y-4">
                 <div className="flex justify-between items-end border-b border-ivory-300 pb-2">
-                  <h3 className="text-xl font-serif font-bold text-ottoman-red-900">
+                  <h3 className="text-xl font-serif font-bold text-royal-green-900">
                     Wilayat (Provinces of the Sultanate)
                   </h3>
                   <span className="text-xs text-stone-500 font-sans font-medium">
@@ -578,7 +546,7 @@ export default function Home() {
 
               {/* Climate Data / Weather Box */}
               <section className="max-w-xl mx-auto space-y-4">
-                <h3 className="text-xl font-serif font-bold text-ottoman-red-900 text-center">
+                <h3 className="text-xl font-serif font-bold text-royal-green-900 text-center">
                   Geographical Weather Profile
                 </h3>
                 <WeatherBox />
@@ -587,52 +555,73 @@ export default function Home() {
             </div>
           )}
 
-          {/* TAB 4: CULTURE & SOCIETY */}
+          {/* TAB 4: CULTURE & MILITARY */}
           {activeTab === "culture" && (
             <div className="space-y-8 animate-fadeIn">
               
-              {/* Culture Overview */}
+              {/* Society & Economy */}
               <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-6">
                 <div>
-                  <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
-                    Society, Culture & Sustainable Economy
+                  <h3 className="text-2xl font-serif font-bold text-royal-green-950">
+                    Society, Culture & Economy
                   </h3>
                   <p className="text-xs text-stone-500 font-sans tracking-wide mt-1">
-                    Livelihoods, Customs, and Traditional Commemorations
+                    Customs, Traditional Livelihoods, and Economic Foundations
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-stone-700 text-sm leading-relaxed">
                   <div className="space-y-3">
-                    <h4 className="font-serif text-lg font-semibold text-ottoman-red-900">
-                      Heritage & Traditions
+                    <h4 className="font-serif text-lg font-semibold text-royal-green-900">
+                      Heritage & Spices
                     </h4>
                     <p>
-                      The cultural fabric of the Sultanate represents a unique integration of Islamic traditions, classical governance motifs, and Raritan Valley maritime trade heritage. 
+                      The cultural landscape combines classical Islamic values, regional South Asian/MENA heritage, and Raritan Valley maritime traditions.
                     </p>
                     <p>
-                      High value is placed on local hospitality, theological inquiry, and architectural aesthetics, which draw inspiration from historical Islamic empires while operating in a modern North American geographic context.
+                      Sultanate community groups focus heavily on botanical fragrance craft, traditional theological debates, and the preservation of dynastic histories.
                     </p>
                   </div>
 
                   <div className="space-y-3">
-                    <h4 className="font-serif text-lg font-semibold text-ottoman-red-900">
-                      Economic Framework
+                    <h4 className="font-serif text-lg font-semibold text-royal-green-900">
+                      Spiritual & Home Economy
                     </h4>
                     <p>
-                      Sultanate economic policy focuses heavily on sustainability and household independence. Due to territorial constraints, the domestic market is characterized by a modest, home-based economy.
+                      The economy is characterized by a modest, home-based production framework. Due to geographic limitations, citizens focus on producing high-quality artisanal crafts, digital services, and spice processing (specializing in dried dates and traditional culinary blends).
                     </p>
                     <p>
-                      This includes the crafting of artisanal items, digital trade networks, and minor agricultural activities such as spice processing. Treasury funds are backed through direct reserves pegged to the Euro (EUR) under the Kasimi Dinar.
+                      Treasury reserves are strictly regulated, with the Kasimi Dinar pegged firmly to the Euro (EUR) to guarantee economic integrity.
                     </p>
                   </div>
+                </div>
+              </section>
+
+              {/* Jaysh al-Saltanah (Military) */}
+              <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
+                <div className="border-b border-ivory-200 pb-3">
+                  <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest">Defense Doctrine</span>
+                  <h3 className="text-xl font-serif font-bold text-royal-green-950">
+                    Jaysh al-Saltanah al-Qasimiyyah (Forces of the Kasimid Sultanate)
+                  </h3>
+                </div>
+                <div className="space-y-3 text-stone-700 text-sm leading-relaxed">
+                  <p>
+                    The national defense force, **Jaysh al-Saltanah al-Qasimiyyah**, serves in a strictly ceremonial and cultural reenactment capacity. 
+                  </p>
+                  <p>
+                    In order to maintain absolute compliance with local and federal statutes of the host nation (specifically United States federal law under the **Posse Comitatus Act - 18 U.S. Code § 1385**), the forces are entirely prohibited from executing domestic law enforcement actions, civil policing, or active kinetic operations. 
+                  </p>
+                  <p>
+                    Their duties are limited to serving as honor guards for the Sultan, coordinating local cultural events, maintaining historical registries, and preparing emergency preparedness drills.
+                  </p>
                 </div>
               </section>
 
               {/* National Holidays Calendar */}
               <section className="space-y-4">
                 <div className="flex justify-between items-end border-b border-ivory-300 pb-2">
-                  <h3 className="text-xl font-serif font-bold text-ottoman-red-900">
+                  <h3 className="text-xl font-serif font-bold text-royal-green-900">
                     Official Calendar & National Holidays
                   </h3>
                   <span className="text-xs text-stone-500 font-sans font-medium">
@@ -652,7 +641,7 @@ export default function Home() {
               
               {/* Stance & Framework */}
               <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
-                <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
+                <h3 className="text-2xl font-serif font-bold text-royal-green-950">
                   Diplomatic Doctrine & Stance
                 </h3>
                 <p className="text-stone-700 text-sm leading-relaxed">
@@ -662,7 +651,7 @@ export default function Home() {
 
               {/* Alliances & Memberships */}
               <section className="space-y-4">
-                <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
+                <h3 className="text-xl font-serif font-bold text-royal-green-900 border-b border-ivory-300 pb-2">
                   International Memberships & Alliances
                 </h3>
 
@@ -672,7 +661,7 @@ export default function Home() {
                     <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block mb-1">
                       Co-Founder
                     </span>
-                    <h4 className="font-serif font-bold text-lg text-ottoman-red-950 mb-2">
+                    <h4 className="font-serif font-bold text-lg text-royal-green-950 mb-2">
                       UNAM
                     </h4>
                     <p className="text-xs text-stone-600 leading-relaxed">
@@ -685,7 +674,7 @@ export default function Home() {
                     <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block mb-1">
                       Chief Justice Role
                     </span>
-                    <h4 className="font-serif font-bold text-lg text-ottoman-red-950 mb-2">
+                    <h4 className="font-serif font-bold text-lg text-royal-green-950 mb-2">
                       OIM
                     </h4>
                     <p className="text-xs text-stone-600 leading-relaxed">
@@ -698,7 +687,7 @@ export default function Home() {
                     <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block mb-1">
                       Active Member
                     </span>
-                    <h4 className="font-serif font-bold text-lg text-ottoman-red-950 mb-2">
+                    <h4 className="font-serif font-bold text-lg text-royal-green-950 mb-2">
                       UMO
                     </h4>
                     <p className="text-xs text-stone-600 leading-relaxed">
@@ -713,7 +702,7 @@ export default function Home() {
                 
                 {/* Unilateral Recognition */}
                 <div className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
-                  <h4 className="text-lg font-serif font-bold text-ottoman-red-950 border-b border-ivory-200 pb-2 flex items-center justify-between">
+                  <h4 className="text-lg font-serif font-bold text-royal-green-950 border-b border-ivory-200 pb-2 flex items-center justify-between">
                     <span>Unilateral Recognition Extended</span>
                     <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse" />
                   </h4>
@@ -752,11 +741,11 @@ export default function Home() {
                   <ul className="space-y-2.5 text-sm text-stone-700 font-sans">
                     <li className="flex items-center space-x-2">
                       <span className="text-red-500 font-bold">•</span>
-                      <span><strong>State of Israel</strong> — Diplomatic engagement explicitly prohibited and unrecognized.</span>
+                      <span><strong>State of Israel</strong> — Unrecognized and diplomatic ties prohibited.</span>
                     </li>
                     <li className="flex items-center space-x-2">
                       <span className="text-red-500 font-bold">•</span>
-                      <span><strong>People's Republic of China (PRC)</strong> — Diplomatic relations refused in protest of human rights concerns.</span>
+                      <span><strong>People's Republic of China (PRC)</strong> — Unrecognized in protest of regional rights concerns.</span>
                     </li>
                   </ul>
                 </div>
@@ -770,7 +759,7 @@ export default function Home() {
       </main>
 
       {/* Official State Footer */}
-      <footer className="bg-ottoman-red-950 text-white border-t-2 border-brass-gold-500 py-8 px-4 mt-12 text-center text-xs font-sans space-y-3 relative">
+      <footer className="bg-royal-green-950 text-white border-t-2 border-brass-gold-500 py-8 px-4 mt-12 text-center text-xs font-sans space-y-3 relative">
         <div className="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#c29b38_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
         
         <div className="max-w-6xl mx-auto space-y-4 relative z-10">
@@ -788,7 +777,7 @@ export default function Home() {
             Imperial Registry of Deeds, Census, and Foreign Registry, Ismailabad.
           </p>
           
-          <div className="flex justify-center space-x-4 text-brass-gold-400 font-serif text-[10px] tracking-wide pt-2 border-t border-ottoman-red-900/60 max-w-md mx-auto">
+          <div className="flex justify-center space-x-4 text-brass-gold-400 font-serif text-[10px] tracking-wide pt-2 border-t border-royal-green-900/60 max-w-md mx-auto">
             <span>Sovereign Constitutional Monarchy</span>
             <span>•</span>
             <span>Central New Jersey</span>
