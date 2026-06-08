@@ -22,7 +22,7 @@ export default function Crest({ className = "", size = 120 }: CrestProps) {
         <circle cx="100" cy="100" r="90" stroke="var(--color-brass-gold-600)" strokeWidth="1" strokeDasharray="4 2" />
 
         {/* Deep Royal Green Circular Background */}
-        <circle cx="100" cy="100" r="85" fill="var(--color-royal-green-900)" />
+        <circle cx="100" cy="100" r="85" fill="var(--color-ottoman-red-900)" />
 
         {/* Inner Gold Star (8-point Rub el Hizb) */}
         <path
@@ -65,7 +65,7 @@ export default function Crest({ className = "", size = 120 }: CrestProps) {
         />
 
         {/* Inner Crimson/Green/Gold Shield */}
-        <circle cx="100" cy="100" r="42" fill="var(--color-royal-green-950)" stroke="var(--color-brass-gold-400)" strokeWidth="2" />
+        <circle cx="100" cy="100" r="42" fill="var(--color-ottoman-red-950)" stroke="var(--color-brass-gold-400)" strokeWidth="2" />
 
         {/* Golden Crescent Moon and Star */}
         <path
