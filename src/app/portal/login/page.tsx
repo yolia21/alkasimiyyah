@@ -1,36 +1,14 @@
 "use client";
 
-import { useState, useTransition } from "react";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useActionState } from "react";
+import { authenticate } from "../actions";
 import Flag from "@/components/Flag";
 
 export default function LoginPage() {
-  const [civilId, setCivilId] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [isPending, startTransition] = useTransition();
-  const router = useRouter();
-
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
-
-    startTransition(async () => {
-      const result = await signIn("credentials", {
-        civilId: civilId.trim(),
-        password,
-        redirect: false,
-      });
-
-      if (result?.error) {
-        setError("Access denied. Invalid Civil ID or password.");
-      } else {
-        router.push("/portal");
-        router.refresh();
-      }
-    });
-  }
+  const [errorMessage, formAction, isPending] = useActionState(
+    authenticate,
+    undefined
+  );
 
   return (
     <div className="min-h-screen bg-ottoman-red-950 flex items-center justify-center px-4 py-12 relative overflow-hidden">
@@ -84,7 +62,7 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form action={formAction} className="space-y-5">
 
             {/* Civil ID Field */}
             <div className="space-y-1.5">
@@ -102,9 +80,8 @@ export default function LoginPage() {
                 </div>
                 <input
                   id="civilId"
+                  name="civilId"
                   type="text"
-                  value={civilId}
-                  onChange={(e) => setCivilId(e.target.value)}
                   placeholder="e.g. KS-001"
                   required
                   autoComplete="username"
@@ -129,9 +106,8 @@ export default function LoginPage() {
                 </div>
                 <input
                   id="password"
+                  name="password"
                   type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••••"
                   required
                   autoComplete="current-password"
@@ -141,12 +117,12 @@ export default function LoginPage() {
             </div>
 
             {/* Error Message */}
-            {error && (
+            {errorMessage && (
               <div className="flex items-start gap-2.5 bg-red-900/40 border border-red-700/50 rounded-xl px-4 py-3">
                 <svg className="w-4 h-4 text-red-400 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <p className="text-xs text-red-300 font-sans">{error}</p>
+                <p className="text-xs text-red-300 font-sans">{errorMessage}</p>
               </div>
             )}
 
@@ -155,7 +131,7 @@ export default function LoginPage() {
               id="portal-login-btn"
               type="submit"
               disabled={isPending}
-              className="w-full py-3.5 bg-brass-gold-500 hover:bg-brass-gold-400 disabled:opacity-60 disabled:cursor-not-allowed text-ottoman-red-950 font-serif font-bold text-sm tracking-widest uppercase rounded-xl transition-all duration-200 shadow-md hover:shadow-brass-gold-500/20 hover:shadow-lg flex items-center justify-center gap-2"
+              className="w-full py-3.5 bg-brass-gold-500 hover:bg-brass-gold-400 disabled:opacity-60 disabled:cursor-not-allowed text-ottoman-red-950 font-serif font-bold text-sm tracking-widest uppercase rounded-xl transition-all duration-200 shadow-md flex items-center justify-center gap-2"
             >
               {isPending ? (
                 <>
