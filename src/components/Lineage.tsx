@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 
 interface AncestorNode {
-  generation: number;
+  generationText: string;
   name: string;
   historicalNote?: string;
   isMilestone?: boolean;
@@ -14,110 +14,113 @@ export default function Lineage() {
 
   const keyMilestones: AncestorNode[] = [
     {
-      generation: 1,
+      generationText: "Prophesy",
       name: "Prophet Muhammad (PBUH)",
-      historicalNote: "Founder of Islam. Direct ancestor of the Majidid Dynastic line.",
+      historicalNote: "The final Messenger of Islam. Root ancestor of the family line.",
       isMilestone: true,
     },
     {
-      generation: 2,
-      name: "Fatimah al-Zahra & Ali bin Abi Talib",
-      historicalNote: "Daughter of the Prophet and the fourth Caliph of Islam.",
+      generationText: "5th Imam Line",
+      name: "Imam Muhammad al-Baqir",
+      historicalNote: "2nd great-grandson of the Prophet Muhammad, 5th Imam in classical lineage.",
       isMilestone: true,
     },
     {
-      generation: 5,
-      name: "Imam Abdullah al-Baqir",
-      historicalNote: "Renowned Islamic scholar and jurist of the early caliphate.",
+      generationText: "37th Great-Grandfather",
+      name: "Abdullah al-Baqir",
+      historicalNote: "Son of the 5th Imam; established early branches of the maternal lineage.",
       isMilestone: true,
     },
     {
-      generation: 32,
-      name: "Sheikh Uthman Sher Sawar",
-      historicalNote: "Eminent Sufi saint and teacher who migrated across central trade paths.",
+      generationText: "13th Century",
+      name: "Sheikh Uthman Sher Sawar (1200-)",
+      historicalNote: "Eminent Sufi saint and disciple of Baba Farid who migrated to India.",
       isMilestone: true,
     },
     {
-      generation: 40,
-      name: "Sidi Muhammad Farid",
-      historicalNote: "Patriarch of the early modern Majidid lineage, merchant, and scholar.",
+      generationText: "Bihar Patriarch",
+      name: "Muhammad Farid",
+      historicalNote: "Eponymous founder of Faridpur, Bihar; noted scholar and administrator.",
       isMilestone: true,
     },
     {
-      generation: 41,
-      name: "Isma’il al-Raniri",
-      historicalNote: "Father of the current Sovereign; key counselor of the caliphate.",
+      generationText: "19th Century",
+      name: "Syed Majid Ali (1801-1885)",
+      historicalNote: "Sufi scholar, patriarch, and ancestor of the modern Majidids.",
       isMilestone: true,
     },
     {
-      generation: 42,
-      name: "Sultan Yusuf I (King Yusuf bin Isma’il al-Raniri I)",
-      historicalNote: "Incumbent Sovereign of the Kasimid Sultanate; dissolved the Raritan Caliphate to establish modern structures.",
+      generationText: "The Incumbent",
+      name: "Yusuf Raniri (Sultan Yusuf I)",
+      historicalNote: "Current Sovereign of the Kasimid Sultanate, reigning through the matrilineal line.",
       isMilestone: true,
     },
   ];
 
-  // Full representation of the 42 generations for the expanded ledger
+  // The correct 45-generation sequence provided by the user
   const fullLineage: string[] = [
     "Prophet Muhammad (PBUH)",
     "Fatimah al-Zahra (married Ali bin Abi Talib)",
-    "Imam Hasan al-Mujtaba",
-    "Hasan al-Muthanna",
-    "Imam Abdullah al-Baqir",
-    "Ibrahim al-Ghamr",
-    "Ismail al-Dibaj",
-    "Ibrahim al-Tabataba",
-    "Al-Qasim al-Rassi",
-    "Al-Husayn al-Hadi",
-    "Yahya al-Hadi ila'l-Haqq",
-    "Ahmad al-Murtada",
-    "Al-Hasan al-Nasir",
-    "Ali al-Mansur",
-    "Imad al-Din Yahya",
-    "Musa al-Kazim",
-    "Ja'far al-Sadiq",
-    "Ali al-Rida",
-    "Muhammad al-Taqi",
-    "Ali al-Hadi",
-    "Al-Hasan al-Askari",
-    "Sayyid Ahmad al-Muhajir",
-    "Alwi al-Ubaydullah",
-    "Muhammad al-Sahib al-Mirbat",
-    "Ali al-Khali Qasam",
-    "Muhammad al-Faqih al-Muqaddam",
-    "Alwi al-Ghayur",
-    "Ali al-Azmat Khan",
-    "Sayyid Jalaluddin al-Bukhari",
-    "Sayyid Ahmad Kabir",
-    "Sayyid Jalaluddin Surkh-Posh Bukhari",
-    "Sheikh Uthman Sher Sawar",
-    "Sheikh Muhammad Al-Raniri",
-    "Sayyid Kasim al-Raniri",
-    "Sheikh Ahmad Al-Majidi",
-    "Sayyid Habibullah Al-Majidi",
-    "Sayyid Ali Al-Majidi",
-    "Sayyid Yusuf Al-Majidi",
-    "Sidi Muhammad Farid Al-Majidi",
-    "Sidi Muhammad Farid",
-    "Isma’il al-Raniri",
-    "Sultan Yusuf I (King Yusuf bin Isma’il al-Raniri I)"
+    "Imam Husayn ibn Ali",
+    "Imam Ali Zayn al-Abidin",
+    "Imam Muhammad al-Baqir (5th Imam)",
+    "Abdullah al-Baqir (37th great-grandfather, son of 5th imam)",
+    "Ayyub (grandson of Muhammad al-Baqir through Abdullah)",
+    "Barakatullah ibn Habibullah",
+    "Shahab al-Din Nur Al-Anwar",
+    "Muhammad Najam al-Din",
+    "Muhammad Sufi Sadiq",
+    "Shahabuddin Layyah al-Masri (Egyptian Murshid)",
+    "Ahmad Elahi",
+    "Muhammad Mahroof",
+    "Junayd",
+    "Uthman al-Thani",
+    "Abdul Wahhab",
+    "Uthman Sher Sawar (1200-, Disciple of Baba Farid)",
+    "Muhammad Yusuf Burqaposh (Traveled from Madinah to India)",
+    "Muhammad Qasim",
+    "Muhammad",
+    "Abdul Raheem Mufti (Qazi of Delhi)",
+    "Abdul Rahman",
+    "Ashiq Ali",
+    "Muhammad Farid (Eponym of Faridpur, Bihar)",
+    "Muhammad Ibrahim",
+    "Muhammad Daud",
+    "Syed Muhammad Yahya",
+    "Syed Najam al-Din",
+    "Syed Muhammad Ali",
+    "Syed Abdul Karim",
+    "Syed Abdul Quddus",
+    "Syed Muhammad Mohsin",
+    "Syed Muhammad Yusuf",
+    "Syed Muhammad Ishaaq",
+    "Syed Mubarik Ali Faridpuri",
+    "Syed Barakat Ali",
+    "Syed Amjad Ali",
+    "Syed Majid Ali (1801-1885, Ancestor of Majidids)",
+    "Syed Abdul Majeed (Son of Syed Majid Ali)",
+    "Syed Muhammad Kazim",
+    "Shamim",
+    "Bint Al Siddiq",
+    "Umm Ammaar (Mother of Sultan)",
+    "Yusuf Raniri (Sultan Yusuf I, Caliph from the Kasimids)"
   ];
 
   return (
     <div className="rounded-2xl border border-ivory-300 bg-white p-6 shadow-sm hover:border-brass-gold-400 transition-all duration-300 space-y-6">
       <div>
         <h4 className="text-xl font-serif font-bold text-ottoman-red-950">
-          The Imperial Lineage (Shajarah al-Nasab)
+          The Matrilineal Lineage (Shajarah al-Nasab)
         </h4>
         <p className="text-xs text-stone-500 font-sans tracking-wide mt-1">
-          Historical record tracing Sultan Yusuf I's ancestry back 42 generations
+          Historical record tracing Sultan Yusuf I's lineage through his mother, Umm Ammaar, to the Prophet Muhammad
         </p>
       </div>
 
       {/* Key Milestones Vertical Timeline */}
       <div className="relative border-l border-brass-gold-400 pl-6 space-y-6 py-2 ml-3">
-        {keyMilestones.map((node) => (
-          <div key={node.generation} className="relative">
+        {keyMilestones.map((node, idx) => (
+          <div key={idx} className="relative">
             {/* Timeline node marker */}
             <div className="absolute -left-[31px] top-1.5 w-4 h-4 bg-ottoman-red-900 border-2 border-brass-gold-400 rounded-full flex items-center justify-center">
               <div className="w-1.5 h-1.5 bg-white rounded-full" />
@@ -125,7 +128,7 @@ export default function Lineage() {
             
             <div className="space-y-1">
               <span className="inline-block px-2 py-0.5 bg-brass-gold-100 text-brass-gold-800 font-mono text-[9px] font-bold rounded uppercase tracking-wider">
-                Gen {node.generation} • Direct Descendant
+                {node.generationText}
               </span>
               <h5 className="font-serif text-sm font-bold text-stone-850">
                 {node.name}
@@ -144,7 +147,7 @@ export default function Lineage() {
           onClick={() => setIsExpanded(!isExpanded)}
           className="w-full flex items-center justify-between text-xs font-semibold bg-ivory-100 hover:bg-brass-gold-100 text-ottoman-red-900 border border-ivory-300 rounded-lg px-4 py-3 transition-colors focus:outline-none"
         >
-          <span>{isExpanded ? "Collapse Ancestral ledger" : "View Full 42-Generation Ancestral Ledger"}</span>
+          <span>{isExpanded ? "Collapse Ancestral ledger" : "View Full Matrilineal Ancestral Ledger"}</span>
           <svg
             className={`w-4 h-4 text-brass-gold-600 transform transition-transform duration-300 ${
               isExpanded ? "rotate-180" : ""
@@ -161,14 +164,16 @@ export default function Lineage() {
         {isExpanded && (
           <div className="mt-4 p-4 bg-ivory-50 rounded-xl border border-ivory-200 animate-fadeIn space-y-2">
             <h5 className="font-serif text-xs font-bold text-ottoman-red-950 uppercase tracking-widest mb-3 border-b border-ivory-300 pb-1.5">
-              Complete Lineage Registry
+              Complete Matrilineal Lineage
             </h5>
             <ol className="list-decimal list-inside space-y-1.5 text-xs text-stone-700 font-mono leading-relaxed">
               {fullLineage.map((name, idx) => (
-                <li key={idx} className={idx + 1 === 42 ? "text-ottoman-red-900 font-bold font-serif" : ""}>
+                <li key={idx} className={idx + 1 === fullLineage.length ? "text-ottoman-red-900 font-bold font-serif" : ""}>
                   <span className="text-stone-800">{name}</span>
-                  {idx + 1 === 1 && <span className="text-stone-400 text-[10px] ml-1.5">(Prophet Muhammad)</span>}
-                  {idx + 1 === 42 && <span className="text-brass-gold-700 text-[10px] ml-1.5">(The Incumbent Sultan)</span>}
+                  {idx === 0 && <span className="text-stone-400 text-[10px] ml-1.5">(Root Ancestor)</span>}
+                  {idx === 5 && <span className="text-brass-gold-700 text-[10px] ml-1.5">(37th Great-Grandfather)</span>}
+                  {idx === 17 && <span className="text-brass-gold-700 text-[10px] ml-1.5">(Sufi Saint)</span>}
+                  {idx === 44 && <span className="text-brass-gold-700 text-[10px] ml-1.5">(The Incumbent Sultan)</span>}
                 </li>
               ))}
             </ol>
