@@ -295,14 +295,28 @@ export default function Home() {
                     Ismailabad (إسماعيل آباد) — Imperial Capital
                   </h3>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="md:col-span-2 space-y-3 text-stone-700 text-sm leading-relaxed">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+                  <div className="space-y-3 text-stone-700 text-sm leading-relaxed">
                     <p>
                       <strong>Ismailabad</strong> serves as the administrative capital and dynastic seat of the Sultanate. Comprising a carefully cataloged territory, it stands as the heart of governmental operations, treasury archives, and the Shura chamber.
                     </p>
                     <p>
                       <strong>Etymology:</strong> The name represents a synthesis of cultural lineage and language. <em>Ismail</em> is in honor of the revered father of the current Sultan, Sidi Isma’il al-Raniri. The suffix <em>-abad</em> is derived from Persian, meaning "cultivated place," "town," or "city," symbolizing a settlement founded on prosperity and structure.
                     </p>
+                  </div>
+                  
+                  {/* Photograph of Capital */}
+                  <div className="space-y-2 text-center group">
+                    <div className="overflow-hidden rounded-xl border border-brass-gold-300 shadow-sm bg-ivory-50 p-1">
+                      <img
+                        src="/5.png"
+                        alt="Photograph of Ismailabad, Wilayat-e Ghabaan, Sultanat-i Kasimi"
+                        className="w-full h-40 object-cover rounded-lg hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <span className="block text-[10px] italic text-stone-500 font-sans leading-tight">
+                      Ismailabad, Wilayat-e Ghabaan, Sultanat-i Kasimi
+                    </span>
                   </div>
                   
                   {/* Stats Box inside Profile */}
