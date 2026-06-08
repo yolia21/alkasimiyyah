@@ -131,7 +131,7 @@ export default function Home() {
   return (
     <div className="flex-1 flex flex-col">
       {/* Top Banner / Navigation Header */}
-      <header className="relative bg-royal-green-900 text-white border-b-4 border-brass-gold-500 shadow-lg py-8 px-4 md:px-8 overflow-hidden">
+      <header className="relative bg-ottoman-red-900 text-white border-b-4 border-brass-gold-500 shadow-lg py-8 px-4 md:px-8 overflow-hidden">
         {/* Subtle Geometric Background pattern overlay */}
         <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#c29b38_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
 
@@ -154,7 +154,7 @@ export default function Home() {
           </div>
 
           {/* National Motto Panel */}
-          <div className="border border-brass-gold-500/40 bg-royal-green-950/60 rounded-xl p-4 max-w-sm text-center md:text-right shadow-inner">
+          <div className="border border-brass-gold-500/40 bg-ottoman-red-950/60 rounded-xl p-4 max-w-sm text-center md:text-right shadow-inner">
             <span className="block font-arabic text-brass-gold-300 text-lg mb-1 leading-normal" dir="rtl">
               "لا يوجد إلا طريق واحد، وهو طريق الله"
             </span>
@@ -178,8 +178,8 @@ export default function Home() {
                 onClick={() => changeTab(tab.id)}
                 className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex flex-col items-center justify-center min-w-[120px] border focus:outline-none ${
                   activeTab === tab.id
-                    ? "bg-royal-green-900 text-brass-gold-300 border-brass-gold-500 shadow-sm font-semibold"
-                    : "bg-white text-stone-600 border-transparent hover:bg-ivory-50 hover:text-royal-green-800"
+                    ? "bg-ottoman-red-900 text-brass-gold-300 border-brass-gold-500 shadow-sm font-semibold"
+                    : "bg-white text-stone-600 border-transparent hover:bg-ivory-50 hover:text-ottoman-red-800"
                 }`}
               >
                 <span className="font-sans text-xs tracking-wide">{tab.label}</span>
@@ -202,11 +202,11 @@ export default function Home() {
             <div className="space-y-8 animate-fadeIn">
               
               {/* Hero Banner */}
-              <section className="bg-gradient-to-br from-royal-green-950 to-royal-green-900 text-white rounded-2xl p-6 md:p-8 shadow-md border border-brass-gold-600/40 relative overflow-hidden">
+              <section className="bg-gradient-to-br from-ottoman-red-950 to-ottoman-red-900 text-white rounded-2xl p-6 md:p-8 shadow-md border border-brass-gold-600/40 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-brass-gold-500/5 rounded-full blur-3xl pointer-events-none" />
                 
                 <div className="max-w-2xl space-y-4 relative z-10">
-                  <span className="inline-block px-3 py-1 bg-brass-gold-600 text-royal-green-950 text-[10px] uppercase font-bold tracking-widest rounded-full">
+                  <span className="inline-block px-3 py-1 bg-brass-gold-600 text-ottoman-red-950 text-[10px] uppercase font-bold tracking-widest rounded-full">
                     Sovereign Proclamation
                   </span>
                   <h2 className="text-3xl font-serif font-bold text-ivory-50 leading-tight">
@@ -216,10 +216,10 @@ export default function Home() {
                     The Kasimid Sultanate is a sovereign micronation in Central New Jersey. Anchored by traditional Islamic governance structures, the Sultanate combines historic legal heritage with modern civic administration, fostering a sustainable home economy and cultural enrichment for its citizens.
                   </p>
                   <div className="pt-2 flex flex-wrap gap-3">
-                    <span className="inline-flex items-center text-xs text-brass-gold-300 bg-royal-green-900/60 px-3 py-1.5 rounded-lg border border-brass-gold-600/20">
+                    <span className="inline-flex items-center text-xs text-brass-gold-300 bg-ottoman-red-900/60 px-3 py-1.5 rounded-lg border border-brass-gold-600/20">
                       Established: July 25, 2025
                     </span>
-                    <span className="inline-flex items-center text-xs text-brass-gold-300 bg-royal-green-900/60 px-3 py-1.5 rounded-lg border border-brass-gold-600/20">
+                    <span className="inline-flex items-center text-xs text-brass-gold-300 bg-ottoman-red-900/60 px-3 py-1.5 rounded-lg border border-brass-gold-600/20">
                       Capital: Ismailabad
                     </span>
                   </div>
@@ -228,7 +228,7 @@ export default function Home() {
 
               {/* Quick Stats Grid */}
               <section className="space-y-4">
-                <h3 className="text-xl font-serif font-bold text-royal-green-900 border-b border-ivory-300 pb-2">
+                <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
                   National Indicators & Fast Facts
                 </h3>
                 
@@ -291,7 +291,7 @@ export default function Home() {
               <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
                 <div className="border-b border-ivory-200 pb-3">
                   <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest">Featured Profile</span>
-                  <h3 className="text-2xl font-serif font-bold text-royal-green-950">
+                  <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
                     Ismailabad (إسماعيل آباد) — Imperial Capital
                   </h3>
                 </div>
@@ -307,7 +307,7 @@ export default function Home() {
                   
                   {/* Stats Box inside Profile */}
                   <div className="bg-ivory-50 rounded-xl border border-ivory-200 p-4 space-y-2">
-                    <h5 className="font-serif text-xs font-bold text-royal-green-950 uppercase tracking-wider border-b border-ivory-200 pb-1.5">
+                    <h5 className="font-serif text-xs font-bold text-ottoman-red-950 uppercase tracking-wider border-b border-ivory-200 pb-1.5">
                       Capital Specifications
                     </h5>
                     <div className="space-y-1.5 text-xs text-stone-600 font-sans">
@@ -333,7 +333,7 @@ export default function Home() {
                 
                 {/* Ethnic Demographics */}
                 <div className="space-y-4">
-                  <h4 className="text-lg font-serif font-bold text-royal-green-950 border-b border-ivory-200 pb-2">
+                  <h4 className="text-lg font-serif font-bold text-ottoman-red-950 border-b border-ivory-200 pb-2">
                     Ethnic Registry (2026)
                   </h4>
                   
@@ -344,7 +344,7 @@ export default function Home() {
                         <span className="font-mono">88.46%</span>
                       </div>
                       <div className="w-full bg-ivory-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-royal-green-800 h-full rounded-full" style={{ width: "88.46%" }} />
+                        <div className="bg-ottoman-red-800 h-full rounded-full" style={{ width: "88.46%" }} />
                       </div>
                     </div>
 
@@ -364,7 +364,7 @@ export default function Home() {
                         <span className="font-mono">2.88%</span>
                       </div>
                       <div className="w-full bg-ivory-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-royal-green-600 h-full rounded-full" style={{ width: "2.88%" }} />
+                        <div className="bg-ottoman-red-600 h-full rounded-full" style={{ width: "2.88%" }} />
                       </div>
                     </div>
 
@@ -382,7 +382,7 @@ export default function Home() {
 
                 {/* Religious Demographics */}
                 <div className="space-y-4">
-                  <h4 className="text-lg font-serif font-bold text-royal-green-950 border-b border-ivory-200 pb-2">
+                  <h4 className="text-lg font-serif font-bold text-ottoman-red-950 border-b border-ivory-200 pb-2">
                     Religious Registry (2026)
                   </h4>
 
@@ -393,7 +393,7 @@ export default function Home() {
                         <span className="font-mono">80.77%</span>
                       </div>
                       <div className="w-full bg-ivory-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-royal-green-900 h-full rounded-full" style={{ width: "80.77%" }} />
+                        <div className="bg-ottoman-red-900 h-full rounded-full" style={{ width: "80.77%" }} />
                       </div>
                     </div>
 
@@ -413,7 +413,7 @@ export default function Home() {
                         <span className="font-mono">7.69%</span>
                       </div>
                       <div className="w-full bg-ivory-200 h-2 rounded-full overflow-hidden">
-                        <div className="bg-royal-green-600 h-full rounded-full" style={{ width: "7.69%" }} />
+                        <div className="bg-ottoman-red-600 h-full rounded-full" style={{ width: "7.69%" }} />
                       </div>
                     </div>
 
@@ -444,7 +444,7 @@ export default function Home() {
             <div className="space-y-8 animate-fadeIn">
               
               <div>
-                <h3 className="text-2xl font-serif font-bold text-royal-green-950">
+                <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
                   Leadership of the Sultanate
                 </h3>
                 <p className="text-xs text-stone-500 font-sans tracking-wide mt-1">
@@ -498,7 +498,7 @@ export default function Home() {
 
               {/* Factions Section */}
               <section className="space-y-4">
-                <h3 className="text-xl font-serif font-bold text-royal-green-900 border-b border-ivory-300 pb-2">
+                <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
                   Consultative Assembly & Factions Registry
                 </h3>
                 <PoliticalPartiesTable />
@@ -519,7 +519,7 @@ export default function Home() {
               {/* History Timeline */}
               <section className="space-y-4">
                 <div>
-                  <h3 className="text-2xl font-serif font-bold text-royal-green-950">
+                  <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
                     Historical Eras of the Territory
                   </h3>
                   <p className="text-xs text-stone-500 font-sans tracking-wide mt-1">
@@ -533,7 +533,7 @@ export default function Home() {
               {/* Wilayat (Provinces) */}
               <section className="space-y-4">
                 <div className="flex justify-between items-end border-b border-ivory-300 pb-2">
-                  <h3 className="text-xl font-serif font-bold text-royal-green-900">
+                  <h3 className="text-xl font-serif font-bold text-ottoman-red-900">
                     Wilayat (Provinces of the Sultanate)
                   </h3>
                   <span className="text-xs text-stone-500 font-sans font-medium">
@@ -546,7 +546,7 @@ export default function Home() {
 
               {/* Climate Data / Weather Box */}
               <section className="max-w-xl mx-auto space-y-4">
-                <h3 className="text-xl font-serif font-bold text-royal-green-900 text-center">
+                <h3 className="text-xl font-serif font-bold text-ottoman-red-900 text-center">
                   Geographical Weather Profile
                 </h3>
                 <WeatherBox />
@@ -562,7 +562,7 @@ export default function Home() {
               {/* Society & Economy */}
               <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-6">
                 <div>
-                  <h3 className="text-2xl font-serif font-bold text-royal-green-950">
+                  <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
                     Society, Culture & Economy
                   </h3>
                   <p className="text-xs text-stone-500 font-sans tracking-wide mt-1">
@@ -572,7 +572,7 @@ export default function Home() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-stone-700 text-sm leading-relaxed">
                   <div className="space-y-3">
-                    <h4 className="font-serif text-lg font-semibold text-royal-green-900">
+                    <h4 className="font-serif text-lg font-semibold text-ottoman-red-900">
                       Heritage & Spices
                     </h4>
                     <p>
@@ -584,7 +584,7 @@ export default function Home() {
                   </div>
 
                   <div className="space-y-3">
-                    <h4 className="font-serif text-lg font-semibold text-royal-green-900">
+                    <h4 className="font-serif text-lg font-semibold text-ottoman-red-900">
                       Spiritual & Home Economy
                     </h4>
                     <p>
@@ -601,7 +601,7 @@ export default function Home() {
               <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
                 <div className="border-b border-ivory-200 pb-3">
                   <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest">Defense Doctrine</span>
-                  <h3 className="text-xl font-serif font-bold text-royal-green-950">
+                  <h3 className="text-xl font-serif font-bold text-ottoman-red-950">
                     Jaysh al-Saltanah al-Qasimiyyah (Forces of the Kasimid Sultanate)
                   </h3>
                 </div>
@@ -621,7 +621,7 @@ export default function Home() {
               {/* National Holidays Calendar */}
               <section className="space-y-4">
                 <div className="flex justify-between items-end border-b border-ivory-300 pb-2">
-                  <h3 className="text-xl font-serif font-bold text-royal-green-900">
+                  <h3 className="text-xl font-serif font-bold text-ottoman-red-900">
                     Official Calendar & National Holidays
                   </h3>
                   <span className="text-xs text-stone-500 font-sans font-medium">
@@ -641,7 +641,7 @@ export default function Home() {
               
               {/* Stance & Framework */}
               <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
-                <h3 className="text-2xl font-serif font-bold text-royal-green-950">
+                <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
                   Diplomatic Doctrine & Stance
                 </h3>
                 <p className="text-stone-700 text-sm leading-relaxed">
@@ -651,7 +651,7 @@ export default function Home() {
 
               {/* Alliances & Memberships */}
               <section className="space-y-4">
-                <h3 className="text-xl font-serif font-bold text-royal-green-900 border-b border-ivory-300 pb-2">
+                <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
                   International Memberships & Alliances
                 </h3>
 
@@ -661,7 +661,7 @@ export default function Home() {
                     <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block mb-1">
                       Co-Founder
                     </span>
-                    <h4 className="font-serif font-bold text-lg text-royal-green-950 mb-2">
+                    <h4 className="font-serif font-bold text-lg text-ottoman-red-950 mb-2">
                       UNAM
                     </h4>
                     <p className="text-xs text-stone-600 leading-relaxed">
@@ -674,7 +674,7 @@ export default function Home() {
                     <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block mb-1">
                       Chief Justice Role
                     </span>
-                    <h4 className="font-serif font-bold text-lg text-royal-green-950 mb-2">
+                    <h4 className="font-serif font-bold text-lg text-ottoman-red-950 mb-2">
                       OIM
                     </h4>
                     <p className="text-xs text-stone-600 leading-relaxed">
@@ -687,7 +687,7 @@ export default function Home() {
                     <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block mb-1">
                       Active Member
                     </span>
-                    <h4 className="font-serif font-bold text-lg text-royal-green-950 mb-2">
+                    <h4 className="font-serif font-bold text-lg text-ottoman-red-950 mb-2">
                       UMO
                     </h4>
                     <p className="text-xs text-stone-600 leading-relaxed">
@@ -702,7 +702,7 @@ export default function Home() {
                 
                 {/* Unilateral Recognition */}
                 <div className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
-                  <h4 className="text-lg font-serif font-bold text-royal-green-950 border-b border-ivory-200 pb-2 flex items-center justify-between">
+                  <h4 className="text-lg font-serif font-bold text-ottoman-red-950 border-b border-ivory-200 pb-2 flex items-center justify-between">
                     <span>Unilateral Recognition Extended</span>
                     <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse" />
                   </h4>
@@ -759,7 +759,7 @@ export default function Home() {
       </main>
 
       {/* Official State Footer */}
-      <footer className="bg-royal-green-950 text-white border-t-2 border-brass-gold-500 py-8 px-4 mt-12 text-center text-xs font-sans space-y-3 relative">
+      <footer className="bg-ottoman-red-950 text-white border-t-2 border-brass-gold-500 py-8 px-4 mt-12 text-center text-xs font-sans space-y-3 relative">
         <div className="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#c29b38_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
         
         <div className="max-w-6xl mx-auto space-y-4 relative z-10">
@@ -777,7 +777,7 @@ export default function Home() {
             Imperial Registry of Deeds, Census, and Foreign Registry, Ismailabad.
           </p>
           
-          <div className="flex justify-center space-x-4 text-brass-gold-400 font-serif text-[10px] tracking-wide pt-2 border-t border-royal-green-900/60 max-w-md mx-auto">
+          <div className="flex justify-center space-x-4 text-brass-gold-400 font-serif text-[10px] tracking-wide pt-2 border-t border-ottoman-red-900/60 max-w-md mx-auto">
             <span>Sovereign Constitutional Monarchy</span>
             <span>•</span>
             <span>Central New Jersey</span>

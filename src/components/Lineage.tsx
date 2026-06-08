@@ -106,7 +106,7 @@ export default function Lineage() {
   return (
     <div className="rounded-2xl border border-ivory-300 bg-white p-6 shadow-sm hover:border-brass-gold-400 transition-all duration-300 space-y-6">
       <div>
-        <h4 className="text-xl font-serif font-bold text-royal-green-950">
+        <h4 className="text-xl font-serif font-bold text-ottoman-red-950">
           The Imperial Lineage (Shajarah al-Nasab)
         </h4>
         <p className="text-xs text-stone-500 font-sans tracking-wide mt-1">
@@ -119,7 +119,7 @@ export default function Lineage() {
         {keyMilestones.map((node) => (
           <div key={node.generation} className="relative">
             {/* Timeline node marker */}
-            <div className="absolute -left-[31px] top-1.5 w-4 h-4 bg-royal-green-900 border-2 border-brass-gold-400 rounded-full flex items-center justify-center">
+            <div className="absolute -left-[31px] top-1.5 w-4 h-4 bg-ottoman-red-900 border-2 border-brass-gold-400 rounded-full flex items-center justify-center">
               <div className="w-1.5 h-1.5 bg-white rounded-full" />
             </div>
             
@@ -142,7 +142,7 @@ export default function Lineage() {
       <div className="pt-4 border-t border-ivory-200">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="w-full flex items-center justify-between text-xs font-semibold bg-ivory-100 hover:bg-brass-gold-100 text-royal-green-900 border border-ivory-300 rounded-lg px-4 py-3 transition-colors focus:outline-none"
+          className="w-full flex items-center justify-between text-xs font-semibold bg-ivory-100 hover:bg-brass-gold-100 text-ottoman-red-900 border border-ivory-300 rounded-lg px-4 py-3 transition-colors focus:outline-none"
         >
           <span>{isExpanded ? "Collapse Ancestral ledger" : "View Full 42-Generation Ancestral Ledger"}</span>
           <svg
@@ -160,12 +160,12 @@ export default function Lineage() {
 
         {isExpanded && (
           <div className="mt-4 p-4 bg-ivory-50 rounded-xl border border-ivory-200 animate-fadeIn space-y-2">
-            <h5 className="font-serif text-xs font-bold text-royal-green-950 uppercase tracking-widest mb-3 border-b border-ivory-300 pb-1.5">
+            <h5 className="font-serif text-xs font-bold text-ottoman-red-950 uppercase tracking-widest mb-3 border-b border-ivory-300 pb-1.5">
               Complete Lineage Registry
             </h5>
             <ol className="list-decimal list-inside space-y-1.5 text-xs text-stone-700 font-mono leading-relaxed">
               {fullLineage.map((name, idx) => (
-                <li key={idx} className={idx + 1 === 42 ? "text-royal-green-900 font-bold font-serif" : ""}>
+                <li key={idx} className={idx + 1 === 42 ? "text-ottoman-red-900 font-bold font-serif" : ""}>
                   <span className="text-stone-800">{name}</span>
                   {idx + 1 === 1 && <span className="text-stone-400 text-[10px] ml-1.5">(Prophet Muhammad)</span>}
                   {idx + 1 === 42 && <span className="text-brass-gold-700 text-[10px] ml-1.5">(The Incumbent Sultan)</span>}

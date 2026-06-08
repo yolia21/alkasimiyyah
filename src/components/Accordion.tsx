@@ -19,7 +19,7 @@ function AccordionItem({ title, subtitle, children, isOpen, onToggle }: Accordio
         aria-expanded={isOpen}
       >
         <div className="pr-4">
-          <h4 className="font-serif text-lg font-semibold text-royal-green-950">
+          <h4 className="font-serif text-lg font-semibold text-ottoman-red-950">
             {title}
           </h4>
           {subtitle && (

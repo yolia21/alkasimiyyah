@@ -61,7 +61,7 @@ export function LocalTimeWidget() {
         </span>
       </div>
       <div>
-        <p className="text-3xl font-mono font-bold text-royal-green-950 tracking-tight">
+        <p className="text-3xl font-mono font-bold text-ottoman-red-950 tracking-tight">
           {time || "Loading..."}
         </p>
         <p className="text-xs text-stone-600 font-sans mt-1">
@@ -252,7 +252,7 @@ export function WeatherBox() {
         {/* Toggle Button */}
         <button
           onClick={() => setIsCelsius(!isCelsius)}
-          className="text-xs font-medium bg-ivory-100 text-royal-green-900 border border-ivory-300 rounded px-2.5 py-1 hover:bg-brass-gold-100 hover:border-brass-gold-300 transition-all focus:outline-none"
+          className="text-xs font-medium bg-ivory-100 text-ottoman-red-900 border border-ivory-300 rounded px-2.5 py-1 hover:bg-brass-gold-100 hover:border-brass-gold-300 transition-all focus:outline-none"
         >
           Use {isCelsius ? "Fahrenheit" : "Celsius"}
         </button>
@@ -286,14 +286,14 @@ export function WeatherBox() {
           <span className="block text-[10px] uppercase font-semibold text-stone-500 tracking-wider">
             Annual Precip.
           </span>
-          <span className="block text-xl font-bold font-mono text-royal-green-800 mt-1">
+          <span className="block text-xl font-bold font-mono text-ottoman-red-800 mt-1">
             {precipitation}
           </span>
           <span className="block text-[10px] text-stone-500 mt-0.5">Accumulated</span>
         </div>
       </div>
 
-      <div className="mt-4 p-3 bg-royal-green-950 text-brass-gold-100 text-xs rounded border border-brass-gold-600/30">
+      <div className="mt-4 p-3 bg-ottoman-red-950 text-brass-gold-100 text-xs rounded border border-brass-gold-600/30">
         <span className="font-semibold block mb-0.5">Climate Classification:</span>
         Humid Subtropical (Cfa). The Sultanate experiences four distinct seasons with hot, humid summers and cold, snowy winters.
       </div>

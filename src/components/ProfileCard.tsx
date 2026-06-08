@@ -26,16 +26,16 @@ export default function ProfileCard({
   return (
     <div className="relative overflow-hidden rounded-2xl border border-ivory-300 bg-white p-6 shadow-sm hover:shadow-md hover:border-brass-gold-400 transition-all duration-300 flex flex-col justify-between group">
       {/* Visual top bar in brass gold */}
-      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-royal-green-800 via-brass-gold-500 to-royal-green-800" />
+      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-ottoman-red-800 via-brass-gold-500 to-ottoman-red-800" />
       
       <div>
         {/* Profile Header */}
         <div className="flex items-center space-x-4 mb-4">
-          <div className="w-14 h-14 bg-royal-green-900 text-brass-gold-300 rounded-full flex items-center justify-center font-serif text-lg font-bold border-2 border-brass-gold-400 shadow-sm shrink-0 group-hover:scale-105 transition-transform duration-300">
+          <div className="w-14 h-14 bg-ottoman-red-900 text-brass-gold-300 rounded-full flex items-center justify-center font-serif text-lg font-bold border-2 border-brass-gold-400 shadow-sm shrink-0 group-hover:scale-105 transition-transform duration-300">
             {initials}
           </div>
           <div>
-            <span className="block font-arabic text-royal-green-800 text-lg leading-tight" dir="rtl">
+            <span className="block font-arabic text-ottoman-red-800 text-lg leading-tight" dir="rtl">
               {arabicName}
             </span>
             <h4 className="font-serif text-lg font-bold text-stone-850 leading-tight">
@@ -79,7 +79,7 @@ export default function ProfileCard({
       </div>
 
       <div className="mt-6 pt-3 border-t border-ivory-200 text-right">
-        <span className="inline-block text-[10px] font-bold text-royal-green-900 bg-royal-green-50 px-2 py-1 rounded border border-royal-green-200/50 uppercase tracking-wider">
+        <span className="inline-block text-[10px] font-bold text-ottoman-red-900 bg-ottoman-red-50 px-2 py-1 rounded border border-ottoman-red-200/50 uppercase tracking-wider">
           Official Imperial Registry
         </span>
       </div>
