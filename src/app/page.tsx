@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, Suspense } from "react";
-import Crest from "@/components/Crest";
+import Flag from "@/components/Flag";
 import StatCard from "@/components/StatCard";
 import Accordion from "@/components/Accordion";
 import {
@@ -164,7 +164,7 @@ export default function Home() {
           
           {/* Logo & Calligraphy Title */}
           <div className="flex flex-col md:flex-row items-center gap-5 text-center md:text-left">
-            <Crest size={130} />
+            <Flag width={180} height={120} />
             <div className="space-y-1">
               <span className="block font-arabic text-brass-gold-400 text-3xl md:text-4xl leading-relaxed tracking-wide" dir="rtl">
                 سلطنتِ القاسميه
@@ -775,7 +775,7 @@ export default function Home() {
         
         <div className="max-w-6xl mx-auto space-y-4 relative z-10">
           <div className="flex justify-center mb-2">
-            <Crest size={60} />
+            <Flag width={90} height={60} />
           </div>
           
           <p className="text-brass-gold-300 uppercase tracking-widest font-semibold">
