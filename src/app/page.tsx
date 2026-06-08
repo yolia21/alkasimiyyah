@@ -226,6 +226,30 @@ export default function Home() {
                 </div>
               </section>
 
+              {/* Royal Creed Callout */}
+              <div className="relative overflow-hidden rounded-2xl border-2 border-brass-gold-500 bg-gradient-to-br from-ottoman-red-950 to-ottoman-red-900 p-6 text-center shadow-md">
+                <div className="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#c29b38_1px,transparent_1px)] [background-size:16px_16px]" />
+                <div className="relative z-10 space-y-3">
+                  <span className="text-[10px] font-bold text-brass-gold-400 uppercase tracking-widest block">
+                    The Sovereign's Creed • العقيدة السيادية
+                  </span>
+                  <p className="font-arabic text-brass-gold-300 text-2xl md:text-3xl leading-relaxed py-1" dir="rtl">
+                    ”بفضلِ باری تعالیٰ، حصولِ ہر خواب ممکن“
+                  </p>
+                  <blockquote className="text-sm italic text-ivory-200 font-serif max-w-xl mx-auto">
+                    "By the grace of God, the attainment of every dream is possible."
+                  </blockquote>
+                  <div className="pt-2 border-t border-brass-gold-600/30 max-w-xs mx-auto">
+                    <h5 className="font-serif text-xs font-bold text-brass-gold-400">
+                      Sultan Yusuf I
+                    </h5>
+                    <p className="text-[9px] uppercase tracking-wider text-stone-400 font-semibold font-sans mt-0.5">
+                      Sultan of the Kasimids
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               {/* Quick Stats Grid */}
               <section className="space-y-4">
                 <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
