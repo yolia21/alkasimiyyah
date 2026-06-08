@@ -1,37 +1,43 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { auth } from "@/auth";
+import { getToken } from "next-auth/jwt";
 
 /**
- * Next.js 16 Proxy (formerly middleware).
- * Runs on Node.js runtime — protects all /portal/* routes recursively.
- * Unauthenticated requests are redirected to /portal/login.
- * Authenticated users visiting /portal/login are bounced to /portal.
+ * Next.js 16 Proxy (replaces middleware.ts).
+ * Reads the JWT session token directly — avoids circular dependency
+ * of calling auth() inside the proxy itself.
+ *
+ * Protects all /portal/* routes recursively.
+ * Unauthenticated → redirect to /portal/login.
+ * Authenticated visiting /portal/login → redirect to /portal dashboard.
  */
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const isPortalRoute = pathname.startsWith("/portal");
-  const isLoginPage = pathname === "/portal/login";
-
-  if (!isPortalRoute) {
+  if (!pathname.startsWith("/portal")) {
     return NextResponse.next();
   }
 
-  const session = await auth();
+  const isLoginPage = pathname === "/portal/login";
+
+  const token = await getToken({
+    req: request,
+    secret: process.env.AUTH_SECRET,
+  });
+
+  const isAuthenticated = !!token;
 
   if (isLoginPage) {
-    // Already authenticated — redirect to dashboard
-    if (session?.user) {
+    // Already authenticated — bounce to dashboard
+    if (isAuthenticated) {
       return NextResponse.redirect(new URL("/portal", request.url));
     }
     return NextResponse.next();
   }
 
   // All other /portal/* routes require authentication
-  if (!session?.user) {
-    const loginUrl = new URL("/portal/login", request.url);
-    return NextResponse.redirect(loginUrl);
+  if (!isAuthenticated) {
+    return NextResponse.redirect(new URL("/portal/login", request.url));
   }
 
   return NextResponse.next();

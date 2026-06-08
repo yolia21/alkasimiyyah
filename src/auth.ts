@@ -1,7 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { authConfig } from "../auth.config";
 
 /**
  * Mock citizen database — admin-provisioned, no self-registration.
@@ -33,7 +32,21 @@ const CITIZENS = [
 ] as const;
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  ...authConfig,
+  // Required for non-Vercel / local deployments — prevents "Configuration" error
+  trustHost: true,
+
+  secret: process.env.AUTH_SECRET,
+
+  pages: {
+    signIn: "/portal/login",
+    error: "/portal/login", // redirect auth errors back to our login page
+  },
+
+  session: {
+    strategy: "jwt",
+    maxAge: 8 * 60 * 60, // 8-hour sessions
+  },
+
   providers: [
     Credentials({
       name: "Civil ID",
@@ -42,15 +55,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const { civilId, password } = credentials as {
-          civilId: string;
-          password: string;
-        };
+        const civilId = (credentials?.civilId as string | undefined)?.trim();
+        const password = credentials?.password as string | undefined;
 
         if (!civilId || !password) return null;
 
         const citizen = CITIZENS.find(
-          (c) => c.civilId.toLowerCase() === civilId.trim().toLowerCase()
+          (c) => c.civilId.toLowerCase() === civilId.toLowerCase()
         );
 
         if (!citizen) return null;
@@ -62,16 +73,16 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           id: citizen.civilId,
           name: citizen.name,
           email: `${citizen.civilId.toLowerCase()}@kasimid.gov`,
-          // Store civilId and role in token via jwt callback below
           civilId: citizen.civilId,
           role: citizen.role,
         };
       },
     }),
   ],
+
   callbacks: {
-    ...authConfig.callbacks,
     async jwt({ token, user }) {
+      // On first sign-in, user object is available — persist extra fields to token
       if (user) {
         token.civilId = (user as { civilId?: string }).civilId;
         token.role = (user as { role?: string }).role;
@@ -79,7 +90,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       return token;
     },
     async session({ session, token }) {
-      if (token && session.user) {
+      if (session.user) {
         session.user.id = token.sub ?? "";
         (session.user as { civilId?: string; role?: string }).civilId =
           token.civilId as string;
