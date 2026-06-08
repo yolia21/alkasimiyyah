@@ -1,26 +1,80 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-royal-green-50: #f0f7f4;
+  --color-royal-green-100: #dbebe3;
+  --color-royal-green-200: #b9d8ca;
+  --color-royal-green-600: #0e7041;
+  --color-royal-green-700: #0b5934;
+  --color-royal-green-800: #084327;
+  --color-royal-green-900: #06341d;
+  --color-royal-green-950: #031a0e;
+
+  --color-brass-gold-50: #fbf9f2;
+  --color-brass-gold-100: #f6efe0;
+  --color-brass-gold-200: #ebdcbc;
+  --color-brass-gold-300: #dfc491;
+  --color-brass-gold-400: #d2aa65;
+  --color-brass-gold-500: #c29b38;
+  --color-brass-gold-600: #aa812f;
+  --color-brass-gold-700: #886223;
+  --color-brass-gold-800: #6a4b1c;
+  --color-brass-gold-900: #553c17;
+
+  --color-ivory-50: #fdfcf9;
+  --color-ivory-100: #faf9f5;
+  --color-ivory-200: #f5f2e9;
+  --color-ivory-300: #eae4d5;
+  --color-ivory-400: #dbd2bd;
+  --color-ivory-500: #c5b69c;
+
+  --font-serif: var(--font-serif), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: var(--font-arabic), serif;
+
+  --animate-gold-pulse: gold-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes gold-pulse {
+  0%, 100% {
+    opacity: 1;
+    border-color: var(--color-brass-gold-500);
+  }
+  50% {
+    opacity: .7;
+    border-color: var(--color-brass-gold-300);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --background: #faf9f5; /* Ivory 100 */
+  --foreground: #1c1917; /* Stone 900 */
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", sans-serif;
 }
+
+/* Custom Scrollbar for Official Web feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ivory-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-royal-green-800);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-royal-green-600);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
