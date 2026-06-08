@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import PortalProviders from "./providers";
 
 export const metadata: Metadata = {
   title: "Royal Diwan | Citizen Portal — Kasimid Sultanate",
@@ -7,17 +6,10 @@ export const metadata: Metadata = {
     "Secure citizen portal of the Kasimid Sultanate. Access government services, travel documents, and civil administration.",
 };
 
-export default function PortalLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function PortalLayout({ children }: { children: React.ReactNode }) {
   return (
-    <PortalProviders>
-      <div className="min-h-screen bg-ottoman-red-950 text-ivory-100">
-        {children}
-      </div>
-    </PortalProviders>
+    <div className="min-h-screen bg-ottoman-red-950 text-ivory-100">
+      {children}
+    </div>
   );
 }
-

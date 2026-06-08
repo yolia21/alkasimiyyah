@@ -1,16 +1,24 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
+import { jwtVerify } from "jose";
 
-/**
- * Next.js 16 Proxy (replaces middleware.ts).
- * Reads the JWT session token directly — avoids circular dependency
- * of calling auth() inside the proxy itself.
- *
- * Protects all /portal/* routes recursively.
- * Unauthenticated → redirect to /portal/login.
- * Authenticated visiting /portal/login → redirect to /portal dashboard.
- */
+const SESSION_COOKIE = "kasimid_session";
+
+const SECRET_KEY = new TextEncoder().encode(
+  process.env.AUTH_SECRET ?? "fallback-secret-replace-in-production"
+);
+
+async function isAuthenticated(request: NextRequest): Promise<boolean> {
+  const token = request.cookies.get(SESSION_COOKIE)?.value;
+  if (!token) return false;
+  try {
+    await jwtVerify(token, SECRET_KEY);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -19,24 +27,18 @@ export async function proxy(request: NextRequest) {
   }
 
   const isLoginPage = pathname === "/portal/login";
-
-  const token = await getToken({
-    req: request,
-    secret: process.env.AUTH_SECRET,
-  });
-
-  const isAuthenticated = !!token;
+  const authed = await isAuthenticated(request);
 
   if (isLoginPage) {
-    // Already authenticated — bounce to dashboard
-    if (isAuthenticated) {
+    // Already logged in → go to dashboard
+    if (authed) {
       return NextResponse.redirect(new URL("/portal", request.url));
     }
     return NextResponse.next();
   }
 
-  // All other /portal/* routes require authentication
-  if (!isAuthenticated) {
+  // All other /portal/* routes require auth
+  if (!authed) {
     return NextResponse.redirect(new URL("/portal/login", request.url));
   }
 

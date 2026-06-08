@@ -1,22 +1,16 @@
-import { auth, signOut } from "@/auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import Flag from "@/components/Flag";
+import { getSession, signOut } from "./actions";
 
 export default async function PortalDashboard() {
-  const session = await auth();
+  const session = await getSession();
 
-  if (!session?.user) {
+  if (!session) {
     redirect("/portal/login");
   }
 
-  const citizen = session.user as {
-    name?: string | null;
-    civilId?: string;
-    role?: string;
-  };
-
-  const firstName = citizen.name?.split(" ")[0] ?? "Citizen";
+  const firstName = session.name.split(" ")[0];
 
   return (
     <div className="min-h-screen bg-ottoman-red-950 relative">
@@ -42,20 +36,15 @@ export default async function PortalDashboard() {
             {/* Citizen badge */}
             <div className="hidden sm:flex flex-col items-end">
               <span className="text-[10px] text-brass-gold-500/80 uppercase tracking-wider font-sans">
-                {citizen.role ?? "Citizen"}
+                {session.role}
               </span>
               <span className="text-xs font-semibold text-ivory-200 font-sans">
-                {citizen.civilId} · {citizen.name}
+                {session.civilId} · {session.name}
               </span>
             </div>
 
             {/* Sign-out */}
-            <form
-              action={async () => {
-                "use server";
-                await signOut({ redirectTo: "/portal/login" });
-              }}
-            >
+            <form action={signOut}>
               <button
                 type="submit"
                 className="flex items-center gap-1.5 text-xs font-semibold text-ivory-300/70 hover:text-ivory-100 border border-brass-gold-700/30 hover:border-brass-gold-600/50 px-3 py-2 rounded-lg transition-all duration-200 font-sans"
@@ -148,8 +137,6 @@ export default async function PortalDashboard() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            {/* Government Positions */}
             <div className="bg-ottoman-red-900/40 border border-brass-gold-700/20 rounded-2xl p-6 space-y-4">
               <div className="space-y-1">
                 <h4 className="font-serif text-base font-semibold text-ivory-100">
@@ -172,7 +159,6 @@ export default async function PortalDashboard() {
               </Link>
             </div>
 
-            {/* Report an Issue */}
             <div className="bg-ottoman-red-900/40 border border-brass-gold-700/20 rounded-2xl p-6 space-y-4">
               <div className="space-y-1">
                 <h4 className="font-serif text-base font-semibold text-ivory-100">
@@ -194,13 +180,11 @@ export default async function PortalDashboard() {
                 Report an Issue or Incident
               </Link>
             </div>
-
           </div>
         </section>
 
       </main>
 
-      {/* Portal Footer */}
       <footer className="relative z-10 border-t border-brass-gold-700/20 mt-16 py-6 px-6 text-center">
         <p className="text-[10px] text-ivory-300/30 font-sans tracking-wide">
           © {new Date().getFullYear()} Royal Diwan of the Kasimid Sultanate · All sessions are encrypted and logged.
