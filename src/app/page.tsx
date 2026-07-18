@@ -31,10 +31,11 @@ interface TabItem {
 
 function MainPortalContent() {
   const [activeTab, setActiveTab] = useState<TabID>("home");
-  const { t, isRTL, language, getNewsArticles, getLeaders } = useLanguage();
+  const { t, isRTL, language, getNewsArticles, getLeaders, getHistoryEras } = useLanguage();
 
   const newsArticles = getNewsArticles();
   const leaders = getLeaders();
+  const historyErasData = getHistoryEras();
 
   // Sync tab with URL search parameter (?tab=...)
   useEffect(() => {
@@ -69,143 +70,16 @@ function MainPortalContent() {
     { id: "documents", label: t("tab_documents"), arabicLabel: "أحدث الأخبار والمراسيم" },
   ];
 
-  // Detailed Historical Eras Accordion
-  const historyEras = [
-    {
-      title: "Prehistoric Record: Lenape Inhabitants",
-      subtitle: "Indigenous Stewardship & Raritan Corridor",
-      content: (
-        <div className="space-y-2">
-          <p>
-            Long before modern administrative boundaries were established, the physical territory along the Raritan River and the Trans Old Bridge Road corridor was sustained by the ancestral habitation of the <strong>Unami band</strong> of the <strong>Lenape Nation</strong>.
-          </p>
-          <p>
-            The Unami stewards maintained seasonal paths and agricultural grounds along the river waterways, establishing the human ecological foundation of Central New Jersey.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "Colonial Period & Crown Grants (1664–1737)",
-      subtitle: "English Sovereign Control & Brownville Settlement",
-      content: (
-        <div className="space-y-2">
-          <p>
-            English sovereign control over the territory was formalized in <strong>1664</strong>, culminating in the erection of Middlesex County boundaries in <strong>1683</strong>.
-          </p>
-          <p>
-            In <strong>1737</strong>, a landmark 1,000-acre Crown land grant was issued to John and Susannah Brown, formally establishing the historical sector of <strong>&quot;Brownville&quot;</strong> (Browntown / Trans Old Bridge Road sector).
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "Revolutionary War & 19th Century (1778–1975)",
-      subtitle: "Road to Monmouth & Township Incorporation",
-      content: (
-        <div className="space-y-2">
-          <p>
-            During the American Revolutionary War, the corridor served as a strategic crossroads for troop movements leading toward the pivotal <strong>Battle of Monmouth (1778)</strong>.
-          </p>
-          <p>
-            The surrounding municipal region was incorporated as <strong>Madison Township in 1869</strong>, and subsequently renamed <strong>Old Bridge Township in 1975</strong>.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "Late 20th Century Demographic Shift (1999–2001)",
-      subtitle: "The Y2K Migration & Royal Lineage Settlement",
-      content: (
-        <div className="space-y-2">
-          <p>
-            At the turn of the 21st century, a major migration wave of South Asian and Middle Eastern technology professionals arrived in Central New Jersey to perform crucial infrastructure adjustments resolving the Y2K computer bug.
-          </p>
-          <p>
-            This movement brought the ancestral lineages of the royal family to the region between <strong>1999 and 2001</strong>, establishing the vibrant cultural, academic, and economic network of the modern citizenry.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "Early Independence Movements (1999–2021)",
-      subtitle: "Waliustan & The Hashemia Proclamation",
-      content: (
-        <div className="space-y-2">
-          <p>
-            Micronational governance began in <strong>1999</strong> with the founding of the <em>Islamic Republic of Waliustan</em> by ten Pakistani immigrants.
-          </p>
-          <p>
-            On <strong>August 31, 2021</strong>, the <em>Kingdom of Hashemia</em> was proclaimed, establishing Qadirabad with an initial population of 80 residents. A royal election on September 1, 2021, formally chose the Hashemite dynastic framework.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "The Hashemian Era & Conflicts (2021–2023)",
-      subtitle: "Civil Strife, Expansion, and Territorial Annexations",
-      content: (
-        <div className="space-y-3">
-          <p>
-            This era saw intense political activity and rapid territorial expansion, marked by pivotal events:
-          </p>
-          <div className="pl-4 border-l-2 border-brass-gold-400 py-1 space-y-2 text-xs bg-white rounded p-3">
-            <p>
-              <strong>• Hashemian Civil War (Oct 10, 2021):</strong> Neutralized the West Qadirabad progressive federalist faction to restore administrative authority.
-            </p>
-            <p>
-              <strong>• Hashemian National Project (Jan 8, 2022):</strong> Annexed Khaled City and Badayun utilizing tactical bicycle mobility.
-            </p>
-            <p>
-              <strong>• Decker Rebellion Suppression (Jan 23, 2022):</strong> Neutralized internal dissident uprisings to maintain state security.
-            </p>
-            <p>
-              <strong>• Annexation of Tartary (Oct 22, 2022):</strong> Formally annexed the Republic of Tartary and its capital, Tarillamun.
-            </p>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "The VECTO Era & Cyber Warfare (2023–2024)",
-      subtitle: "International Alliances & The USR Crusade",
-      content: (
-        <div className="space-y-3">
-          <p>
-            On <strong>July 5, 2023</strong>, the state joined UMN and VECTO, rebranding to the <em>Hashemite Kingdom of Raritania</em> on July 15. The state suffered the &quot;Dark Age&quot; server destruction in August 2023, followed immediately by digital platform reconstruction and the founding of UNAM on August 6, 2023.
-          </p>
-          <p>
-            On <strong>November 22, 2023</strong>, the realm mounted a successful defense against the USR &quot;Grand Crusade,&quot; which led to the complete structural collapse of the USR on February 4, 2024.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "The Raritan Caliphate (2024–2025)",
-      subtitle: "Caliphal Governance & Dynastic Abdication",
-      content: (
-        <div className="space-y-2">
-          <p>
-            On <strong>December 30, 2024</strong>, the state proclaimed the <em>Raritan Caliphate</em>, shifting state machinery toward classical caliphal governance principles and marking the formal abdication of traditional royal titles by the Majidid family.
-          </p>
-        </div>
-      ),
-    },
-    {
-      title: "Establishment of the Kasimid Sultanate (2025–Present)",
-      subtitle: "Constitutional Order & Reign of Sultan Yusuf I",
-      content: (
-        <div className="space-y-2">
-          <p>
-            Following the unilateral dissolution of caliphal structures due to administrative over-expansion, the modern <strong>Constitution of the Kasimid Sultanate</strong> was ratified on <strong>July 24, 2025</strong>.
-          </p>
-          <p>
-            The constitution established a bicameral Majlis with political advisor <em>Jasbirji XV</em> appointed as inaugural Minister of Culture. On <strong>May 11, 2026</strong>, the Grand Vizier role transitioned from Mikail Jidar to <em>Ali Al Masry</em>.
-          </p>
-        </div>
-      ),
-    },
-  ];
+  // Dynamic Accordion items using translation state
+  const historyEras = historyErasData.map((era) => ({
+    title: era.title,
+    subtitle: era.subtitle,
+    content: (
+      <div className="space-y-2">
+        <p>{era.content}</p>
+      </div>
+    ),
+  }));
 
   return (
     <div className="flex-1 flex flex-col">
@@ -439,22 +313,18 @@ function MainPortalContent() {
                 </div>
               </section>
 
-              {/* Capital City Profile Card */}
+              {/* Dynamic Multilingual Capital City Profile Card */}
               <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
                 <div className="border-b border-ivory-200 pb-3">
                   <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest">Featured Profile</span>
                   <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
-                    Ismailabad (إسماعيل آباد) — Imperial Capital
+                    {t("profile_title")}
                   </h3>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-                  <div className="space-y-3 text-stone-700 text-sm leading-relaxed">
-                    <p>
-                      <strong>Ismailabad</strong> serves as the administrative capital and dynastic seat of the Sultanate. Comprising a carefully cataloged territory, it stands as the heart of governmental operations, treasury archives, and the Shura chamber.
-                    </p>
-                    <p>
-                      <strong>Etymology:</strong> The name represents a synthesis of cultural lineage and language. <em>Ismail</em> is in honor of the revered father of the current Sultan, Sidi Isma’il al-Raniri. The suffix <em>-abad</em> is derived from Persian, meaning &quot;cultivated place,&quot; &quot;town,&quot; or &quot;city,&quot; symbolizing a settlement founded on prosperity and structure.
-                    </p>
+                  <div className="space-y-3 text-stone-700 text-sm leading-relaxed font-sans">
+                    <p>{t("profile_body")}</p>
+                    <p>{t("profile_etymology")}</p>
                   </div>
                   
                   {/* Photograph of Capital */}
@@ -815,7 +685,7 @@ function MainPortalContent() {
               {/* Factions Section */}
               <section className="space-y-4">
                 <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
-                  Consultative Assembly &amp; Factions Registry
+                  {t("tbl_party_faction")} &amp; Factions Registry
                 </h3>
                 <PoliticalPartiesTable />
               </section>
@@ -832,7 +702,7 @@ function MainPortalContent() {
                 <Lineage />
               </section>
 
-              {/* History Timeline */}
+              {/* Multilingual History Timeline */}
               <section className="space-y-4">
                 <div>
                   <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">

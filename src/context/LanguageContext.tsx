@@ -49,6 +49,12 @@ export interface LeaderTranslation {
   bio: string;
 }
 
+export interface HistoryEraTranslation {
+  title: string;
+  subtitle: string;
+  content: string;
+}
+
 export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
   en: {
     // Navigation Tabs
@@ -106,15 +112,38 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
     stat_hdi_val: "0.955",
     stat_hdi_sub: "Category: Very High human development",
 
-    // National Anthem Component (Stanza Translations)
+    // Featured Profile: Ismailabad
+    profile_title: "Imperial Capital — Ismailabad (إسماعيل آباد)",
+    profile_body:
+      "Ismailabad serves as the administrative capital and dynastic seat of the Sultanate. Comprising a carefully cataloged territory, it stands as the heart of governmental operations, treasury archives, and the Shura chamber.",
+    profile_etymology:
+      "Etymology: The name represents a synthesis of cultural lineage and language. Ismail is in honor of the revered father of the current Sultan, Sidi Isma'il al-Raniri. The suffix -abad is derived from Persian, meaning 'cultivated place,' 'town,' or 'city,' symbolizing a settlement founded on prosperity and structure.",
+
+    // National Anthem Component (Exact Prompt Translations)
     anthem_header: "National Anthem of the Kasimid Sultanate (\"Long Live My Country\")",
     anthem_badge: "National Anthem • النشيد الوطني",
     anthem_stanza1_trans:
-      "Long live my country, in glory and certainty / Sultanate of grandeur, a secure fortress / Our green banner among all nations / To truth and justice we pledge our allegiance",
+      "Long live my country, in glory and certainty / The Sultanate of grandeur, a secure fortress / Our green banner among the worlds / To truth and justice, we pledge allegiance.",
     anthem_stanza2_trans:
-      "From the forests of Ghabaan a light has shone / In the virtuous assembly unity is forged / We build our homeland with firm resolve / And Yusuf is our leader and guiding pole",
+      "From the forests of Ghabaan, a light has shone / In the community of goodness, unity is gathered / We build the lands with solid resolve / And Yusuf among us is a leader and a pillar.",
     anthem_stanza3_trans:
-      "Our souls are sacrificed for this sacred soil / And beyond the seas majesty reverberates / May God preserve the Sultan and the homeland / We shall remain proud throughout all time",
+      "Our souls are a sacrifice for this soil / And beyond the seas, glory has spread / May God preserve the Sultan and the homeland / We remain proud through the passage of time.",
+
+    // Legislative & Factions Tables
+    tbl_party_faction: "Party Faction",
+    tbl_leader: "Leader",
+    tbl_ideology: "Ideology",
+    tbl_status: "Status",
+    tbl_shura_seats: "Shura Seats",
+    tbl_council_seats: "Cultural Council Seats",
+    tbl_wilayah: "Wilayah (Province)",
+    tbl_arabic_desig: "Arabic Designation",
+    tbl_total_area: "Total Area",
+    tbl_appointed_gov: "Appointed Governor",
+    tbl_holiday_name: "Holiday Name",
+    tbl_cultural_script: "Arabic / Cultural Script",
+    tbl_category: "Category",
+    tbl_observance: "Observance Details",
 
     // Bicameral Majlis
     majlis_header: "The Bicameral Majlis (Parliament)",
@@ -131,7 +160,6 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
     assembly_desc:
       "A representative body designed to voice the interests of the 104 registered citizens. It focuses on localized community affairs, cultural preservation, and grassroots initiatives, drafting civil proposals to be reviewed by the Grand Vizier and the Shura.",
 
-    // Selectors
     select_language: "Select Language",
   },
 
@@ -191,24 +219,47 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
     stat_hdi_val: "٠٫٩٥٥",
     stat_hdi_sub: "الفئة: تنمية بشرية مرتفعة جداً",
 
-    // National Anthem Component (Arabic Mode hides translations)
+    // Featured Profile: Ismailabad
+    profile_title: "العاصمة الإمبراطورية — إسماعيل آباد",
+    profile_body:
+      "تخدم إسماعيل آباد كعاصمة إدارية ومقر سلالي للسلطنة. وتتكون من إقليم مصنف بعناية، وتعتبر قلب العمليات الحكومية، وأرشيف الخزانة، وقاعة الشورى.",
+    profile_etymology:
+      "أصل التسمية: يمثل الاسم تركيباً بين النسب الثقافي واللغة. إسماعيل تكريماً للوالد المبجل للسلطان الحالي، سيدي إسماعيل الرانيري. واللاحقة (آباد) مشتقة من الفارسية وتعني 'المكان المعمور' أو 'البلدة' أو 'المدينة'، مما يرمز إلى مستوطنة تأسست على الازدهار والبناء.",
+
+    // National Anthem Component (Arabic Mode hides translation subtext)
     anthem_header: "النشيد الوطني للسلطنة القاسمية (عاشت بلادي)",
     anthem_badge: "النشيد الوطني الرسمي",
     anthem_stanza1_trans: "",
     anthem_stanza2_trans: "",
     anthem_stanza3_trans: "",
 
+    // Legislative & Factions Tables
+    tbl_party_faction: "الفصيل الحزبي",
+    tbl_leader: "القائد",
+    tbl_ideology: "الأيديولوجيا",
+    tbl_status: "الحالة",
+    tbl_shura_seats: "مقاعد الشورى",
+    tbl_council_seats: "مقاعد المجلس الثقافي",
+    tbl_wilayah: "الولاية",
+    tbl_arabic_desig: "التسمية العربية",
+    tbl_total_area: "المساحة الإجمالية",
+    tbl_appointed_gov: "الحاكم المعين",
+    tbl_holiday_name: "اسم المناسبة",
+    tbl_cultural_script: "التسمية الثقافية",
+    tbl_category: "الفئة",
+    tbl_observance: "تفاصيل الاحتفال",
+
     // Bicameral Majlis
-    majlis_header: "المجلس التشريعي ثنائي التمثيل (البرلمان)",
+    majlis_header: "الهيكل التشريعي البرلماني",
     majlis_sub: "مصادق عليه بموجب دستور ٢٤ يوليو ٢٠٢٥",
     shura_title: "مجلس الشورى (المجلس الاستشاري)",
-    shura_sub: "الغرفة العليا • مجلس معيّن",
+    shura_sub: "الشركاء العليا • مجلس معين",
     shura_presided: "برئاسة حبيب الله ميكائيل الأسد",
     shura_desc:
       "يقود هذا المجلس المعين حبيب الله ميكائيل الأسد، ويعتبر الهيئة الاستشارية الرئيسية للسلطان. يركز على الفقه الإسلامي والمراجعة الدستورية والسياسة العامة للدولة.",
 
     assembly_title: "مجلس الشعب",
-    assembly_sub: "الغرفة السفلى • هيئة تمثيلية",
+    assembly_sub: "الشركاء السفلى • هيئة تمثيلية",
     assembly_rep: "يمثل ١٠٤ مواطنين مسجلين",
     assembly_desc:
       "هيئة تمثيلية تهدف إلى التعبير عن مصالح المواطنين الـ ١٠٤ المسجلين. تركز على الشؤون المجتمعية المحلية، والصيانة الثقافية، والمبادرات الشعبية.",
@@ -272,27 +323,50 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
     stat_hdi_val: "۰٫۹۵۵",
     stat_hdi_sub: "دسته: توسعه انسانی بسیار بالا",
 
-    // National Anthem Component (Farsi Translation)
-    anthem_header: "سرود ملی سلطنت قاسمية («زنده باد کشور من»)",
+    // Featured Profile: Ismailabad
+    profile_title: "پایتخت امپراتوری — اسماعیل‌آباد",
+    profile_body:
+      "اسماعیل‌آباد به عنوان پایتخت اداری و مقر دودمانی سلطنت عمل میکند. این منطقه که شامل قلمرویی با دقت ثبتشده است، به عنوان قلب فعالیتهای دولتی، آرشیو خزانهداری و تالار شورا شناخته میشود.",
+    profile_etymology:
+      "وجه تسمیه: این نام نشاندهنده ترکیبی از تبار فرهنگی و زبان است. اسماعیل به احترام پدر بزرگوار سلطان فعلی، سیدی اسماعیل الرانیری نامگذاری شده است. پسوند (آباد) از زبان فارسی گرفته شده و به معنای 'مکان آباد'، 'شهرک' یا 'شهر' است که نمادی از سکونتگاهی پایهریزیشده بر شکوفایی و ساختار است.",
+
+    // National Anthem Component (Exact Prompt Farsi Translation)
+    anthem_header: "سرود ملی سلطنت قاسمية («زنده باد میهنم»)",
     anthem_badge: "سرود ملی • النشيد الوطني",
     anthem_stanza1_trans:
-      "زنده باد کشور من، با عزت و یقین / سلطنت شکوه، دژی استوار / پرچم سبز ما در میان جهانیان / ما به حق و عدالت وفاداریم",
+      "زنده باد میهنم، با عزت و یقین / سلطنت شکوه، دژی استوار / پرچم سبز ما در میان جهانیان / ما به حق و عدالت وفاداریم.",
     anthem_stanza2_trans:
-      "از جنگل‌های غابات نوری درخشید / در انجمن نیکوکاری وحدت شکل گرفت / ما میهن خود را با اراده‌ای استوار می‌سازیم / و یوسف رهبر و قطب راهنمای ماست",
+      "از جنگلهای غبان، نوری درخشید / در جماعت خیر، اتحاد برقرار شد / ما با ارادهای پولادین دیار خود را میسازیم / و یوسف در میان ما رهبر و محور است.",
     anthem_stanza3_trans:
-      "جان‌های ما فدای این خاک پاک / و در آن سوی دریاها شکوه و عزت جاری است / خداوند سلطان و میهن را حفظ فرمايد / ما در طول زمان سرافراز خواهیم ماند",
+      "جانهای ما فدای این خاک باد / و فراتر از دریاها، عزت روان گشت / خداوند سلطان و میهن را حفظ کناد / ما در گذر زمان سرافراز میمانیم.",
+
+    // Legislative & Factions Tables
+    tbl_party_faction: "جناح حزبی",
+    tbl_leader: "رهبر",
+    tbl_ideology: "ایدئولوژی",
+    tbl_status: "وضعیت",
+    tbl_shura_seats: "کرسیهای شورا",
+    tbl_council_seats: "کرسیهای شورای فرهنگی",
+    tbl_wilayah: "ولایت",
+    tbl_arabic_desig: "عنوان عربی",
+    tbl_total_area: "مساحت کل",
+    tbl_appointed_gov: "فرماندار منصوب",
+    tbl_holiday_name: "نام مناسبت",
+    tbl_cultural_script: "عنوان فرهنگی",
+    tbl_category: "دسته‌بندی",
+    tbl_observance: "جزئیات مراسم",
 
     // Bicameral Majlis
-    majlis_header: "مجلس دو مجلسی (پارلمان)",
+    majlis_header: "ساختار قانونگذاری",
     majlis_sub: "مدون شده طبق قانون اساسی ۲۴ ژوئیه ۲۰۲۵",
-    shura_title: "مجلس الشوری (مجلس انتصابی)",
+    shura_title: "مجلس الشوری (شورای انتصابی)",
     shura_sub: "مجلس سنا • شورای انتصابی",
     shura_presided: "به ریاست حبیب‌الله میکائیل الأسد",
     shura_desc:
       "این شورای انتصابی به ریاست حبیب‌الله میکائیل الأسد، به عنوان نهاد اصلی مشورتی سلطان عمل می‌کند. تمرکز آن بر فقه اسلامی، بازنگری قانون اساسی و سیاست‌های کلان است.",
 
-    assembly_title: "مجلس نمایندگان مردم",
-    assembly_sub: "مجلس عوام • نهاد نمایندگی",
+    assembly_title: "مجمع نمایندگان مردم",
+    assembly_sub: "مجلس عوام • مجمع نمایندگان",
     assembly_rep: "نماینده ۱۰۴ شهروند ثبت‌شده",
     assembly_desc:
       "نهادی نمایندگی که برای انعکاس خواسته ۱۰۴ شهروند ثبت‌شده طراحی شده است. تمرکز آن بر امور جامعه، حفظ فرهنگ و طرح‌های مردمی است.",
@@ -356,27 +430,50 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
     stat_hdi_val: "0.955",
     stat_hdi_sub: "زمرہ: انتہائی اعلیٰ انسانی ترقی",
 
-    // National Anthem Component (Urdu Translation)
-    anthem_header: "سلطنتِ القاسمیہ کا قومی ترانہ (\"جیوے میرا وطن\")",
+    // Featured Profile: Ismailabad
+    profile_title: "شاہی دارالحکومت — اسماعیل آباد",
+    profile_body:
+      "اسماعیل آباد سلطنت کے انتظامی دارالحکومت اور شاہی تخت گاہ کے طور پر کام کرتا ہے۔ ایک احتیاط سے ترتیب دیے گئے علاقے پر مشتمل، یہ حکومتی کارروائیوں، خزانے کے آرکائیوز اور شوریٰ چیمبر کا مرکز ہے۔",
+    profile_etymology:
+      "وجہ تسمیہ: یہ نام ثقافتی شجرہ نسب اور زبان کے ملاپ کو ظاہر کرتا ہے۔ اسماعیل موجودہ سلطان کے محترم والد، سیدی اسماعیل الرانیری کے اعزاز میں ہے۔ لاحقہ (آباد) فارسی سے ماخوذ ہے، جس کا مطلب 'آباد جگہ'، 'قصبہ' یا 'شہر' ہے، جو خوشحالی اور بہترین نظم و ضبط پر قائم بستی کی علامت ہے۔",
+
+    // National Anthem Component (Exact Prompt Urdu Translation)
+    anthem_header: "سلطنتِ القاسمیہ کا قومی ترانہ (\"میرا وطن سلامت رہے\")",
     anthem_badge: "قومی ترانہ • النشيد الوطني",
     anthem_stanza1_trans:
-      "جیوے میرا وطن، عزت اور یقین کے ساتھ / عظمت کی سلطنت، ایک محفوظ قلعہ / تمام دنیا میں ہمارا سبز پرچم / ہم حق اور انصاف کے پابند ہیں",
+      "میرا وطن سلامت رہے، عزت اور یقین کے ساتھ / عظمت کی سلطنت، ایک محفوظ قلعہ / دنیاؤں میں ہمارا سبز پرچم / حق اور انصاف کے ہم وفادار ہیں۔",
     anthem_stanza2_trans:
-      "غبان کے جنگلات سے ایک نور چمکا / خیر و برکت کی مجلس میں اتحاد قائم ہوا / ہم مضبوط عزم کے ساتھ اپنے وطن کی تعمیر کرتے ہیں / اور یوسف ہمارے امام اور رہنما ہیں",
+      "غبان کے جنگلات سے ایک نور چمکا / بھلائی کی جماعت میں اتحاد جمع ہوا / ہم مضبوط عزم کے ساتھ وطن تعمیر کرتے ہیں / اور یوسف ہمارے درمیان ایک رہنما اور ستون ہیں۔",
     anthem_stanza3_trans:
-      "ہماری جانیں اس مقدس مٹی پر قربان ہیں / اور سمندر پار تک عزت و وقار پھیلا ہوا ہے / اللہ سلطان اور وطن کو محفوظ رکھے / ہم ہر دور میں باوقار رہیں گے",
+      "ہماری جانیں اس مٹی پر قربان ہیں / اور سمندروں پار بھی عزت و عظمت پھیلی ہے / اللہ سلطان اور وطن کی حفاظت فرمائے / ہم وقت کے گزرنے کے ساتھ بھی سر بلند رہیں گے۔",
+
+    // Legislative & Factions Tables
+    tbl_party_faction: "جماعتی دھڑا",
+    tbl_leader: "قائد",
+    tbl_ideology: "نظریہ",
+    tbl_status: "حیثیت",
+    tbl_shura_seats: "شوریٰ کی نشستیں",
+    tbl_council_seats: "ثقافتی کونسل کی نشستیں",
+    tbl_wilayah: "ولایت (صوبہ)",
+    tbl_arabic_desig: "عربی نام",
+    tbl_total_area: "کل رقبہ",
+    tbl_appointed_gov: "نامزد گورنر",
+    tbl_holiday_name: "تہوار کا نام",
+    tbl_cultural_script: "عربی / ثقافتی نام",
+    tbl_category: "زمرہ",
+    tbl_observance: "تفصیلات",
 
     // Bicameral Majlis
-    majlis_header: "دو ایوانی مجلس (پارلیمنٹ)",
+    majlis_header: "قانون سازی کا ڈھانچہ",
     majlis_sub: "24 جولائی 2025 کے آئین کے تحت منظور شدہ",
-    shura_title: "مجلس الشوریٰ (مملکتی کونسل)",
-    shura_sub: "ایوانِ بالا • نامزد کونسل",
+    shura_title: "مجلس الشوریٰ (ایوان بالا)",
+    shura_sub: "ایوان بالا • نامزد کونسل",
     shura_presided: "چیئرمین حبیب اللہ میکائیل الاسد کی زیرِ صدارت",
     shura_desc:
       "چیئرمین حبیب اللہ میکائیل الاسد کی قیادت میں یہ نامزد کونسل سلطان کے بنیادی مشارتی ادارے کے طور پر کام کرتی ہے۔ اس کی توجہ اسلامی فقہ، آئینی جائزہ اور طویل مدتی پالیسی پر مرکوز ہے۔",
 
-    assembly_title: "عوامی اسمبلی (ایوانِ زیریں)",
-    assembly_sub: "ایوانِ زیریں • نمائندہ ادارہ",
+    assembly_title: "ایوان زیریں • نمائندہ ادارہ",
+    assembly_sub: "ایوان زیریں • نمائندہ ادارہ",
     assembly_rep: "104 رجسٹرڈ شہریوں کی نمائندگی",
     assembly_desc:
       "ایک نمائندہ ادارہ جو 104 رجسٹرڈ شہریوں کے مفادات کی ترجمانی کرتا ہے۔ یہ مقامی برادری کے امور، ثقافتی تحفظ اور عوامی تجاویز کی تدوین پر توجہ مرکوز کرتا ہے۔",
@@ -385,7 +482,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
   },
 };
 
-// Full News & Decrees Articles Translation Database
+// Full News Articles Database
 export const NEWS_TRANSLATIONS: Record<LanguageCode, NewsArticleTranslation[]> = {
   en: [
     {
@@ -525,7 +622,7 @@ export const NEWS_TRANSLATIONS: Record<LanguageCode, NewsArticleTranslation[]> =
   ],
 };
 
-// Full Territory Maps Translation Database
+// Territory Maps Translation Database
 export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]> = {
   en: [
     {
@@ -537,7 +634,7 @@ export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]
       governorOrAdmin: "Governor Al-Himalayi",
       capitalOrHub: "Ismailabad (Imperial Capital)",
       description:
-        "0.01 sq mi. The historical core and seat of the capital, Ismailabad. Characterized by dense, cultivated forest terrain, housing the Royal Diwan, treasury archives, and sovereign councils. Administered by Governor Al-Himalayi.",
+        "Wilayat of Ghabaan (Ismailabad): The historical core and seat of the capital, Ismailabad. Characterized by dense, cultivated forest terrain, housing the Royal Diwan, treasury archives, and sovereign councils. Administered by Governor Al-Himalayi.",
     },
     {
       name: "Wilayat of Jama’ah",
@@ -548,7 +645,7 @@ export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]
       governorOrAdmin: "Governor Harith al-Dehlawi",
       capitalOrHub: "Jama'ah Al-Ula",
       description:
-        "0.02 sq mi. The administrative extension of the mainland, serving as a hub for community gathering, civil structuring, residential quarters, and grassroots assemblies. Administered by Governor Harith al-Dehlawi.",
+        "Wilayat of Jama'ah: 0.02 sq mi. The administrative extension of the mainland, serving as a hub for community gathering, civil structuring, residential quarters, and grassroots assemblies. Administered by Governor Harith al-Dehlawi.",
     },
     {
       name: "Overseas Territory of Al Maqsoodi",
@@ -559,7 +656,7 @@ export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]
       governorOrAdmin: "Umm Omar Syed",
       capitalOrHub: "Gadap Town, Karachi (Malir Cantonment)",
       description:
-        "4.87 acres. Located internationally in Gadap Town, Karachi. A crown-administered enclave serving as the Sultanate's primary diplomatic, event-hosting, and hospitality hub for macro-national visitors. Authority: Umm Omar Syed.",
+        "Overseas Territory of Al Maqsoodi: 4.87 acres. Located internationally in Gadap Town, Karachi. A crown-administered enclave serving as the Sultanate's primary diplomatic and hospitality hub... Authority: Umm Omar Syed.",
     },
   ],
   ar: [
@@ -572,7 +669,7 @@ export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]
       governorOrAdmin: "الحاكم الهيمالايي",
       capitalOrHub: "إسماعيل آباد (العاصمة الإمبراطورية)",
       description:
-        "٠٫٠١ ميل مربع. القلب التاريخي ومقر العاصمة إسماعيل آباد. تتميز بتضاريس غابية زراعية كثيفة، وتضم الديوان الملكي وأرشيف الخزانة. تحت إدارة الحاكم الهيمالايي.",
+        "ولاية الغابات (إسماعيل آباد): القلب التاريخي ومقر العاصمة إسماعيل آباد. تتميز بتضاريس غابية زراعية كثيفة، وتضم الديوان الملكي وأرشيف الخزانة... تحت إدارة الحاكم الهيمالايي.",
     },
     {
       name: "ولاية الجماعة",
@@ -583,7 +680,7 @@ export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]
       governorOrAdmin: "الحاكم الحارث الدهلوي",
       capitalOrHub: "جماعة العلا",
       description:
-        "٠٫٠٢ ميل مربع. التمدد الإداري لليابسة، وتعتبر مركزاً للتجمع المجتمعي والتنظيم المدني والأحياء السكنية. تحت إدارة الحاكم الحارث الدهلوي.",
+        "ولاية الجماعة: ٠٫٠٢ ميل مربع. التمدد الإداري لليابسة، وتعتبر مركزاً للتجمع المجتمعي والتنظيم المدني والأحياء السكنية... تحت إدارة الحاكم الحارث الدهلوي.",
     },
     {
       name: "إقليم المقصودي ما وراء البحار",
@@ -594,7 +691,7 @@ export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]
       governorOrAdmin: "أم عمر سيد",
       capitalOrHub: "جاداب تاون، كراتشي (منطقة مالير)",
       description:
-        "٤٫٨٧ فدان. يقع في جاداب تاون، كراتشي. جيب إداري ملكي يعتبر المركز الدبلوماسي والضيافة الرئيسي للسلطنة. السلطة: أم عمر سيد.",
+        "إقليم المقصودي ما وراء البحار: ٤٫٨٧ فدان. يقع في جاداب تاون، كراتشي. جيب إداري ملكي يعتبر المركز الدبلوماسي والضيافة الرئيسي للسلطنة... السلطة: أم عمر سيد.",
     },
   ],
   fa: [
@@ -607,7 +704,7 @@ export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]
       governorOrAdmin: "فرماندار هیمالایی",
       capitalOrHub: "اسماعیل‌آباد (پایتخت امپراتوری)",
       description:
-        "۰٫۰۱ میل مربع. هسته تاریخی و مقر پایتخت، اسماعیل‌آباد. مشخص‌شده با زمین‌های جنگلی کشت‌شده. تحت مدیریت فرماندار هیمالایی.",
+        "ولایت غابات (اسماعیل‌آباد): هسته تاریخی و مقر پایتخت، اسماعیل‌آباد. مشخص‌شده با زمین‌های جنگلی کشت‌شده... تحت مدیریت فرماندار هیمالایی.",
     },
     {
       name: "ولایت جماعه",
@@ -618,7 +715,7 @@ export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]
       governorOrAdmin: "فرماندار حارث دهلوی",
       capitalOrHub: "جماعه العلا",
       description:
-        "۰٫۰۲ میل مربع. بخش اداری سرزمین اصلی، به عنوان مرکزی برای اجتماعات عمومی و ساختار مدنی. تحت مدیریت فرماندار حارث دهلوی.",
+        "ولایت جماعه: ۰٫۰۲ میل مربع. بخش اداری سرزمین اصلی، به عنوان مرکزی برای اجتماعات عمومی و ساختار مدنی... تحت مدیریت فرماندار حارث دهلوی.",
     },
     {
       name: "قلمرو فرامرزی المقصودی",
@@ -629,7 +726,7 @@ export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]
       governorOrAdmin: "ام عمر سید",
       capitalOrHub: "گداپ تاون، کراچی",
       description:
-        "۴٫۸۷ آکر. واقع در گداپ تاون، کراچی. برون‌بوم تحت مدیریت تاج و تخت که به عنوان مرکز اصلی دیپلماتیک سلطنت عمل می‌کند. مقام مسئول: ام عمر سید.",
+        "قلمرو فرامرزی المقصودی: ۴٫۸۷ آکر. واقع در گداپ تاون، کراچی. برون‌بوم تحت مدیریت تاج و تخت که به عنوان مرکز اصلی دیپلماتیک سلطنت عمل می‌کند... مقام مسئول: ام عمر سید.",
     },
   ],
   ur: [
@@ -642,7 +739,7 @@ export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]
       governorOrAdmin: "گورنر الہمالائی",
       capitalOrHub: "اسماعیل آباد (شاہی دارالحکومت)",
       description:
-        "0.01 مربع میل۔ تاریخی مرکز اور دارالحکومت اسماعیل آباد کی نشست۔ گھنے جنگلاتی زمین پر مشتمل، شاہی دیوان اور خزانے کی دیکھ بھال۔ گورنر الہمالائی کے زیر انتظام۔",
+        "ولایت غبان (اسماعیل آباد): 0.01 مربع میل۔ تاریخی مرکز اور دارالحکومت کی نشست۔ گھنے جنگلاتی زمین پر مشتمل... گورنر الہمالائی کے زیر انتظام۔",
     },
     {
       name: "ولایت جماعت",
@@ -653,7 +750,7 @@ export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]
       governorOrAdmin: "گورنر حارث دہلوی",
       capitalOrHub: "جماعت العلا",
       description:
-        "0.02 مربع میل۔ سرزمینی توسیع، عوامی اجتماعات اور شہری تنظیم کا مرکز۔ گورنر حارث دہلوی کے زیر انتظام۔",
+        "ولایت جماعت: 0.02 مربع میل۔ سرزمینی توسیع، عوامی اجتماعات اور شہری تنظیم کا مرکز... گورنر حارث دہلوی کے زیر انتظام۔",
     },
     {
       name: "سمندر پار علاقہ المقصودی",
@@ -664,7 +761,7 @@ export const TERRITORY_TRANSLATIONS: Record<LanguageCode, TerritoryTranslation[]
       governorOrAdmin: "ام عمر سید",
       capitalOrHub: "گڈاپ ٹاؤن، کراچی",
       description:
-        "4.87 ایکڑ۔ گڈاپ ٹاؤن، کراچی میں واقع۔ شاہی انتظام کے تحت علاقہ جو سلطنت کا اہم سفارتی اور مہمانی مرکز ہے۔ اتھارٹی: ام عمر سید۔",
+        "سمندر پار علاقہ المقصودی: 4.87 ایکڑ۔ گڈاپ ٹاؤن، کراچی میں واقع۔ شاہی انتظام کے تحت علاقہ جو سلطنت کا اہم سفارتی اور مہمانی مرکز ہے... اتھارٹی: ام عمر سید۔",
     },
   ],
 };
@@ -801,6 +898,234 @@ export const LEADER_TRANSLATIONS: Record<LanguageCode, LeaderTranslation[]> = {
   ],
 };
 
+// Historical Eras Multilingual Database
+export const HISTORY_ERAS_TRANSLATIONS: Record<LanguageCode, HistoryEraTranslation[]> = {
+  en: [
+    {
+      title: "Prehistoric Record: Lenape Inhabitants",
+      subtitle: "Indigenous Stewardship & Raritan Corridor",
+      content:
+        "Indigenous Stewardship & Raritan Corridor. Long before the arrival of modern settlements, the geographic bounds were under the ancestral guardianship of the Lenape nation.",
+    },
+    {
+      title: "Colonial Period & Crown Grants (1664–1737)",
+      subtitle: "English Sovereign Control & Brownville Settlement",
+      content:
+        "English Sovereign Control & Brownville Settlement. English sovereign control over the territory was formalized in 1664, culminating in the erection of Middlesex County boundaries in 1683. In 1737, a landmark 1,000-acre Crown land grant was issued to John and Susannah Brown, formally establishing the historical sector of 'Brownville' (Browntown / Trans Old Bridge Road sector).",
+    },
+    {
+      title: "Revolutionary War & 19th Century (1778–1975)",
+      subtitle: "Road to Monmouth & Township Incorporation",
+      content:
+        "During the American Revolutionary War, the corridor served as a strategic crossroads leading toward the pivotal Battle of Monmouth (1778). The surrounding region was incorporated as Madison Township in 1869, and renamed Old Bridge Township in 1975.",
+    },
+    {
+      title: "Late 20th Century Demographic Shift (1999–2001)",
+      subtitle: "The Y2K Migration & Royal Lineage Settlement",
+      content:
+        "A major migration wave of South Asian and Middle Eastern tech professionals arrived in Central New Jersey to resolve Y2K infrastructure adjustments. This brought ancestral lineages of the royal family to the region between 1999 and 2001.",
+    },
+    {
+      title: "Early Independence Movements (1999–2021)",
+      subtitle: "Waliustan & The Hashemia Proclamation",
+      content:
+        "Micronational governance began in 1999 with the founding of Waliustan. On August 31, 2021, the Kingdom of Hashemia was proclaimed, establishing Qadirabad with an initial population of 80 residents.",
+    },
+    {
+      title: "The Hashemian Era & Conflicts (2021–2023)",
+      subtitle: "Civil Strife, Expansion, and Territorial Annexations",
+      content:
+        "Marked by pivotal events including the Hashemian Civil War (Oct 2021), Hashemian National Project (Jan 2022), Decker Rebellion Suppression, and the Annexation of Tartary (Oct 2022).",
+    },
+    {
+      title: "The VECTO Era & Cyber Warfare (2023–2024)",
+      subtitle: "International Alliances & The USR Crusade",
+      content:
+        "On July 5, 2023, the state joined UMN and VECTO, rebranding to Raritania on July 15. The state suffered the 'Dark Age' server destruction in August 2023, followed by digital platform reconstruction and defense against the USR Crusade.",
+    },
+    {
+      title: "The Raritan Caliphate (2024–2025)",
+      subtitle: "Caliphal Governance & Dynastic Abdication",
+      content:
+        "On December 30, 2024, the state proclaimed the Raritan Caliphate, shifting state machinery toward classical caliphal governance principles and marking the formal abdication of traditional royal titles by the Majidid family.",
+    },
+    {
+      title: "Establishment of the Kasimid Sultanate (2025–Present)",
+      subtitle: "Constitutional Order & Reign of Sultan Yusuf I",
+      content:
+        "Following constitutional negotiations, the modern Constitution of the Kasimid Sultanate was ratified on July 24, 2025. The constitution established a bicameral Majlis with Sultan Yusuf I as sovereign monarch.",
+    },
+  ],
+  ar: [
+    {
+      title: "السجل التاريخي القديم: سكان اللينابي",
+      subtitle: "الإشراف الأصلي وممر راريتان",
+      content:
+        "الإشراف الأصلي وممر راريتان. قبل وقت طويل من وصول المستوطنات الحديثة، كانت الحدود الجغرافية تحت الحماية العريقة لأمة اللينابي.",
+    },
+    {
+      title: "الفترة الاستعمارية والمنح الملكية (١٦٦٤–١٧٣٧)",
+      subtitle: "السيطرة السيادية الإنجليزية ومستوطنة براونفيل",
+      content:
+        "السيطرة السيادية الإنجليزية ومستوطنة براونفيل. تم إضفاء الطابع الرسمي على السيطرة السيادية الإنجليزية على المنطقة في عام ١٦٦٤، مما توج بوضع حدود مقاطعة ميدلسكس في عام ١٦٨٣. وفي عام ١٧٣٧، تم إصدار منحة أرض ملكية تاريخية بمساحة ١٠٠٠ فدان لجون وسوزانا براون، مما أدى رسمياً إلى تأسيس القطاع التاريخي لـ 'براونفيل' (قطاع براونتاون / طريق ترانس أولد بريدج).",
+    },
+    {
+      title: "حرب الاستقلال والقرن التاسع عشر (١٧٧٨–١٩٧٥)",
+      subtitle: "طريق مونموث وتأسيس البلدية",
+      content:
+        "خلال الحرب الثورية، خدم الممر كتقاطع استراتيجي لحركة القوات نحو معركة مونموث الحاسمة (١٧٧٨). وتأسست بلدة ماديسون في عام ١٨٦٩ وأعيد تسميتها إلى بلدة أولد بريدج في عام ١٩٧٥.",
+    },
+    {
+      title: "التحول الديمغرافي أواخر القرن العشرين (١٩٩٩–٢٠٠١)",
+      subtitle: "هجرة Y2K واستقرار السلالة الملكية",
+      content:
+        "وصلت موجة هجرة رئيسية من متخصصي التكنولوجيا من جنوب آسيا والشرق الأوسط إلى نيو جيرسي لإجراء تعديلات البنية التحتية لحل مشكلة Y2K، مما جلب السلالة الملكية إلى المنطقة.",
+    },
+    {
+      title: "حركات الاستقلال المبكرة (١٩٩٩–٢٠٢١)",
+      subtitle: "واليوستان وإعلان الهاشمية",
+      content:
+        "بدأت الحوكمة الميكرونية في عام ١٩٩٩ بتأسيس واليوستان. وفي ٣١ أغسطس ٢٠٢١، أُعلنت المملكة الهاشمية وتأسست قادر آباد مع ٨٠ مواطناً.",
+    },
+    {
+      title: "العصر الهاشمي والنزاعات (٢٠٢١–٢٠٢٣)",
+      subtitle: "النزاعات الداخلية والتوسع والتضمين الإقليمي",
+      content:
+        "تميز الأحداث بالحرب الأهلية الهاشمية (أكتوبر ٢٠٢١)، والمشروع الوطني (يناير ٢٠٢٢)، وقمع تمرد دكر، وتضمين تارتاري (أكتوبر ٢٠٢٢).",
+    },
+    {
+      title: "عصر VECTO والحرب السيبرانية (٢٠٢٣–٢٠٢٤)",
+      subtitle: "التحالفات الدولية والحرب الدفاعية",
+      content:
+        "في ٥ يوليو ٢٠٢٣، انضمت الدولة إلى UNAM و VECTO، وتغير اسمها إلى راريتانيا. وشهدت الدولة إعادة بناء المنصات الرقمية والدفاع ضد الحملات الكبرى.",
+    },
+    {
+      title: "الخلافة الراريتانية (٢٠٢٤–٢٠٢٥)",
+      subtitle: "الحوكمة الخلافية والتنازل السلالي",
+      content:
+        "في ٣٠ ديسمبر ٢٠٢٤، أُعلنت الخلافة الراريتانية، وتحولت أجهزة الدولة نحو مبادئ الحكم الخلافية الكلاسيكية.",
+    },
+    {
+      title: "تأسيس السلطنة القاسمية (٢٠٢٥–الحاضر)",
+      subtitle: "النظام الدستوري وحكم السلطان يوسف الأول",
+      content:
+        "عقب المفاوضات الدستورية، تم إقرار دستور السلطنة القاسمية في ٢٤ يوليو ٢٠٢٥، وتأسيس المجلس التشريعي ثنائي التمثيل.",
+    },
+  ],
+  fa: [
+    {
+      title: "سابقه تاریخی پیش از تاریخ: ساکنان لناپه",
+      subtitle: "سرپرستی بومیان و کریدور راریتان",
+      content:
+        "سرپرستی بومیان و کریدور راریتان. مدتها قبل از ظهور سکونتگاههای مدرن، مرزهای جغرافیایی تحت نگهبانی اجدادی قوم لناپه قرار داشت.",
+    },
+    {
+      title: "دوره استعماری و واگذاری‌های شاهی (۱۶۶۴–۱۷۳۷)",
+      subtitle: "کنترل حاکمیتی انگلیس و سکونتگاه براونویل",
+      content:
+        "کنترل حاکمیتی انگلیس و سکونتگاه براونویل. کنترل حاکمیتی انگلستان بر این قلمرو در سال ۱۶۶۴ رسمی شد و در سال ۱۶۸۳ به تعیین مرزهای شهرستان میدلسکس انجامید. در سال ۱۷۳۷، زمین شاهی به مساحت ۱۰۰۰ آکر به جان و سوزانا براون اعطا شد که رسماً بخش تاریخی 'براونویل' (منطقه براونتاون / جاده ترانس اولد بریج) را پایهگذاری کرد.",
+    },
+    {
+      title: "جنگ استقلال و قرن نوزدهم (۱۷۷۸–۱۹۷۵)",
+      subtitle: "مسیر مونموث و ثبت شهرداری",
+      content:
+        "در طول جنگ‌های انقلاب، این مسیر به عنوان چهارراه استراتژیک به نبرد مونموث (۱۷۷۸) ختم شد. این منطقه در سال ۱۸۶۹ با نام تاون‌شیپ مدیسون ثبت شد.",
+    },
+    {
+      title: "تغییرات جمعیتی اواخر قرن بیستم (۱۹۹۹–۲۰۰۱)",
+      subtitle: "مهاجرت Y2K و استقرار تبار سلطنتی",
+      content:
+        "موج بزرگ مهاجرت متخصصان فناوری برای حل مشکل Y2K منجر به استقرار خاندان سلطنتی در منطقه بین سال‌های ۱۹۹۹ تا ۲۰۰۱ شد.",
+    },
+    {
+      title: "جنبش‌های استقلال اولیه (۱۹۹۹–۲۰۲۱)",
+      subtitle: "والیوتستان و اعلامیه هاشمیه",
+      content:
+        "حکومت ریزکشوری در سال ۱۹۹۹ با تاسیس والیوتستان آغاز شد و در ۳۱ اوت ۲۰۲۱ پادشاهی هاشمیه اعلام شد.",
+    },
+    {
+      title: "دوران هاشمی و نبردها (۲۰۲۱–۲۰۲۳)",
+      subtitle: "درگیری‌های داخلی و الحاق قلمروها",
+      content:
+        "شامل جنگ داخلی هاشمیه (اکتبر ۲۰۲۱)، پروژه ملی (ژانویه ۲۰۲۲)، سرکوب شورش دکر و الحاق تارتاری (اکتبر ۲۰۲۲).",
+    },
+    {
+      title: "دوران VECTO و جنگ سایبری (۲۰۲۳–۲۰۲۴)",
+      subtitle: "اتحادهای بین‌المللی و بازسازی دیجیتال",
+      content:
+        "در ۵ ژوئیه ۲۰۲۳، به VECTO پیوست و نام به راریتانیا تغییر یافت. بازسازی پلتفرم‌های دیجیتال پس از عصر تاریک انجام شد.",
+    },
+    {
+      title: "خلافت راریتان (۲۰۲۴–۲۰۲۵)",
+      subtitle: "حکومت خلافتی و کناره‌گیری دودمانی",
+      content:
+        "در ۳۰ دسامبر ۲۰۲۴، خلافت راریتان اعلام شد و ساختار حکومت به اصول خلافتی کلاسیک تغییر یافت.",
+    },
+    {
+      title: "تاسیس سلطنت قاسمية (۲۰۲۵ تا کنون)",
+      subtitle: "نظام مشروطه و حکومت سلطان یوسف اول",
+      content:
+        "پس از مذاکرات، قانون اساسی سلطنت قاسمية در ۲۴ ژوئیه ۲۰۲۵ تصویب شد و پارلمان دو مجلسی ایجاد گردید.",
+    },
+  ],
+  ur: [
+    {
+      title: "قبل از تاریخ کا ریکارڈ: لناپے باشندے",
+      subtitle: "مقامی نظام اور راریتان راہداری",
+      content:
+        "مقامی نظام اور راریتان راہداری۔ جدید بستیوں کی آمد سے بہت پہلے، یہ جغرافیائی حدود لناپے قوم کے آبائی تحفظ میں تھیں۔",
+    },
+    {
+      title: "استعماری دور اور شاہی زمین (1664–1737)",
+      subtitle: "انگریزی خودمختار کنٹرول اور براؤن ول بستی",
+      content:
+        "انگریزی خودمختار کنٹرول اور براؤن ول بستی۔ اس علاقے پر انگریزی خودمختار کنٹرول کو 1664 میں باقاعدہ شکل دی گئی، جس کا اختتام 1683 میں مڈلسیکس کاؤنٹی کی حدود کے قیام پر ہوا۔ 1637 میں جان اور سوزانا براؤن کو 1000 ایکڑ پر مشتمل تاریخی شاہی زمین کی گرانٹ جاری کی گئی، جس نے باقاعدہ طور پر 'براؤن ول' (براؤن ٹاؤن / ٹرانس اولڈ برج روڈ سیکٹر) کا تاریخی علاقہ قائم کیا۔",
+    },
+    {
+      title: "انقلابی جنگ اور 19ویں صدی (1778–1975)",
+      subtitle: "مونموث کا راستہ اور میونسپلٹی کا قیام",
+      content:
+        "انقلابی جنگ کے دوران، یہ راہداری مونموث کی جنگ (1778) کی طرف اہم راستہ بنی۔ اس علاقے کو 1869 میں میڈیسن ٹاؤن شپ اور 1975 میں اولڈ برج ٹاؤن شپ کا نام دیا گیا۔",
+    },
+    {
+      title: "20ویں صدی کی ڈیموگرافک تبدیلی (1999–2001)",
+      subtitle: "Y2K ہجرت اور شاہی خاندان کی آمد",
+      content:
+        "Y2K تکنیکی مسائل کے حل کے لیے ٹیکنالوجی کے ماہرین کی ہجرت کے نتیجے میں شاہی خاندان 1999 سے 2001 کے درمیان اس علاقے میں آباد ہوا۔",
+    },
+    {
+      title: "ابتدائی آزادی کی تحریکیں (1999–2021)",
+      subtitle: "والیوسُتان اور ہاشمیہ کا قیام",
+      content:
+        "مائیکرو نیشن حکمرانی کا آغاز 1999 میں والیوسُتان سے ہوا۔ 31 اگست 2021 کو مملکتِ ہاشمیہ کا قیام عمل میں آیا۔",
+    },
+    {
+      title: "ہاشمی دور اور نبرد آزمائی (2021–2023)",
+      subtitle: "داخلی کشمکش اور علاقوں کا الحاق",
+      content:
+        "ہاشمی خانہ جنگی (اکتوبر 2021)، قومی منصوبے، ڈیکر بغاوت کا خاتمہ اور تارتاری کا الحاق (اکتوبر 2022)۔",
+    },
+    {
+      title: "VECTO دور اور سائبر جنگ (2023–2024)",
+      subtitle: "بین الاقوامی اتحاد اور دفاعی کامیابی",
+      content:
+        "5 جولائی 2023 کو UNAM اور VECTO کا حصہ بنا، 15 جولائی کو راریٹانیہ نام رکھا گیا۔ سائبر جنگ کا کامياب دفاع کیا گیا۔",
+    },
+    {
+      title: "راریتان خلافت (2024–2025)",
+      subtitle: "خلافت کا نظام اور روایتی القاب سے دستبرداری",
+      content:
+        "30 دسمبر 2024 کو راریتان خلافت کا اعلان ہوا، جس نے ریاستی نظام کو روایتی خلافت کے اصولوں پر گامزن کیا۔",
+    },
+    {
+      title: "سلطنتِ القاسمیہ کا قیام (2025 تا حال)",
+      subtitle: "آئینی نظام اور سلطان یوسف اول کا دورِ حکومت",
+      content:
+        "آئینی مذاکرات کے بعد 24 جولائی 2025 کو سلطنتِ القاسمیہ کا آئین منظور ہوا اور دو ایوانی مجلس کا قیام عمل میں لایا گیا۔",
+    },
+  ],
+};
+
 interface LanguageContextType {
   language: LanguageCode;
   setLanguage: (lang: LanguageCode) => void;
@@ -810,6 +1135,7 @@ interface LanguageContextType {
   getNewsArticles: () => NewsArticleTranslation[];
   getTerritories: () => TerritoryTranslation[];
   getLeaders: () => LeaderTranslation[];
+  getHistoryEras: () => HistoryEraTranslation[];
 }
 
 const LanguageContext = createContext<LanguageContextType>({
@@ -821,6 +1147,7 @@ const LanguageContext = createContext<LanguageContextType>({
   getNewsArticles: () => NEWS_TRANSLATIONS.en,
   getTerritories: () => TERRITORY_TRANSLATIONS.en,
   getLeaders: () => LEADER_TRANSLATIONS.en,
+  getHistoryEras: () => HISTORY_ERAS_TRANSLATIONS.en,
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
@@ -871,6 +1198,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     return LEADER_TRANSLATIONS[language] || LEADER_TRANSLATIONS.en;
   };
 
+  const getHistoryEras = (): HistoryEraTranslation[] => {
+    return HISTORY_ERAS_TRANSLATIONS[language] || HISTORY_ERAS_TRANSLATIONS.en;
+  };
+
   const getFontClass = () => {
     if (language === "ur") return "font-urdu";
     if (isRTL) return "font-arabic";
@@ -888,6 +1219,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         getNewsArticles,
         getTerritories,
         getLeaders,
+        getHistoryEras,
       }}
     >
       <div dir={dir} className={getFontClass()}>
