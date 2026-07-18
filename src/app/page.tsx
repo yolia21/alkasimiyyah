@@ -19,7 +19,7 @@ import {
 } from "@/components/Widgets";
 
 // Main Portal Tabs
-type TabID = "home" | "government" | "history" | "culture" | "relations" | "documents";
+type TabID = "home" | "regions" | "government" | "history" | "culture" | "relations" | "documents";
 
 interface TabItem {
   id: TabID;
@@ -37,7 +37,7 @@ export default function Home() {
       const tabParam = params.get("tab") as TabID;
       if (
         tabParam &&
-        ["home", "government", "history", "culture", "relations", "documents", "news"].includes(tabParam)
+        ["home", "regions", "government", "history", "culture", "relations", "documents", "news"].includes(tabParam)
       ) {
         setActiveTab(tabParam === ("news" as TabID) ? "documents" : tabParam);
       }
@@ -55,6 +55,7 @@ export default function Home() {
 
   const tabs: TabItem[] = [
     { id: "home", label: "Overview & Capital", arabicLabel: "نظرة عامة والعاصمة" },
+    { id: "regions", label: "Administrative Regions", arabicLabel: "المناطق الإدارية" },
     { id: "government", label: "Royal Court & Shura", arabicLabel: "البلاط الملكي والشورى" },
     { id: "history", label: "History & Lineage", arabicLabel: "التاريخ والنسب" },
     { id: "culture", label: "Culture & Military", arabicLabel: "الثقافة والجيش" },
@@ -261,18 +262,18 @@ export default function Home() {
       {/* Navigation Tabs Bar */}
       <nav className="bg-white border-b border-ivory-300 sticky top-0 z-40 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 overflow-x-auto flex items-center justify-between">
-          <div className="flex space-x-1 md:space-x-4 py-2">
+          <div className="flex space-x-1 md:space-x-3 py-2 shrink-0">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => changeTab(tab.id)}
-                className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex flex-col items-center justify-center min-w-[120px] border focus:outline-none ${
+                className={`px-3.5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 flex flex-col items-center justify-center min-w-[110px] md:min-w-[125px] border focus:outline-none shrink-0 ${
                   activeTab === tab.id
                     ? "bg-ottoman-red-900 text-brass-gold-300 border-brass-gold-500 shadow-sm font-semibold"
                     : "bg-white text-stone-600 border-transparent hover:bg-ivory-50 hover:text-ottoman-red-800"
                 }`}
               >
-                <span className="font-sans text-xs tracking-wide">{tab.label}</span>
+                <span className="font-sans text-xs tracking-wide whitespace-nowrap">{tab.label}</span>
                 <span className="font-arabic text-[10px] mt-0.5 opacity-80" dir="rtl">
                   {tab.arabicLabel}
                 </span>
@@ -284,7 +285,7 @@ export default function Home() {
           <a
             href="/portal/login"
             id="citizen-portal-nav-btn"
-            className="hidden md:inline-flex shrink-0 items-center gap-1.5 ml-4 text-xs font-semibold text-ottoman-red-900 hover:text-ottoman-red-700 bg-brass-gold-100 hover:bg-brass-gold-200 border border-brass-gold-400 px-3 py-2 rounded-lg transition-all duration-200 font-sans"
+            className="hidden lg:inline-flex shrink-0 items-center gap-1.5 ml-4 text-xs font-semibold text-ottoman-red-900 hover:text-ottoman-red-700 bg-brass-gold-100 hover:bg-brass-gold-200 border border-brass-gold-400 px-3 py-2 rounded-lg transition-all duration-200 font-sans"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
@@ -476,11 +477,6 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </section>
-
-              {/* NEW Component: Territorial Regions & Interactive Map */}
-              <section>
-                <TerritorialMap />
               </section>
 
               {/* Demographics Overview section */}
@@ -694,7 +690,14 @@ export default function Home() {
             </div>
           )}
 
-          {/* TAB 2: LEADERSHIP BIOGRAPHIES */}
+          {/* TAB 2: BRAND NEW STANDALONE TAB: ADMINISTRATIVE REGIONS */}
+          {activeTab === "regions" && (
+            <div className="space-y-8 animate-fadeIn">
+              <TerritorialMap />
+            </div>
+          )}
+
+          {/* TAB 3: LEADERSHIP BIOGRAPHIES */}
           {activeTab === "government" && (
             <div className="space-y-8 animate-fadeIn">
               
@@ -831,7 +834,7 @@ export default function Home() {
             </div>
           )}
 
-          {/* TAB 3: HISTORY & LINEAGE */}
+          {/* TAB 4: HISTORY & LINEAGE */}
           {activeTab === "history" && (
             <div className="space-y-8 animate-fadeIn">
               
@@ -936,7 +939,7 @@ export default function Home() {
             </div>
           )}
 
-          {/* TAB 4: CULTURE & MILITARY */}
+          {/* TAB 5: CULTURE & MILITARY */}
           {activeTab === "culture" && (
             <div className="space-y-8 animate-fadeIn">
               
@@ -1067,7 +1070,7 @@ export default function Home() {
             </div>
           )}
 
-          {/* TAB 5: FOREIGN RELATIONS */}
+          {/* TAB 6: FOREIGN RELATIONS */}
           {activeTab === "relations" && (
             <div className="space-y-8 animate-fadeIn">
               
@@ -1187,7 +1190,7 @@ export default function Home() {
             </div>
           )}
 
-          {/* TAB 6: NEW RENAMED TAB: NEWS & DECREES */}
+          {/* TAB 7: NEWS & DECREES */}
           {activeTab === "documents" && (
             <div className="space-y-8 animate-fadeIn">
 
