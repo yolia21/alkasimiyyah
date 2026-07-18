@@ -72,20 +72,51 @@ export function LocalTimeWidget() {
   );
 }
 
-// --- CURRENCY CONVERTER ---
+// --- DYNAMIC CURRENCY CONVERTER ---
 
 export function CurrencyConverter() {
+  const [eurToUsd, setEurToUsd] = useState<number>(1.08); // fallback: 1 EUR = 1.08 USD
+  const [isLoadingRate, setIsLoadingRate] = useState<boolean>(true);
+  const [lastUpdated, setLastUpdated] = useState<string>("");
+
   const [qd, setQd] = useState<string>("100");
   const [eur, setEur] = useState<string>("200");
-  const [usd, setUsd] = useState<string>("216");
+  const [usd, setUsd] = useState<string>("216.00");
 
-  // Fixed conversion rates:
-  // 1 QD = 2 EUR
-  // 1 EUR = 1.08 USD (so 1 QD = 2.16 USD)
+  // Fixed Peg: 1 QD = 2.00 EUR
+  const QD_TO_EUR = 2.0;
   const EUR_TO_QD = 0.5;
-  const QD_TO_EUR = 2;
-  const QD_TO_USD = 2.16;
-  const USD_TO_QD = 1 / 2.16;
+
+  useEffect(() => {
+    async function fetchLiveRate() {
+      try {
+        setIsLoadingRate(true);
+        const res = await fetch("https://open.er-api.com/v6/latest/EUR");
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.rates && data.rates.USD) {
+            const liveRate = data.rates.USD;
+            setEurToUsd(liveRate);
+            setUsd((200 * liveRate).toFixed(2));
+            setLastUpdated(
+              new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+            );
+          }
+        }
+      } catch (error) {
+        console.warn("Using fallback EUR to USD rate:", error);
+      } finally {
+        setIsLoadingRate(false);
+      }
+    }
+
+    fetchLiveRate();
+  }, []);
+
+  // Conversions using live EUR to USD rate:
+  // 1 QD = 2 EUR = (2 * eurToUsd) USD
+  const qdToUsd = 2 * eurToUsd;
+  const usdToQd = 1 / qdToUsd;
 
   const handleQdChange = (val: string) => {
     setQd(val);
@@ -96,7 +127,7 @@ export function CurrencyConverter() {
     }
     const num = Number(val);
     setEur((num * QD_TO_EUR).toFixed(2));
-    setUsd((num * QD_TO_USD).toFixed(2));
+    setUsd((num * qdToUsd).toFixed(2));
   };
 
   const handleEurChange = (val: string) => {
@@ -109,7 +140,7 @@ export function CurrencyConverter() {
     const num = Number(val);
     const qdVal = num * EUR_TO_QD;
     setQd(qdVal.toFixed(2));
-    setUsd((qdVal * QD_TO_USD).toFixed(2));
+    setUsd((num * eurToUsd).toFixed(2));
   };
 
   const handleUsdChange = (val: string) => {
@@ -120,40 +151,68 @@ export function CurrencyConverter() {
       return;
     }
     const num = Number(val);
-    const qdVal = num * USD_TO_QD;
+    const qdVal = num * usdToQd;
     setQd(qdVal.toFixed(2));
     setEur((qdVal * QD_TO_EUR).toFixed(2));
   };
 
   return (
-    <div className="rounded-xl border border-ivory-300 bg-white p-6 shadow-sm hover:border-brass-gold-400 transition-all duration-300">
-      <div className="flex items-center space-x-3 mb-4 text-stone-500">
-        <svg
-          className="w-5 h-5 text-brass-gold-600"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <span className="text-xs font-semibold uppercase tracking-wider">
-          Official Currency Calculator (Fixed Rate)
-        </span>
+    <div className="rounded-xl border border-ivory-300 bg-white p-6 shadow-sm hover:border-brass-gold-400 transition-all duration-300 space-y-4">
+      
+      {/* Widget Header with Live Badge */}
+      <div className="flex items-center justify-between border-b border-ivory-200 pb-3">
+        <div className="flex items-center space-x-3 text-stone-500">
+          <svg
+            className="w-5 h-5 text-brass-gold-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span className="text-xs font-semibold uppercase tracking-wider text-stone-800 font-serif">
+            National Currency Converter
+          </span>
+        </div>
+
+        {/* Live Status Badge */}
+        <div className="flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 border border-emerald-200 rounded-full">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider font-mono">
+            {isLoadingRate ? "Updating..." : "Live Market Rates"}
+          </span>
+        </div>
       </div>
 
-      <div className="space-y-4">
+      {/* Dynamic Rate Banner */}
+      <div className="bg-gradient-to-r from-ottoman-red-950 to-ottoman-red-900 border border-brass-gold-500/50 rounded-xl p-3.5 text-center text-ivory-100 space-y-1 shadow-sm">
+        <span className="block text-[10px] font-bold uppercase tracking-widest text-brass-gold-400 font-sans">
+          Current Market Valuation Standard
+        </span>
+        <p className="text-base font-mono font-bold text-brass-gold-200">
+          1 QD = €2.00 EUR = ${qdToUsd.toFixed(2)} USD
+        </p>
+        <p className="text-[10px] text-ivory-200/70 font-sans italic">
+          {lastUpdated
+            ? `Fixed Peg: 1 QD = €2.00 EUR • Live USD Rate fetched at ${lastUpdated}`
+            : "Strict Peg: 1 QD = 2.00 EUR • Fetching Live Market USD Exchange Rate..."}
+        </p>
+      </div>
+
+      {/* Calculator Inputs */}
+      <div className="space-y-4 pt-1">
         {/* Kasimi Dinar (QD) */}
         <div>
-          <label className="block text-xs font-semibold text-stone-500 uppercase mb-1">
+          <label className="block text-xs font-semibold text-brass-gold-700 uppercase mb-1 font-serif">
             Kasimi Dinar (QD)
           </label>
           <div className="relative rounded-md shadow-sm">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-stone-500 font-serif font-bold">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-stone-700 font-serif font-bold text-xs">
               QD
             </div>
             <input
@@ -169,11 +228,11 @@ export function CurrencyConverter() {
         <div className="flex space-x-4">
           {/* Euros (EUR) */}
           <div className="flex-1">
-            <label className="block text-xs font-semibold text-stone-500 uppercase mb-1">
+            <label className="block text-xs font-semibold text-stone-600 uppercase mb-1">
               Euros (€)
             </label>
             <div className="relative rounded-md shadow-sm">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-stone-500 font-medium">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-stone-500 font-medium text-xs">
                 €
               </div>
               <input
@@ -188,11 +247,11 @@ export function CurrencyConverter() {
 
           {/* US Dollars (USD) */}
           <div className="flex-1">
-            <label className="block text-xs font-semibold text-stone-500 uppercase mb-1">
+            <label className="block text-xs font-semibold text-stone-600 uppercase mb-1">
               US Dollars ($)
             </label>
             <div className="relative rounded-md shadow-sm">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-stone-500 font-medium">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-stone-500 font-medium text-xs">
                 $
               </div>
               <input
@@ -207,7 +266,7 @@ export function CurrencyConverter() {
         </div>
 
         <div className="pt-2 border-t border-ivory-200 text-[10px] text-stone-500 text-center font-sans">
-          Fixed Exchange Standard: 1 QD = 2.00 EUR (Pegged) | 1.00 EUR = 1.08 USD (Ref)
+          The Kasimi Dinar is backed by state reserves and pegged to the Euro (1 QD = 2 EUR). Live USD rates updated via Open Exchange Rates API.
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import StatCard from "@/components/StatCard";
 import Accordion from "@/components/Accordion";
 import ProfileCard from "@/components/ProfileCard";
 import Lineage from "@/components/Lineage";
+import TerritorialMap from "@/components/TerritorialMap";
 import {
   PoliticalPartiesTable,
   ProvincesTable,
@@ -477,6 +478,11 @@ export default function Home() {
                 </div>
               </section>
 
+              {/* NEW Component: Territorial Regions & Interactive Map */}
+              <section>
+                <TerritorialMap />
+              </section>
+
               {/* Demographics Overview section */}
               <section className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm">
                 
@@ -744,6 +750,75 @@ export default function Home() {
                 />
 
               </div>
+
+              {/* The Bicameral Majlis (Parliament) Block */}
+              <section className="bg-white p-6 md:p-8 rounded-2xl border border-ivory-300 shadow-sm space-y-6">
+                <div className="border-b border-ivory-200 pb-3 flex flex-wrap items-center justify-between gap-2">
+                  <div>
+                    <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block">
+                      Legislative Structure • المجلس التشريعي
+                    </span>
+                    <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
+                      The Bicameral Majlis (Parliament)
+                    </h3>
+                  </div>
+                  <span className="text-xs font-mono font-semibold px-3 py-1 bg-ivory-100 text-stone-700 border border-ivory-300 rounded-full">
+                    Codified under July 24, 2025 Constitution
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Upper Chamber: The Majlis al-Shura */}
+                  <div className="bg-gradient-to-br from-ottoman-red-950 to-ottoman-red-900 text-ivory-100 rounded-2xl p-6 border-2 border-brass-gold-500/50 shadow-md space-y-3 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-brass-gold-500/5 rounded-full blur-2xl pointer-events-none" />
+                    
+                    <div className="flex items-center justify-between border-b border-brass-gold-500/30 pb-3">
+                      <span className="text-[10px] font-bold text-brass-gold-400 uppercase tracking-widest">
+                        Upper Chamber • مجلس الشورى
+                      </span>
+                      <span className="text-xs font-serif font-semibold text-brass-gold-300">
+                        Appointed Council
+                      </span>
+                    </div>
+
+                    <h4 className="font-serif text-xl font-bold text-ivory-50">
+                      The Majlis al-Shura (Consultative Council)
+                    </h4>
+
+                    <p className="text-xs text-brass-gold-300 font-semibold font-serif">
+                      Presided over by Chairman Habibullah Mikail Al-Asad
+                    </p>
+
+                    <p className="text-xs text-ivory-200/90 font-sans leading-relaxed pt-1">
+                      Led by Chairman Habibullah Mikail Al-Asad, this appointed council serves as the primary advisory body to the Sultan. It focuses on Islamic jurisprudence, constitutional review, and long-term state policy, ensuring all royal decrees align with the foundational values of the Sultanate.
+                    </p>
+                  </div>
+
+                  {/* Lower Chamber: The People's Assembly */}
+                  <div className="bg-ivory-50 rounded-2xl p-6 border border-ivory-300 shadow-sm space-y-3">
+                    <div className="flex items-center justify-between border-b border-ivory-200 pb-3">
+                      <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest">
+                        Lower Chamber • مجلس الشعب
+                      </span>
+                      <span className="text-xs font-serif font-semibold text-stone-600">
+                        Representative Body
+                      </span>
+                    </div>
+
+                    <h4 className="font-serif text-xl font-bold text-ottoman-red-950">
+                      The People&apos;s Assembly
+                    </h4>
+
+                    <p className="text-xs text-stone-500 font-semibold font-sans">
+                      Representing the 104 Registered Citizens
+                    </p>
+
+                    <p className="text-xs text-stone-700 font-sans leading-relaxed pt-1">
+                      A representative body designed to voice the interests of the 104 registered citizens. It focuses on localized community affairs, cultural preservation, and grassroots initiatives, drafting civil proposals to be reviewed by the Grand Vizier and the Shura.
+                    </p>
+                  </div>
+                </div>
+              </section>
 
               {/* Factions Section */}
               <section className="space-y-4">
