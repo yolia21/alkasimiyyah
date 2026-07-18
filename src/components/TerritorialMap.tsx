@@ -54,7 +54,7 @@ export default function TerritorialMap() {
       type: "Crown-Administered Overseas Territory",
       coordinates: "24.900514, 67.231703",
       area: "4.87 acres (212,189 sq ft)",
-      governorOrAdmin: "Royal Caretakers & Crown Administration",
+      governorOrAdmin: "Umm Omar Syed",
       capitalOrHub: "Gadap Town, Karachi (Malir Cantonment)",
       iframeSrc: "https://maps.google.com/maps?q=24.900514,67.231703&z=16&output=embed",
       description:
