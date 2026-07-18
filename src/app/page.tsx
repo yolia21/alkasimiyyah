@@ -36,9 +36,9 @@ export default function Home() {
       const tabParam = params.get("tab") as TabID;
       if (
         tabParam &&
-        ["home", "government", "history", "culture", "relations", "documents"].includes(tabParam)
+        ["home", "government", "history", "culture", "relations", "documents", "news"].includes(tabParam)
       ) {
-        setActiveTab(tabParam);
+        setActiveTab(tabParam === ("news" as TabID) ? "documents" : tabParam);
       }
     }
   }, []);
@@ -58,7 +58,7 @@ export default function Home() {
     { id: "history", label: "History & Lineage", arabicLabel: "التاريخ والنسب" },
     { id: "culture", label: "Culture & Military", arabicLabel: "الثقافة والجيش" },
     { id: "relations", label: "Foreign Relations", arabicLabel: "العلاقات الخارجية" },
-    { id: "documents", label: "State Documents", arabicLabel: "الوثائق الرسمية" },
+    { id: "documents", label: "News & Decrees", arabicLabel: "أحدث الأخبار والمراسيم" },
   ];
 
   // Detailed Historical Eras Accordion
@@ -585,11 +585,16 @@ export default function Home() {
                 <CurrencyConverter />
               </section>
 
-              {/* Official Documents Registry */}
+              {/* Relocated Official Documents Registry (Constitution & Census Report Download Cards) */}
               <section className="space-y-4">
-                <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
-                  Official State Archives &amp; Registry
-                </h3>
+                <div className="flex justify-between items-end border-b border-ivory-300 pb-2">
+                  <h3 className="text-xl font-serif font-bold text-ottoman-red-900">
+                    Official State Archives &amp; Constitutional Documents
+                  </h3>
+                  <span className="text-xs text-stone-500 font-sans font-medium">
+                    Sovereign Legal Charters
+                  </span>
+                </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Constitution Card */}
@@ -1107,156 +1112,99 @@ export default function Home() {
             </div>
           )}
 
-          {/* TAB 6: STATE DOCUMENTS */}
+          {/* TAB 6: NEW RENAMED TAB: NEWS & DECREES */}
           {activeTab === "documents" && (
             <div className="space-y-8 animate-fadeIn">
 
               {/* Section Header */}
               <div className="text-center space-y-2 pb-4 border-b border-ivory-300">
                 <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block">
-                  دیوانِ اعلیٰ سلطنتِ القاسميه
+                  الجريدة الرسمية والمراسيم السلطانية
                 </span>
                 <h2 className="text-3xl font-serif font-bold text-ottoman-red-950">
-                  Official State Archives &amp; Registry
+                  News &amp; Royal Decrees
                 </h2>
                 <p className="text-sm text-stone-500 font-sans max-w-lg mx-auto">
-                  Foundational legal documents and official records of the Kasimid Sultanate, sealed and published by order of the Royal Diwan.
+                  Official gazette, royal decrees, state honors, and diplomatic proclamations issued by the Royal Diwan.
                 </p>
               </div>
 
-              {/* Document Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* News Feed Grid / Stack */}
+              <div className="space-y-6">
 
-                {/* Constitution Card */}
-                <div className="relative bg-gradient-to-br from-ottoman-red-950 to-ottoman-red-900 rounded-2xl border-2 border-brass-gold-500 shadow-lg overflow-hidden group">
-                  {/* Decorative dot pattern */}
-                  <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#c29b38_1.5px,transparent_1.5px)] [background-size:20px_20px]" />
-
-                  <div className="relative z-10 p-7 flex flex-col h-full space-y-5">
-                    {/* Icon + badge */}
-                    <div className="flex items-start justify-between">
-                      <div className="p-3 bg-brass-gold-500/20 border border-brass-gold-500/40 rounded-xl">
-                        <svg className="w-8 h-8 text-brass-gold-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                      </div>
-                      <span className="text-[9px] font-bold text-brass-gold-400 uppercase tracking-widest bg-brass-gold-500/10 border border-brass-gold-500/30 px-2 py-1 rounded-full">
-                        Supreme Law
+                {/* Top Inaugural Article (Featured Card) */}
+                <article className="relative bg-gradient-to-br from-ottoman-red-950 via-ottoman-red-900 to-ottoman-red-950 text-ivory-100 rounded-2xl border-2 border-brass-gold-500 shadow-xl overflow-hidden p-6 md:p-8 space-y-5">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-brass-gold-500/5 rounded-full blur-3xl pointer-events-none" />
+                  
+                  {/* Metadata Row */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 relative z-10 border-b border-brass-gold-500/30 pb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="px-3 py-1 bg-brass-gold-500 text-ottoman-red-950 font-serif font-bold text-xs rounded-full uppercase tracking-wider shadow-sm">
+                        Royal Decree
+                      </span>
+                      <span className="font-arabic text-brass-gold-300 text-xs px-2.5 py-0.5 rounded-full bg-brass-gold-500/10 border border-brass-gold-500/20" dir="rtl">
+                        وسام علي شهالي
                       </span>
                     </div>
-
-                    {/* Title & description */}
-                    <div className="space-y-2 flex-1">
-                      <h3 className="font-serif text-2xl font-bold text-ivory-50 leading-snug">
-                        The Imperial Constitution
-                      </h3>
-                      <p className="font-arabic text-brass-gold-300 text-base leading-relaxed" dir="rtl">
-                        الدستور الإمبراطوري لسلطنة القاسمية
-                      </p>
-                      <p className="text-sm text-ivory-200/80 font-sans leading-relaxed pt-1">
-                        The supreme law of the Kasimid Sultanate — codifying the monarchy&apos;s structure, the vizierate, legislative Shura assemblies, citizen charters, and the foundational rights of all registered nationals.
-                      </p>
-                    </div>
-
-                    {/* File meta */}
-                    <div className="bg-ottoman-red-950/60 border border-brass-gold-500/20 rounded-lg px-4 py-3 flex items-center justify-between text-xs font-sans text-brass-gold-300">
-                      <span>📄 PDF Document</span>
-                      <span className="text-ivory-300/60">Full-Constitution-of-the-Kasimid-Sultanate.pdf</span>
-                    </div>
-
-                    {/* Buttons */}
-                    <div className="flex gap-3 pt-1">
-                      <a
-                        href="/Full-Constitution-of-the-Kasimid-Sultanate.docx-2.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 text-center text-sm font-semibold bg-brass-gold-500 hover:bg-brass-gold-400 text-ottoman-red-950 py-3 rounded-xl transition-all duration-200 shadow-sm"
-                      >
-                        📖 View Constitution
-                      </a>
-                      <a
-                        href="/Full-Constitution-of-the-Kasimid-Sultanate.docx-2.pdf"
-                        download
-                        className="text-center text-sm font-semibold bg-ottoman-red-800/60 hover:bg-ottoman-red-700/80 text-brass-gold-300 px-4 py-3 rounded-xl transition-all duration-200 border border-brass-gold-500/30 flex items-center justify-center gap-1.5"
-                        title="Download PDF"
-                      >
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                        Download
-                      </a>
-                    </div>
+                    <time className="text-xs font-mono font-medium text-brass-gold-300 flex items-center gap-1.5">
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      13 July 2026
+                    </time>
                   </div>
-                </div>
 
-                {/* Census Report Card */}
-                <div className="relative bg-gradient-to-br from-ottoman-red-950 to-ottoman-red-900 rounded-2xl border-2 border-brass-gold-500 shadow-lg overflow-hidden group">
-                  <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#c29b38_1.5px,transparent_1.5px)] [background-size:20px_20px]" />
+                  {/* Headline */}
+                  <div className="space-y-2 relative z-10">
+                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-ivory-50 leading-tight">
+                      Sultanate Establishes The Order of Ali Shihali; Awards Grand Collar to Imruland President
+                    </h3>
+                  </div>
 
-                  <div className="relative z-10 p-7 flex flex-col h-full space-y-5">
-                    {/* Icon + badge */}
-                    <div className="flex items-start justify-between">
-                      <div className="p-3 bg-brass-gold-500/20 border border-brass-gold-500/40 rounded-xl">
-                        <svg className="w-8 h-8 text-brass-gold-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2z" />
-                        </svg>
-                      </div>
-                      <span className="text-[9px] font-bold text-brass-gold-400 uppercase tracking-widest bg-brass-gold-500/10 border border-brass-gold-500/30 px-2 py-1 rounded-full">
-                        Demographic Record
+                  {/* Article Content Body */}
+                  <div className="space-y-4 text-ivory-200/90 text-sm font-sans leading-relaxed relative z-10 border-t border-brass-gold-500/20 pt-4">
+                    <p>
+                      By royal decree of Sultan Yusuf I, the Kasimid Sultanate has officially established its first state order of merit, <strong className="text-brass-gold-300 font-serif">The Order of Ali Shihali</strong> (<span className="font-arabic text-brass-gold-200" dir="rtl">وسام علي شهالي</span>). Named in honor of the incumbent Vizier, Ali Al Masry (Ali Shihali), the Order is designed to recognize exceptional diplomatic, political, and civil service to the Sultanate and the broader intermicronational community.
+                    </p>
+                    <p>
+                      The Order features three grades: Grand Collar, Commander, and Member. The inaugural induction took place upon the Order&apos;s establishment, with the Sultan bestowing the highest grade, the <strong className="text-brass-gold-300 font-serif">Grand Collar</strong>, upon <strong className="text-brass-gold-200">Showib Ahmmed</strong>, President of the Democratic People&apos;s Republic of Imruland and former Chairman of the Organization of Islamic Micronations (OIM). The honor was granted in recognition of President Ahmmed&apos;s dedicated diplomatic service, intermicronational cooperation, and steadfast support of Kasimid sovereignty.
+                    </p>
+                  </div>
+
+                  {/* Official Seal / Signature Badge */}
+                  <div className="pt-4 border-t border-brass-gold-500/30 flex items-center justify-between text-xs font-serif text-brass-gold-400 relative z-10">
+                    <span>Issued by Order of Sultan Yusuf I</span>
+                    <span className="font-arabic text-sm" dir="rtl">الديوان الملكي</span>
+                  </div>
+                </article>
+
+                {/* Secondary Gazette Item */}
+                <article className="bg-white rounded-2xl border border-ivory-300 p-6 md:p-7 shadow-sm space-y-4 hover:border-brass-gold-400 transition-all duration-200">
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ivory-200 pb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="px-2.5 py-1 bg-ottoman-red-100 text-ottoman-red-900 font-serif font-semibold text-xs rounded-full uppercase tracking-wider border border-ottoman-red-200">
+                        Constitutional Proclamation
                       </span>
+                      <span className="font-arabic text-stone-600 text-xs" dir="rtl">إعلان رسمي</span>
                     </div>
-
-                    {/* Title & description */}
-                    <div className="space-y-2 flex-1">
-                      <h3 className="font-serif text-2xl font-bold text-ivory-50 leading-snug">
-                        2026 Kasimid Census Report
-                      </h3>
-                      <p className="font-arabic text-brass-gold-300 text-base leading-relaxed" dir="rtl">
-                        تقرير إحصاء السكان ١٤٤٧
-                      </p>
-                      <p className="text-sm text-ivory-200/80 font-sans leading-relaxed pt-1">
-                        A comprehensive national survey of all 104 registered citizens of the Kasimid Sultanate, documenting ethnic origins, religious affiliations, and demographic distributions across both wilayat provinces.
-                      </p>
-                    </div>
-
-                    {/* File meta */}
-                    <div className="bg-ottoman-red-950/60 border border-brass-gold-500/20 rounded-lg px-4 py-3 flex items-center justify-between text-xs font-sans text-brass-gold-300">
-                      <span>📊 PDF Report</span>
-                      <span className="text-ivory-300/60">2026-kasimid-sultanate-census-report.pdf</span>
-                    </div>
-
-                    {/* Buttons */}
-                    <div className="flex gap-3 pt-1">
-                      <a
-                        href="/2026-kasimid-sultanate-census-report-1.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 text-center text-sm font-semibold bg-brass-gold-500 hover:bg-brass-gold-400 text-ottoman-red-950 py-3 rounded-xl transition-all duration-200 shadow-sm"
-                      >
-                        📊 View Census Report
-                      </a>
-                      <a
-                        href="/2026-kasimid-sultanate-census-report-1.pdf"
-                        download
-                        className="text-center text-sm font-semibold bg-ottoman-red-800/60 hover:bg-ottoman-red-700/80 text-brass-gold-300 px-4 py-3 rounded-xl transition-all duration-200 border border-brass-gold-500/30 flex items-center justify-center gap-1.5"
-                        title="Download PDF"
-                      >
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                        </svg>
-                        Download
-                      </a>
-                    </div>
+                    <time className="text-xs font-mono font-medium text-stone-500">25 July 2025</time>
                   </div>
-                </div>
+
+                  <h3 className="font-serif text-xl font-bold text-ottoman-red-950">
+                    Proclamation of the Kasimid Sultanate &amp; Ratification of the Imperial Constitution
+                  </h3>
+
+                  <p className="text-xs md:text-sm text-stone-700 font-sans leading-relaxed">
+                    Sultan Yusuf I formally proclaimed the establishment of the sovereign Kasimid Sultanate, replacing previous caliphal structures with a codified constitutional monarchy and establishing the bicameral Majlis.
+                  </p>
+                </article>
 
               </div>
 
-              {/* Seal / Note */}
+              {/* Seal Note */}
               <div className="text-center pt-4">
                 <p className="text-xs text-stone-400 font-sans italic">
-                  All documents are official state records published under the seal of Sultan Yusuf I. 
-                  These materials are archived by the Royal Diwan of the Kasimid Sultanate.
+                  All announcements are official records published by the Royal Diwan of the Kasimid Sultanate.
                 </p>
               </div>
 
