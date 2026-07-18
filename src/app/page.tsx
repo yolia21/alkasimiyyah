@@ -64,65 +64,135 @@ export default function Home() {
   // Detailed Historical Eras Accordion
   const historyEras = [
     {
-      title: "Pre-Modern Era: Lenape Inhabitants",
-      subtitle: "Indigenous Lands & Raritan-Navesink Stewardship",
+      title: "Prehistoric Record: Lenape Inhabitants",
+      subtitle: "Indigenous Stewardship & Raritan Corridor",
       content: (
         <div className="space-y-2">
           <p>
-            Long before the arrival of modern settlements, the geographic bounds of the Sultanate in Central New Jersey were under the ancestral guardianship of the <strong>Raritan</strong> and <strong>Navesink</strong> bands of the <strong>Lenape Nation</strong>.
+            Long before modern administrative boundaries were established, the physical territory along the Raritan River and the Trans Old Bridge Road corridor was sustained by the ancestral habitation of the <strong>Unami band</strong> of the <strong>Lenape Nation</strong>.
           </p>
           <p>
-            These groups lived in close harmony with the river tributaries and woodlands, cultivating the soil and utilizing seasonal migration paths. The Sultanate formally recognizes and respects their historic custody of the land.
+            The Unami stewards maintained seasonal paths and agricultural grounds along the river waterways, establishing the human ecological foundation of Central New Jersey.
           </p>
         </div>
       ),
     },
     {
-      title: "Immigration Wave (1999-2001)",
-      subtitle: "The Y2K Migration & Demographic Foundations",
+      title: "Colonial Period & Crown Grants (1664–1737)",
+      subtitle: "English Sovereign Control & Brownville Settlement",
       content: (
         <div className="space-y-2">
           <p>
-            During the Y2K technological boom, Central New Jersey experienced a major immigration wave, bringing families and professionals of South Asian and Middle Eastern heritage to the region.
+            English sovereign control over the territory was formalized in <strong>1664</strong>, culminating in the erection of Middlesex County boundaries in <strong>1683</strong>.
           </p>
           <p>
-            This demographic influx established the cultural, academic, and economic foundations of the local community, creating the network of citizens that would later form the core registry of the micronation.
+            In <strong>1737</strong>, a landmark 1,000-acre Crown land grant was issued to John and Susannah Brown, formally establishing the historical sector of <strong>&quot;Brownville&quot;</strong> (Browntown / Trans Old Bridge Road sector).
           </p>
         </div>
       ),
     },
     {
-      title: "The Raritan Era (2014-2025)",
-      subtitle: "Hashemian National Project, Rebellion, and Espionage",
+      title: "Revolutionary War & 19th Century (1778–1975)",
+      subtitle: "Road to Monmouth & Township Incorporation",
+      content: (
+        <div className="space-y-2">
+          <p>
+            During the American Revolutionary War, the corridor served as a strategic crossroads for troop movements leading toward the pivotal <strong>Battle of Monmouth (1778)</strong>.
+          </p>
+          <p>
+            The surrounding municipal region was incorporated as <strong>Madison Township in 1869</strong>, and subsequently renamed <strong>Old Bridge Township in 1975</strong>.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "Late 20th Century Demographic Shift (1999–2001)",
+      subtitle: "The Y2K Migration & Royal Lineage Settlement",
+      content: (
+        <div className="space-y-2">
+          <p>
+            At the turn of the 21st century, a major migration wave of South Asian and Middle Eastern technology professionals arrived in Central New Jersey to perform crucial infrastructure adjustments resolving the Y2K computer bug.
+          </p>
+          <p>
+            This movement brought the ancestral lineages of the royal family to the region between <strong>1999 and 2001</strong>, establishing the vibrant cultural, academic, and economic network of the modern citizenry.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "Early Independence Movements (1999–2021)",
+      subtitle: "Waliustan & The Hashemia Proclamation",
+      content: (
+        <div className="space-y-2">
+          <p>
+            Micronational governance began in <strong>1999</strong> with the founding of the <em>Islamic Republic of Waliustan</em> by ten Pakistani immigrants.
+          </p>
+          <p>
+            On <strong>August 31, 2021</strong>, the <em>Kingdom of Hashemia</em> was proclaimed, establishing Qadirabad with an initial population of 80 residents. A royal election on September 1, 2021, formally chose the Hashemite dynastic framework.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "The Hashemian Era & Conflicts (2021–2023)",
+      subtitle: "Civil Strife, Expansion, and Territorial Annexations",
       content: (
         <div className="space-y-3">
           <p>
-            In 2014, the <strong>Hashemian National Project</strong> was launched, giving rise to Raritania. Initially organized as a principality, it was later declared a Caliphate. This era was characterized by significant political development, but also internal and external friction:
+            This era saw intense political activity and rapid territorial expansion, marked by pivotal events:
           </p>
           <div className="pl-4 border-l-2 border-brass-gold-400 py-1 space-y-2 text-xs bg-white rounded p-3">
             <p>
-              <strong>• The West Qadirabad Rebellion:</strong> A territorial and administrative factional split occurred in the western suburbs. Factions demanding federal autonomy rose in defiance of centralized rule, leading to the outlawing of the Federali party and years of legal gridlock.
+              <strong>• Hashemian Civil War (Oct 10, 2021):</strong> Neutralized the West Qadirabad progressive federalist faction to restore administrative authority.
             </p>
             <p>
-              <strong>• The 2023 Espionage Scandal:</strong> National security was compromised in a high-profile incident involving <em>Maximilian Frederick</em>. Frederick was accused of conducting unauthorized surveillance, document theft, and attempting to destabilize Raritania's sovereign councils, prompting a structural overhaul.
+              <strong>• Hashemian National Project (Jan 8, 2022):</strong> Annexed Khaled City and Badayun utilizing tactical bicycle mobility.
+            </p>
+            <p>
+              <strong>• Decker Rebellion Suppression (Jan 23, 2022):</strong> Neutralized internal dissident uprisings to maintain state security.
+            </p>
+            <p>
+              <strong>• Annexation of Tartary (Oct 22, 2022):</strong> Formally annexed the Republic of Tartary and its capital, Tarillamun.
             </p>
           </div>
+        </div>
+      ),
+    },
+    {
+      title: "The VECTO Era & Cyber Warfare (2023–2024)",
+      subtitle: "International Alliances & The USR Crusade",
+      content: (
+        <div className="space-y-3">
           <p>
-            In order to resolve these recurring structural vulnerabilities and achieve institutional stability, the Caliph of Raritania declared the formal dissolution of the old state machinery to clear the path for a constitutional monarchy.
+            On <strong>July 5, 2023</strong>, the state joined UMN and VECTO, rebranding to the <em>Hashemite Kingdom of Raritania</em> on July 15. The state suffered the &quot;Dark Age&quot; server destruction in August 2023, followed immediately by digital platform reconstruction and the founding of UNAM on August 6, 2023.
+          </p>
+          <p>
+            On <strong>November 22, 2023</strong>, the realm mounted a successful defense against the USR &quot;Grand Crusade,&quot; which led to the complete structural collapse of the USR on February 4, 2024.
           </p>
         </div>
       ),
     },
     {
-      title: "The Kasimid Era (2025-Present)",
-      subtitle: "Proclamation of Independence & Reign of Sultan Yusuf I",
+      title: "The Raritan Caliphate (2024–2025)",
+      subtitle: "Caliphal Governance & Dynastic Abdication",
       content: (
         <div className="space-y-2">
           <p>
-            On <strong>25 July 2025</strong>, the old Caliphate structures were formally dissolved, and the sovereign <strong>Kasimid Sultanate</strong> (سلطنتِ القاسميه) was proclaimed.
+            On <strong>December 30, 2024</strong>, the state proclaimed the <em>Raritan Caliphate</em>, shifting state machinery toward classical caliphal governance principles and marking the formal abdication of traditional royal titles by the Majidid family.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "Establishment of the Kasimid Sultanate (2025–Present)",
+      subtitle: "Constitutional Order & Reign of Sultan Yusuf I",
+      content: (
+        <div className="space-y-2">
+          <p>
+            Following the unilateral dissolution of caliphal structures due to administrative over-expansion, the modern <strong>Constitution of the Kasimid Sultanate</strong> was ratified on <strong>July 24, 2025</strong>.
           </p>
           <p>
-            The dynasty is named in honor of the revered ancestor <strong>Kasim al-Raniri</strong>, a historical scholar and merchant. This new era established a balanced constitution, appointed Grand Vizier Ali Al Masry to manage domestic affairs, and successfully structured the regional Wilayat.
+            The constitution established a bicameral Majlis with political advisor <em>Jasbirji XV</em> appointed as inaugural Minister of Culture. On <strong>May 11, 2026</strong>, the Grand Vizier role transitioned from Mikail Jidar to <em>Ali Al Masry</em>.
           </p>
         </div>
       ),
@@ -160,10 +230,10 @@ export default function Home() {
             {/* National Motto Panel */}
             <div className="border border-brass-gold-500/40 bg-ottoman-red-950/60 rounded-xl p-4 max-w-sm text-center md:text-right shadow-inner">
               <span className="block font-arabic text-brass-gold-300 text-lg mb-1 leading-normal" dir="rtl">
-                "لا يوجد إلا طريق واحد، وهو طريق الله"
+                &quot;لا يوجد إلا طريق واحد، وهو طريق الله&quot;
               </span>
               <p className="text-xs italic text-ivory-200 font-serif">
-                "There is only one way, and that is the way of God"
+                &quot;There is only one way, and that is the way of God&quot;
               </p>
               <div className="mt-2 text-[9px] uppercase tracking-wider text-brass-gold-400/80 font-semibold font-sans">
                 National Motto of the Sultanate
@@ -262,13 +332,13 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#c29b38_1px,transparent_1px)] [background-size:16px_16px]" />
                 <div className="relative z-10 space-y-3">
                   <span className="text-[10px] font-bold text-brass-gold-400 uppercase tracking-widest block">
-                    The Sovereign's Creed • العقيدة السيادية
+                    The Sovereign&apos;s Creed • العقيدة السيادية
                   </span>
                   <p className="font-arabic text-brass-gold-300 text-2xl md:text-3xl leading-relaxed py-1" dir="rtl">
                     ”بفضلِ باری تعالیٰ، حصولِ ہر خواب ممکن“
                   </p>
                   <blockquote className="text-sm italic text-ivory-200 font-serif max-w-xl mx-auto">
-                    "By the grace of God, the attainment of every dream is possible."
+                    &quot;By the grace of God, the attainment of every dream is possible.&quot;
                   </blockquote>
                   <div className="pt-2 border-t border-brass-gold-600/30 max-w-xs mx-auto">
                     <h5 className="font-serif text-xs font-bold text-brass-gold-400">
@@ -284,7 +354,7 @@ export default function Home() {
               {/* Quick Stats Grid */}
               <section className="space-y-4">
                 <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
-                  National Indicators & Fast Facts
+                  National Indicators &amp; Fast Facts
                 </h3>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -315,6 +385,16 @@ export default function Home() {
                     icon={
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                      </svg>
+                    }
+                  />
+                  <StatCard
+                    label="Overseas Territories"
+                    value="1 Territory (Al Maqsoodi)"
+                    subtitle="4.87 acres (212,189 sq ft) located in Gadap Town, Karachi"
+                    icon={
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 002.5-2.5V7.435M12 21a9 9 0 100-18 9 9 0 000 18z" />
                       </svg>
                     }
                   />
@@ -356,7 +436,7 @@ export default function Home() {
                       <strong>Ismailabad</strong> serves as the administrative capital and dynastic seat of the Sultanate. Comprising a carefully cataloged territory, it stands as the heart of governmental operations, treasury archives, and the Shura chamber.
                     </p>
                     <p>
-                      <strong>Etymology:</strong> The name represents a synthesis of cultural lineage and language. <em>Ismail</em> is in honor of the revered father of the current Sultan, Sidi Isma’il al-Raniri. The suffix <em>-abad</em> is derived from Persian, meaning "cultivated place," "town," or "city," symbolizing a settlement founded on prosperity and structure.
+                      <strong>Etymology:</strong> The name represents a synthesis of cultural lineage and language. <em>Ismail</em> is in honor of the revered father of the current Sultan, Sidi Isma’il al-Raniri. The suffix <em>-abad</em> is derived from Persian, meaning &quot;cultivated place,&quot; &quot;town,&quot; or &quot;city,&quot; symbolizing a settlement founded on prosperity and structure.
                     </p>
                   </div>
                   
@@ -508,7 +588,7 @@ export default function Home() {
               {/* Official Documents Registry */}
               <section className="space-y-4">
                 <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
-                  Official State Archives & Registry
+                  Official State Archives &amp; Registry
                 </h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -663,7 +743,7 @@ export default function Home() {
               {/* Factions Section */}
               <section className="space-y-4">
                 <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
-                  Consultative Assembly & Factions Registry
+                  Consultative Assembly &amp; Factions Registry
                 </h3>
                 <PoliticalPartiesTable />
               </section>
@@ -691,7 +771,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <Accordion items={historyEras} defaultOpenIndex={2} />
+                <Accordion items={historyEras} defaultOpenIndex={historyEras.length - 1} />
               </section>
 
               {/* Wilayat (Provinces) */}
@@ -701,11 +781,68 @@ export default function Home() {
                     Wilayat (Provinces of the Sultanate)
                   </h3>
                   <span className="text-xs text-stone-500 font-sans font-medium">
-                    Provincial Governors & Boundaries
+                    Provincial Governors &amp; Boundaries
                   </span>
                 </div>
 
                 <ProvincesTable />
+              </section>
+
+              {/* Dedicated Overseas Territories Subsection */}
+              <section className="space-y-4">
+                <div className="flex justify-between items-end border-b border-ivory-300 pb-2">
+                  <h3 className="text-xl font-serif font-bold text-ottoman-red-900">
+                    Overseas Territories • أقاليم ما وراء البحار
+                  </h3>
+                  <span className="text-xs text-stone-500 font-sans font-medium">
+                    Crown-Administered Lands
+                  </span>
+                </div>
+
+                <div className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4 hover:border-brass-gold-400 transition-all duration-300">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-ivory-200 pb-3">
+                    <div>
+                      <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block">Crown Territory</span>
+                      <h4 className="font-serif text-xl font-bold text-ottoman-red-950 flex flex-wrap items-center gap-2">
+                        <span>Overseas Territory of Al Maqsoodi</span>
+                        <span className="font-arabic text-base text-brass-gold-700 font-normal" dir="rtl">
+                          (إقليم المقصودي ما وراء البحار)
+                        </span>
+                      </h4>
+                    </div>
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-ottoman-red-100 text-ottoman-red-900 border border-ottoman-red-200 self-start md:self-auto">
+                      Crown-Administered Hub
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm font-sans text-stone-700">
+                    <div className="space-y-3">
+                      <div>
+                        <strong className="text-ottoman-red-950 font-serif block text-xs uppercase tracking-wider mb-1">Geographic Location</strong>
+                        <p className="text-stone-600">
+                          Memon Goth Road, Gadap Town, Karachi (Malir Cantonment region).
+                        </p>
+                      </div>
+                      <div>
+                        <strong className="text-ottoman-red-950 font-serif block text-xs uppercase tracking-wider mb-1">Administrative Status</strong>
+                        <p className="text-stone-600">
+                          Crown-Administered Territory managed by local caretakers under the Sultanate. Serves as a primary tourism, hospitality, and event-hosting hub for macro-national visitors.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3 bg-ivory-50 p-4 rounded-xl border border-ivory-200">
+                      <strong className="text-ottoman-red-950 font-serif block text-xs uppercase tracking-wider mb-1">Lineage Connection &amp; Treaty</strong>
+                      <p className="text-xs text-stone-600 leading-relaxed">
+                        Named in honor of <strong>Syed Maqsood Azam (1934–2024)</strong>, member of the Majidid dynasty and great-grandson of Mir Majid Ali. The property is held via a formal treaty finalized on <strong>August 25, 2023, at 3:00 PM PKT</strong> between Sultan Yusuf I and the owner, <strong>Umm Omar</strong> (first cousin of the Sultan&apos;s maternal grandmother).
+                      </p>
+                      <div className="pt-2 border-t border-ivory-200 flex justify-between text-[11px] font-mono text-stone-500">
+                        <span>Extent: 4.87 acres</span>
+                        <span>(212,189 sq ft)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </section>
 
               {/* Climate Data / Weather Box */}
@@ -727,7 +864,7 @@ export default function Home() {
               <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-6">
                 <div>
                   <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
-                    Society, Culture & Economy
+                    Society, Culture &amp; Economy
                   </h3>
                   <p className="text-xs text-stone-500 font-sans tracking-wide mt-1">
                     Customs, Traditional Livelihoods, and Economic Foundations
@@ -737,7 +874,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-stone-700 text-sm leading-relaxed">
                   <div className="space-y-3">
                     <h4 className="font-serif text-lg font-semibold text-ottoman-red-900">
-                      Heritage & Spices
+                      Heritage &amp; Spices
                     </h4>
                     <p>
                       The cultural landscape combines classical Islamic values, regional South Asian/MENA heritage, and Raritan Valley maritime traditions.
@@ -749,7 +886,7 @@ export default function Home() {
 
                   <div className="space-y-3">
                     <h4 className="font-serif text-lg font-semibold text-ottoman-red-900">
-                      Spiritual & Home Economy
+                      Spiritual &amp; Home Economy
                     </h4>
                     <p>
                       The economy is characterized by a modest, home-based production framework. Due to geographic limitations, citizens focus on producing high-quality artisanal crafts, digital services, and spice processing (specializing in dried dates and traditional culinary blends).
@@ -757,6 +894,57 @@ export default function Home() {
                     <p>
                       Treasury reserves are strictly regulated, with the Kasimi Dinar pegged firmly to the Euro (EUR) to guarantee economic integrity.
                     </p>
+                  </div>
+                </div>
+
+                {/* National Anthem Component Block */}
+                <div className="mt-6 border-2 border-brass-gold-500/50 bg-gradient-to-br from-ottoman-red-950 to-ottoman-red-900 rounded-2xl p-6 md:p-8 text-center text-ivory-100 shadow-lg relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#c29b38_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
+                  
+                  <div className="relative z-10 space-y-6">
+                    <div>
+                      <span className="text-[10px] uppercase font-bold tracking-widest text-brass-gold-400 bg-brass-gold-500/10 border border-brass-gold-500/30 px-3 py-1 rounded-full">
+                        National Anthem • النشيد الوطني
+                      </span>
+                      <h4 className="font-arabic text-2xl md:text-3xl text-brass-gold-300 font-bold mt-3" dir="rtl">
+                        النشيد الوطني للسلطنة القاسمية (عاشت بلادي)
+                      </h4>
+                      <p className="text-xs font-serif text-ivory-200/80 tracking-wide mt-1">
+                        National Anthem of the Kasimid Sultanate (&quot;Long Live My Country&quot;)
+                      </p>
+                    </div>
+
+                    <div className="max-w-xl mx-auto py-4 px-6 bg-ottoman-red-900/60 border border-brass-gold-500/30 rounded-xl space-y-4 font-arabic text-lg md:text-xl text-ivory-50 leading-loose" dir="rtl">
+                      <p className="border-b border-brass-gold-600/30 pb-3">
+                        عاشَت بلادي، بِعزٍّ ويَقين<br />
+                        سلطنةُ المجدِ، حِصنٌ أَمين<br />
+                        رايَتُنا الخضراءُ في العالَمين<br />
+                        بالحقِ والعدلِ نَحنُ نَدين
+                      </p>
+                      <p className="border-b border-brass-gold-600/30 pb-3">
+                        مِن غاباتِ غبانَ نورٌ سَطَع<br />
+                        في جَماعَةِ الخَيرِ شَملٌ جُمِع<br />
+                        نَبني الديارَ بعَزمٍ صُلب<br />
+                        ويُوسُفُ فينا إمامٌ وَقُطب
+                      </p>
+                      <p>
+                        أرواحُنا فِداءٌ لِهذا الثَّرى<br />
+                        وما وَراءَ البِحارِ عِزٌّ سَرى<br />
+                        حَفِظَ اللهُ السُّلطانَ والوَطَن<br />
+                        نَبقى أُباةً عَلى مَرِّ الزَّمَن
+                      </p>
+                    </div>
+
+                    {/* Styled HTML5 Audio Player */}
+                    <div className="pt-2 max-w-md mx-auto flex flex-col items-center gap-2">
+                      <audio controls className="w-full h-10 rounded-lg accent-brass-gold-500">
+                        <source src="/national-anthem.mp3" type="audio/mpeg" />
+                        Your browser does not support the audio element.
+                      </audio>
+                      <span className="text-[10px] text-brass-gold-400/80 font-sans uppercase tracking-wider">
+                        Official Ceremonial Rendition
+                      </span>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -771,10 +959,10 @@ export default function Home() {
                 </div>
                 <div className="space-y-3 text-stone-700 text-sm leading-relaxed">
                   <p>
-                    The national defense force, **Jaysh al-Saltanah al-Qasimiyyah**, serves in a strictly ceremonial and cultural reenactment capacity. 
+                    The national defense force, <strong>Jaysh al-Saltanah al-Qasimiyyah</strong>, serves in a strictly ceremonial and cultural reenactment capacity. 
                   </p>
                   <p>
-                    In order to maintain absolute compliance with local and federal statutes of the host nation (specifically United States federal law under the **Posse Comitatus Act - 18 U.S. Code § 1385**), the forces are entirely prohibited from executing domestic law enforcement actions, civil policing, or active kinetic operations. 
+                    In order to maintain absolute compliance with local and federal statutes of the host nation (specifically United States federal law under the <strong>Posse Comitatus Act - 18 U.S. Code § 1385</strong>), the forces are entirely prohibited from executing domestic law enforcement actions, civil policing, or active kinetic operations. 
                   </p>
                   <p>
                     Their duties are limited to serving as honor guards for the Sultan, coordinating local cultural events, maintaining historical registries, and preparing emergency preparedness drills.
@@ -786,10 +974,10 @@ export default function Home() {
               <section className="space-y-4">
                 <div className="flex justify-between items-end border-b border-ivory-300 pb-2">
                   <h3 className="text-xl font-serif font-bold text-ottoman-red-900">
-                    Official Calendar & National Holidays
+                    Official Calendar &amp; National Holidays
                   </h3>
                   <span className="text-xs text-stone-500 font-sans font-medium">
-                    Religious & Cultural Observances
+                    Religious &amp; Cultural Observances
                   </span>
                 </div>
 
@@ -806,7 +994,7 @@ export default function Home() {
               {/* Stance & Framework */}
               <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
                 <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
-                  Diplomatic Doctrine & Stance
+                  Diplomatic Doctrine &amp; Stance
                 </h3>
                 <p className="text-stone-700 text-sm leading-relaxed">
                   The Kasimid Sultanate maintains a strict <strong>neutral foreign policy</strong>. The Sultanate does not take part in military blocks, regional disputes, or kinetic alliances. It actively advocates for peace, human rights, and the recognition of oppressed populations across global forums, seeking friendly bilateral cultural exchanges and academic trade partnerships.
@@ -816,7 +1004,7 @@ export default function Home() {
               {/* Alliances & Memberships */}
               <section className="space-y-4">
                 <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
-                  International Memberships & Alliances
+                  International Memberships &amp; Alliances
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -909,7 +1097,7 @@ export default function Home() {
                     </li>
                     <li className="flex items-center space-x-2">
                       <span className="text-red-500 font-bold">•</span>
-                      <span><strong>People's Republic of China (PRC)</strong> — Unrecognized in protest of regional rights concerns.</span>
+                      <span><strong>People&apos;s Republic of China (PRC)</strong> — Unrecognized in protest of regional rights concerns.</span>
                     </li>
                   </ul>
                 </div>
@@ -929,7 +1117,7 @@ export default function Home() {
                   دیوانِ اعلیٰ سلطنتِ القاسميه
                 </span>
                 <h2 className="text-3xl font-serif font-bold text-ottoman-red-950">
-                  Official State Archives & Registry
+                  Official State Archives &amp; Registry
                 </h2>
                 <p className="text-sm text-stone-500 font-sans max-w-lg mx-auto">
                   Foundational legal documents and official records of the Kasimid Sultanate, sealed and published by order of the Royal Diwan.
@@ -966,7 +1154,7 @@ export default function Home() {
                         الدستور الإمبراطوري لسلطنة القاسمية
                       </p>
                       <p className="text-sm text-ivory-200/80 font-sans leading-relaxed pt-1">
-                        The supreme law of the Kasimid Sultanate — codifying the monarchy's structure, the vizierate, legislative Shura assemblies, citizen charters, and the foundational rights of all registered nationals.
+                        The supreme law of the Kasimid Sultanate — codifying the monarchy&apos;s structure, the vizierate, legislative Shura assemblies, citizen charters, and the foundational rights of all registered nationals.
                       </p>
                     </div>
 
