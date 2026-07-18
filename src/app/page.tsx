@@ -1029,13 +1029,13 @@ export default function Home() {
                   {/* OIM */}
                   <div className="bg-white p-5 rounded-xl border border-ivory-300 hover:border-brass-gold-400 transition-colors shadow-sm">
                     <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block mb-1">
-                      Chief Justice Role
+                      EXECUTIVE CHAIR / LEADERSHIP ROLE
                     </span>
                     <h4 className="font-serif font-bold text-lg text-ottoman-red-950 mb-2">
                       OIM
                     </h4>
                     <p className="text-xs text-stone-600 leading-relaxed">
-                      Organization of Islamic Micronations. The Sultanate serves a leading judicial function, coordinating legal reviews and inter-state treaties.
+                      Organization of Islamic Micronations. Following the late June election victory of Sultan Yusuf I, the Kasimid Sultanate holds the Chairmanship of the OIM for the 2026 term. The Sultanate directs executive operations, fosters inter-state treaties, and guides diplomatic unity across the Islamic micronational community alongside Vice-Chair Al-Mu&apos;tazz billah of Rovia.
                     </p>
                   </div>
 
