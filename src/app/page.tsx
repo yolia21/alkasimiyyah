@@ -1129,10 +1129,10 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* News Feed Grid / Stack */}
+              {/* News Feed Stack (Sorted Newest First) */}
               <div className="space-y-6">
 
-                {/* Top Inaugural Article (Featured Card) */}
+                {/* News Article 1: 13 July 2026 (Featured Royal Decree Card) */}
                 <article className="relative bg-gradient-to-br from-ottoman-red-950 via-ottoman-red-900 to-ottoman-red-950 text-ivory-100 rounded-2xl border-2 border-brass-gold-500 shadow-xl overflow-hidden p-6 md:p-8 space-y-5">
                   <div className="absolute top-0 right-0 w-64 h-64 bg-brass-gold-500/5 rounded-full blur-3xl pointer-events-none" />
                   
@@ -1178,7 +1178,45 @@ export default function Home() {
                   </div>
                 </article>
 
-                {/* Secondary Gazette Item */}
+                {/* News Article 2: 01 July 2026 (OIM Chairmanship Card) */}
+                <article className="bg-white rounded-2xl border border-ivory-300 p-6 md:p-8 shadow-sm space-y-5 hover:border-brass-gold-400 transition-all duration-200">
+                  {/* Metadata Row */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ivory-200 pb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="px-3 py-1 bg-ottoman-red-900 text-brass-gold-300 font-serif font-bold text-xs rounded-full uppercase tracking-wider shadow-sm">
+                        OIM Leadership
+                      </span>
+                      <span className="font-arabic text-ottoman-red-800 text-xs px-2.5 py-0.5 rounded-full bg-ivory-100 border border-ivory-300" dir="rtl">
+                        رئاسة منظمة الميكرونations الإسلامية
+                      </span>
+                    </div>
+                    <time className="text-xs font-mono font-medium text-stone-500 flex items-center gap-1.5">
+                      <svg className="w-3.5 h-3.5 text-brass-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      01 July 2026
+                    </time>
+                  </div>
+
+                  {/* Headline */}
+                  <div className="space-y-1">
+                    <h3 className="font-serif text-2xl font-bold text-ottoman-red-950 leading-snug">
+                      Sultan Yusuf I Assumes Chairmanship of the OIM Following Election Victory
+                    </h3>
+                  </div>
+
+                  {/* Body Text */}
+                  <div className="space-y-3 text-stone-700 text-sm font-sans leading-relaxed border-t border-ivory-200 pt-4">
+                    <p>
+                      On 1 July 2026, Sultan Yusuf I officially assumed the office of Chairman of the Organization of Islamic Micronations (OIM), succeeding outgoing Chairman Showib Ahmmed.
+                    </p>
+                    <p>
+                      The transition of leadership follows a decisive late June election in which the Sultan defeated his opponent, Amir Abbas Arya&apos;i of Arsalania, to secure the seat. Upon taking office, Sultan Yusuf I immediately moved to form his administration, officially appointing Al-Mu&apos;tazz billah of the State of Rovia to serve as Vice-Chair of the organization. The Sultanate looks forward to leading the OIM in fostering greater diplomatic and economic cooperation across the Islamic micronational community.
+                    </p>
+                  </div>
+                </article>
+
+                {/* News Article 3: 25 July 2025 (Constitutional Proclamation) */}
                 <article className="bg-white rounded-2xl border border-ivory-300 p-6 md:p-7 shadow-sm space-y-4 hover:border-brass-gold-400 transition-all duration-200">
                   <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ivory-200 pb-3">
                     <div className="flex items-center gap-2">
