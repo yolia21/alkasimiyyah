@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Inter, Noto_Naskh_Arabic } from "next/font/google";
+import { Playfair_Display, Inter, Noto_Naskh_Arabic, Noto_Nastaliq_Urdu } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -21,8 +21,15 @@ const notoNaskhArabic = Noto_Naskh_Arabic({
   weight: ["400", "500", "600", "700"],
 });
 
+const notoNastaliqUrdu = Noto_Nastaliq_Urdu({
+  subsets: ["arabic"],
+  variable: "--font-urdu",
+  display: "swap",
+  weight: ["400", "700"],
+});
+
 export const metadata: Metadata = {
-  title: "The Kasimid Sultanate | Official Government Portal",
+  title: "The Kasimid Sultanate | Official Sovereign Portal",
   description: "Official web portal of The Kasimid Sultanate (سلطنتِ القاسميه), a sovereign micronation in Central New Jersey. Providing national information, demographics, history, and official announcements.",
   keywords: ["Kasimid Sultanate", "Sultanate", "Ismailabad", "Yusuf I", "Central New Jersey Micronation", "Sovereign Micronation"],
 };
@@ -35,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} ${notoNaskhArabic.variable} h-full antialiased`}
+      className={`${playfair.variable} ${inter.variable} ${notoNaskhArabic.variable} ${notoNastaliqUrdu.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-ivory-100 text-stone-900 selection:bg-brass-gold-200 selection:text-ottoman-red-900">
         {children}
@@ -43,4 +50,3 @@ export default function RootLayout({
     </html>
   );
 }
-
