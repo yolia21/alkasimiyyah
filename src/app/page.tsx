@@ -7,6 +7,8 @@ import Accordion from "@/components/Accordion";
 import ProfileCard from "@/components/ProfileCard";
 import Lineage from "@/components/Lineage";
 import TerritorialMap from "@/components/TerritorialMap";
+import LanguageSelector from "@/components/LanguageSelector";
+import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
 import {
   PoliticalPartiesTable,
   ProvincesTable,
@@ -27,8 +29,9 @@ interface TabItem {
   arabicLabel: string;
 }
 
-export default function Home() {
+function MainPortalContent() {
   const [activeTab, setActiveTab] = useState<TabID>("home");
+  const { t, isRTL, language } = useLanguage();
 
   // Sync tab with URL search parameter (?tab=...)
   useEffect(() => {
@@ -54,13 +57,13 @@ export default function Home() {
   };
 
   const tabs: TabItem[] = [
-    { id: "home", label: "Overview & Capital", arabicLabel: "نظرة عامة والعاصمة" },
-    { id: "regions", label: "Administrative Regions", arabicLabel: "المناطق الإدارية" },
-    { id: "government", label: "Royal Court & Shura", arabicLabel: "البلاط الملكي والشورى" },
-    { id: "history", label: "History & Lineage", arabicLabel: "التاريخ والنسب" },
-    { id: "culture", label: "Culture & Military", arabicLabel: "الثقافة والجيش" },
-    { id: "relations", label: "Foreign Relations", arabicLabel: "العلاقات الخارجية" },
-    { id: "documents", label: "News & Decrees", arabicLabel: "أحدث الأخبار والمراسيم" },
+    { id: "home", label: t("tab_home"), arabicLabel: language === "en" ? "نظرة عامة والعاصمة" : t("tab_home") },
+    { id: "regions", label: t("tab_regions"), arabicLabel: language === "en" ? "الأقاليم والخرائط" : t("tab_regions") },
+    { id: "government", label: t("tab_government"), arabicLabel: language === "en" ? "البلاط الملكي والشورى" : t("tab_government") },
+    { id: "history", label: t("tab_history"), arabicLabel: language === "en" ? "التاريخ والنسب" : t("tab_history") },
+    { id: "culture", label: t("tab_culture"), arabicLabel: language === "en" ? "الثقافة والجيش" : t("tab_culture") },
+    { id: "relations", label: t("tab_relations"), arabicLabel: language === "en" ? "العلاقات الخارجية" : t("tab_relations") },
+    { id: "documents", label: t("tab_documents"), arabicLabel: language === "en" ? "الأخبار والمراسيم" : t("tab_documents") },
   ];
 
   // Detailed Historical Eras Accordion
@@ -215,45 +218,52 @@ export default function Home() {
             <Flag width={180} height={120} />
             <div className="space-y-1">
               <span className="block font-arabic text-brass-gold-400 text-3xl md:text-4xl leading-relaxed tracking-wide animate-pulse" dir="rtl">
-                سلطنتِ القاسميه
+                {t("site_title")}
               </span>
               <h1 className="text-2xl md:text-3xl font-bold font-serif tracking-widest text-ivory-100">
-                THE KASIMID SULTANATE
+                {t("site_title")}
               </h1>
               <p className="text-xs uppercase tracking-widest text-brass-gold-300 font-sans font-medium">
-                Official Sovereign Government Portal • Central New Jersey
+                {t("site_subtitle")}
               </p>
             </div>
           </div>
 
-          {/* Right side: Motto + Portal button */}
+          {/* Right side: Motto + Language Selector + Portal button */}
           <div className="flex flex-col items-center md:items-end gap-4">
+
+            {/* Top Bar Utilities: Language Selector & Citizen Portal */}
+            <div className="flex items-center gap-3">
+              <LanguageSelector />
+
+              {/* Citizen Portal Entry Button */}
+              <a
+                href="/portal/login"
+                id="citizen-portal-header-btn"
+                className="inline-flex items-center gap-2 bg-brass-gold-500 hover:bg-brass-gold-400 text-ottoman-red-950 font-serif font-bold text-xs md:text-sm px-4 py-2 rounded-xl border-2 border-brass-gold-400 shadow-lg hover:shadow-brass-gold-500/30 transition-all duration-200 tracking-wide"
+              >
+                <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                </svg>
+                {t("citizen_portal")}
+                <span className="font-arabic text-[11px] font-normal opacity-80" dir="rtl">
+                  ({t("portal_sublabel")})
+                </span>
+              </a>
+            </div>
 
             {/* National Motto Panel */}
             <div className="border border-brass-gold-500/40 bg-ottoman-red-950/60 rounded-xl p-4 max-w-sm text-center md:text-right shadow-inner">
               <span className="block font-arabic text-brass-gold-300 text-lg mb-1 leading-normal" dir="rtl">
-                &quot;لا يوجد إلا طريق واحد، وهو طريق الله&quot;
+                &quot;{t("motto_text")}&quot;
               </span>
               <p className="text-xs italic text-ivory-200 font-serif">
-                &quot;There is only one way, and that is the way of God&quot;
+                &quot;{t("motto_text")}&quot;
               </p>
               <div className="mt-2 text-[9px] uppercase tracking-wider text-brass-gold-400/80 font-semibold font-sans">
-                National Motto of the Sultanate
+                {t("motto_sublabel")}
               </div>
             </div>
-
-            {/* Citizen Portal Entry Button */}
-            <a
-              href="/portal/login"
-              id="citizen-portal-header-btn"
-              className="inline-flex items-center gap-2 bg-brass-gold-500 hover:bg-brass-gold-400 text-ottoman-red-950 font-serif font-bold text-sm px-5 py-2.5 rounded-xl border-2 border-brass-gold-400 shadow-lg hover:shadow-brass-gold-500/30 transition-all duration-200 tracking-wide"
-            >
-              <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
-              </svg>
-              Citizen Portal
-              <span className="font-arabic text-[11px] font-normal opacity-80" dir="rtl">دیوانِ خاص</span>
-            </a>
 
           </div>
         </div>
@@ -274,9 +284,11 @@ export default function Home() {
                 }`}
               >
                 <span className="font-sans text-xs tracking-wide whitespace-nowrap">{tab.label}</span>
-                <span className="font-arabic text-[10px] mt-0.5 opacity-80" dir="rtl">
-                  {tab.arabicLabel}
-                </span>
+                {language === "en" && (
+                  <span className="font-arabic text-[10px] mt-0.5 opacity-80" dir="rtl">
+                    {tab.arabicLabel}
+                  </span>
+                )}
               </button>
             ))}
           </div>
@@ -290,7 +302,7 @@ export default function Home() {
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
             </svg>
-            Citizen Portal
+            {t("citizen_portal")}
           </a>
         </div>
       </nav>
@@ -310,10 +322,10 @@ export default function Home() {
                 
                 <div className="max-w-2xl space-y-4 relative z-10">
                   <span className="inline-block px-3 py-1 bg-brass-gold-600 text-ottoman-red-950 text-[10px] uppercase font-bold tracking-widest rounded-full">
-                    Sovereign Proclamation
+                    {t("sovereign_proclamation")}
                   </span>
                   <h2 className="text-3xl font-serif font-bold text-ivory-50 leading-tight">
-                    Welcome to the Sovereign Gateway
+                    {t("welcome_title")}
                   </h2>
                   <p className="text-sm text-ivory-200 leading-relaxed font-sans">
                     The Kasimid Sultanate is a sovereign micronation in Central New Jersey. Anchored by traditional Islamic governance structures, the Sultanate combines historic legal heritage with modern civic administration, fostering a sustainable home economy and cultural enrichment for its citizens.
@@ -334,20 +346,20 @@ export default function Home() {
                 <div className="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#c29b38_1px,transparent_1px)] [background-size:16px_16px]" />
                 <div className="relative z-10 space-y-3">
                   <span className="text-[10px] font-bold text-brass-gold-400 uppercase tracking-widest block">
-                    The Sovereign&apos;s Creed • العقيدة السيادية
+                    {t("creed_title")} • العقيدة السيادية
                   </span>
                   <p className="font-arabic text-brass-gold-300 text-2xl md:text-3xl leading-relaxed py-1" dir="rtl">
                     ”بفضلِ باری تعالیٰ، حصولِ ہر خواب ممکن“
                   </p>
                   <blockquote className="text-sm italic text-ivory-200 font-serif max-w-xl mx-auto">
-                    &quot;By the grace of God, the attainment of every dream is possible.&quot;
+                    &quot;{t("creed_text")}&quot;
                   </blockquote>
                   <div className="pt-2 border-t border-brass-gold-600/30 max-w-xs mx-auto">
                     <h5 className="font-serif text-xs font-bold text-brass-gold-400">
-                      Sultan Yusuf I
+                      {t("sultan_title")}
                     </h5>
                     <p className="text-[9px] uppercase tracking-wider text-stone-400 font-semibold font-sans mt-0.5">
-                      Sultan of the Kasimids
+                      {t("sultan_sub")}
                     </p>
                   </div>
                 </div>
@@ -690,7 +702,7 @@ export default function Home() {
             </div>
           )}
 
-          {/* TAB 2: BRAND NEW STANDALONE TAB: ADMINISTRATIVE REGIONS */}
+          {/* TAB 2: STANDALONE TAB: ADMINISTRATIVE REGIONS */}
           {activeTab === "regions" && (
             <div className="space-y-8 animate-fadeIn">
               <TerritorialMap />
@@ -1359,5 +1371,13 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <LanguageProvider>
+      <MainPortalContent />
+    </LanguageProvider>
   );
 }
