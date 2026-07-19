@@ -72,20 +72,47 @@
   background: var(--color-ottoman-red-600);
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  top: 0px !important;
+/* 1. Completely hide the top banner iframe */
+iframe.skiptranslate,
+.goog-te-banner-frame.skiptranslate { 
+    display: none !important; 
+    visibility: hidden !important; 
 }
 
-/* Google Translate styling cleanup */
-.goog-te-banner-frame.skiptranslate {
-  display: none !important;
+/* 2. Stop Google from pushing the website down 40px */
+body { 
+    top: 0px !important; 
+    position: static !important; 
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
 }
-.goog-te-gadget-icon {
-  display: none !important;
+
+/* 3. Hide the ugly "Powered by Google" text and logo */
+.goog-logo-link { 
+    display: none !important; 
 }
+
+.goog-te-gadget-icon { 
+    display: none !important; 
+}
+
+.goog-te-gadget { 
+    color: transparent !important; 
+    font-size: 0px !important;
+}
+
+.goog-te-gadget .goog-te-combo { 
+    color: #dfc491 !important; 
+    background-color: rgba(51, 2, 5, 0.9) !important;
+    border: 1px solid rgba(194, 155, 56, 0.5) !important;
+    border-radius: 0.75rem !important;
+    padding: 4px 8px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    outline: none !important;
+}
+
 .goog-te-gadget-simple {
   background-color: rgba(51, 2, 5, 0.9) !important;
   border: 1px solid rgba(194, 155, 56, 0.5) !important;
@@ -94,10 +121,12 @@ body {
   font-size: 12px !important;
   color: #dfc491 !important;
 }
+
 .goog-te-gadget-simple .goog-te-menu-value span {
   color: #dfc491 !important;
   font-weight: 600 !important;
 }
+
 .goog-te-menu-value span:nth-child(3),
 .goog-te-menu-value span:nth-child(5) {
   display: none !important;
