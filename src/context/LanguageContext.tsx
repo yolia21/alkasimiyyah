@@ -119,7 +119,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
     profile_etymology:
       "Etymology: The name represents a synthesis of cultural lineage and language. Ismail is in honor of the revered father of the current Sultan, Sidi Isma'il al-Raniri. The suffix -abad is derived from Persian, meaning 'cultivated place,' 'town,' or 'city,' symbolizing a settlement founded on prosperity and structure.",
 
-    // National Anthem Component (Exact Prompt Translations)
+    // National Anthem Component (Exact Prompt Subtext Translations)
     anthem_header: "National Anthem of the Kasimid Sultanate (\"Long Live My Country\")",
     anthem_badge: "National Anthem • النشيد الوطني",
     anthem_stanza1_trans:
@@ -128,6 +128,53 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
       "From the forests of Ghabaan, a light has shone / In the community of goodness, unity is gathered / We build the lands with solid resolve / And Yusuf among us is a leader and a pillar.",
     anthem_stanza3_trans:
       "Our souls are a sacrifice for this soil / And beyond the seas, glory has spread / May God preserve the Sultan and the homeland / We remain proud through the passage of time.",
+
+    // Geographical Weather Module
+    weather_box_title: "Geographical Weather Profile",
+    weather_profile_sub: "Regional Climate Profile (Cfa)",
+    weather_annual_precip: "Annual Precip: 114 cm Accumulated",
+    weather_winter_low: "Winter Low: -5°C Average Jan",
+    weather_summer_high: "Summer High: 30°C Average July",
+    weather_classification:
+      "Climate Classification: Humid Subtropical (Cfa). The Sultanate experiences four distinct seasons with hot, humid summers and cold, snowy winters.",
+
+    // Defense Doctrine Module
+    defense_title: "Defense Doctrine",
+    defense_heading: "Jaysh al-Saltanah al-Qasimiyyah (Forces of the Kasimid Sultanate)",
+    defense_body:
+      "The national defense force, Jaysh al-Saltanah al-Qasimiyyah, serves in a strictly ceremonial and cultural reenactment capacity. In order to maintain absolute compliance with local and federal statutes of the host nation (specifically United States federal law under the Posse Comitatus Act - 18 U.S. Code § 1385), the forces are entirely prohibited from executing domestic law enforcement actions, civil policing, or active kinetic operations. Their duties are limited to serving as honor guards for the Sultan, coordinating local cultural events, maintaining historical registries, and preparing emergency preparedness drills.",
+
+    // Matrilineal Lineage Module
+    lineage_title: "The Matrilineal Lineage (Shajarah al-Nasab)",
+    lineage_sub:
+      "Historical record tracing Sultan Yusuf I's lineage through his mother, Umm Ammaar, to the Prophet Muhammad",
+    lineage_full_heading: "Complete Matrilineal Lineage",
+    lineage_btn_expand: "View Full Matrilineal Ancestral Ledger",
+    lineage_btn_collapse: "Collapse Ancestral Ledger",
+    lineage_root: "Root Ancestor",
+    lineage_5th_imam: "5th Imam Line",
+    lineage_37th: "37th Great-Grandfather",
+    lineage_sufi: "Sufi Saint",
+    lineage_bihar: "Bihar Patriarch",
+    lineage_incumbent: "The Incumbent Sultan",
+
+    // Society, Culture & Economy Module
+    culture_heritage_heading: "Heritage & Spices",
+    culture_heritage_text1:
+      "The cultural landscape combines classical Islamic values, regional South Asian/MENA heritage, and Raritan Valley maritime traditions.",
+    culture_heritage_text2:
+      "Sultanate community groups focus heavily on botanical fragrance craft, traditional theological debates, and the preservation of dynastic histories.",
+    culture_economy_heading: "Spiritual & Home Economy",
+    culture_economy_text1:
+      "The economy is characterized by a modest, home-based production framework. Due to geographic limitations, citizens focus on producing high-quality artisanal crafts, digital services, and spice processing (specializing in dried dates and traditional culinary blends).",
+    culture_economy_text2:
+      "Treasury reserves are strictly regulated, with the Kasimi Dinar pegged firmly to the Euro (EUR) to guarantee economic integrity.",
+
+    // Global Footer
+    footer_rights:
+      "The Kasimid Sultanate. All Rights Reserved 2026 © Imperial Registry of Deeds, Census, and Foreign Registry, Ismailabad.",
+    footer_compliance:
+      "Sovereign Constitutional Monarchy • Central New Jersey • Compliant with 18 U.S.C. § 1385",
 
     // Legislative & Factions Tables
     tbl_party_faction: "Party Faction",
@@ -226,12 +273,58 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
     profile_etymology:
       "أصل التسمية: يمثل الاسم تركيباً بين النسب الثقافي واللغة. إسماعيل تكريماً للوالد المبجل للسلطان الحالي، سيدي إسماعيل الرانيري. واللاحقة (آباد) مشتقة من الفارسية وتعني 'المكان المعمور' أو 'البلدة' أو 'المدينة'، مما يرمز إلى مستوطنة تأسست على الازدهار والبناء.",
 
-    // National Anthem Component (Arabic Mode hides translation subtext)
+    // National Anthem Component (Arabic Mode hides subtext)
     anthem_header: "النشيد الوطني للسلطنة القاسمية (عاشت بلادي)",
     anthem_badge: "النشيد الوطني الرسمي",
     anthem_stanza1_trans: "",
     anthem_stanza2_trans: "",
     anthem_stanza3_trans: "",
+
+    // Geographical Weather Module
+    weather_box_title: "الملف الجغرافي للطقس",
+    weather_profile_sub: "ملف المناخ الإقليمي (Cfa)",
+    weather_annual_precip: "الهطول السنوي: ١١٤ سم متراكم",
+    weather_winter_low: "شتاء منخفض: -٥° مئوية متوسط يناير",
+    weather_summer_high: "صيف مرتفع: ٣٠° مئوية متوسط يوليو",
+    weather_classification:
+      "تصنيف المناخ: شبه استوائي رطب (Cfa). تشهد السلطنة أربعة فصول متميزة مع صيف حار ورطب وشتاء بارد ومثلج.",
+
+    // Defense Doctrine Module
+    defense_title: "عقيدة الدفاع",
+    defense_heading: "جيش السلطنة القاسمية",
+    defense_body:
+      "تعمل قوات الدفاع الوطني، جيش السلطنة القاسمية، في إطار مراسمي وإعادة تمثيل ثقافي بحت. ومن أجل الحفاظ على الامتثال المطلق للقوانين المحلية والفيدرالية للدولة المضيفة (تحديداً القانون الفيدرالي للولايات المتحدة بموجب قانون بوسي كوميتاتوس - المادة ١٨ من قانون الولايات المتحدة رقم ١٣٨٥)، يُحظر تماماً على القوات تنفيذ إجراءات إنفاذ القانون المحلي، أو الشرطة المدنية، أو العمليات الحركية النشطة. وتقتصر واجباتهم على العمل كحرس شرف للسلطان، وتنسيق الفعاليات الثقافية المحلية، وتطوير السجلات التاريخية، وإعداد تدريبات الجاهزية لحالات الطوارئ.",
+
+    // Matrilineal Lineage Module
+    lineage_title: "النسب الأمومي (شجرة النسب)",
+    lineage_sub: "سجل تاريخي يتتبع نسب السلطان يوسف الأول من خلال والدته أم عمار إلى النبي محمد",
+    lineage_full_heading: "النسب الأمومي الكامل",
+    lineage_btn_expand: "عرض السجل الأمومي الكامل للأجداد",
+    lineage_btn_collapse: "إغلاق السجل الأمومي",
+    lineage_root: "السلف الأصيل",
+    lineage_5th_imam: "خط الإمام الخامس",
+    lineage_37th: "الجد الأكبر السابع والثلاثون",
+    lineage_sufi: "الشيخ الصوفي",
+    lineage_bihar: "بطريرك بيهار",
+    lineage_incumbent: "السلطان الحالي",
+
+    // Society, Culture & Economy Module
+    culture_heritage_heading: "التراث والتوابل",
+    culture_heritage_text1:
+      "يجمع المشهد الثقافي بين القيم الإسلامية الكلاسيكية، والتراث الإقليمي لجنوب آسيا والشرق الأوسط وشمال أفريقيا، وتقاليد وادي راريتان البحرية.",
+    culture_heritage_text2:
+      "تركز المجموعات المجتمعية في السلطنة بشكل مكثف على حرفة العطور النباتية، والمناظرات اللاهوتية التقليدية، والحفاظ على التاريخ السلالي.",
+    culture_economy_heading: "الاقتصاد الروحي والمنزلي",
+    culture_economy_text1:
+      "يتميز الاقتصاد بإطار إنتاج منزلي متواضع. وبسبب القيود الجغرافية، يركز المواطنون على إنتاج الحرف اليدوية عالية الجودة، والخدمات الرقمية، ومعالجة التوابل (المتخصصة في التمور المجففة والخلطات الطهوية التقليدية).",
+    culture_economy_text2:
+      "تخضع احتياطيات الخزانة لتنظيم صارم، حيث يتم ربط الدينار القاسمي بحزم باليورو (EUR) لضمان النزاهة الاقتصادية.",
+
+    // Global Footer
+    footer_rights:
+      "السلطنة القاسمية. جميع الحقوق محفوظة ٢٠٢٦ © السجل الإمبراطوري للعقود، التعداد، والسجل الخارجي، إسماعيل آباد.",
+    footer_compliance:
+      "ملكية دستورية سيادية • وسط نيوجيرسي • متوافق مع المادة ١٨ من قانون الولايات المتحدة رقم ١٣٨٥",
 
     // Legislative & Factions Tables
     tbl_party_faction: "الفصيل الحزبي",
@@ -330,7 +423,7 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
     profile_etymology:
       "وجه تسمیه: این نام نشاندهنده ترکیبی از تبار فرهنگی و زبان است. اسماعیل به احترام پدر بزرگوار سلطان فعلی، سیدی اسماعیل الرانیری نامگذاری شده است. پسوند (آباد) از زبان فارسی گرفته شده و به معنای 'مکان آباد'، 'شهرک' یا 'شهر' است که نمادی از سکونتگاهی پایهریزیشده بر شکوفایی و ساختار است.",
 
-    // National Anthem Component (Exact Prompt Farsi Translation)
+    // National Anthem Component (Exact Prompt Farsi Subtext Translation)
     anthem_header: "سرود ملی سلطنت قاسمية («زنده باد میهنم»)",
     anthem_badge: "سرود ملی • النشيد الوطني",
     anthem_stanza1_trans:
@@ -339,6 +432,52 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
       "از جنگلهای غبان، نوری درخشید / در جماعت خیر، اتحاد برقرار شد / ما با ارادهای پولادین دیار خود را میسازیم / و یوسف در میان ما رهبر و محور است.",
     anthem_stanza3_trans:
       "جانهای ما فدای این خاک باد / و فراتر از دریاها، عزت روان گشت / خداوند سلطان و میهن را حفظ کناد / ما در گذر زمان سرافراز میمانیم.",
+
+    // Geographical Weather Module
+    weather_box_title: "پروفایل جغرافیایی آب و هوا",
+    weather_profile_sub: "اقلیم منطقهای (Cfa)",
+    weather_annual_precip: "بارندگی سالانه: ۱۱۴ سانتیمتر متراکم",
+    weather_winter_low: "حداقل دما در زمستان: -۵ درجه سانتیگراد میانگین ژانویه",
+    weather_summer_high: "حداکثر دما در تابستان: ۳۰ درجه سانتیگراد میانگین جولای",
+    weather_classification:
+      "طبقه بندی اقلیمی: نیمهگرمسیری مرطوب (Cfa). سلطنت چهار فصل متمایز را با تابستانهای گرم و مرطوب و زمستانهای سرد و برفی تجربه میکند.",
+
+    // Defense Doctrine Module
+    defense_title: "دکترین دفاعی",
+    defense_heading: "جیش السلطنه القاسمیه (نیروهای سلطنت قاسمی)",
+    defense_body:
+      "نیروی دفاع ملی، جیش السلطنه القاسمیه، صرفاً در یک ظرفیت تشریفاتی و بازسازی فرهنگی خدمت میکند. به منظور حفظ انطباق کامل با قوانین محلی و فدرال کشور میزبان (به ویژه قانون فدرال ایالات متحده تحت قانون Posse Comitatus - ۱۸ قانون ایالات متحده § ۱۳۸۵)، نیروها کاملاً از اجرای اقدامات اجرای قانون داخلی، پلیس غیرنظامی یا عملیات جنبشی فعال منع شدهاند. وظایف آنها محدود به خدمت به عنوان گارد افتخار سلطان، هماهنگی رویدادهای فرهنگی محلی، نگهداری دفاتر ثبت تاریخی و آمادهسازی مانورهای آمادگی اضطراری است.",
+
+    // Matrilineal Lineage Module
+    lineage_title: "شجره نامه مادری (شجرة النسب)",
+    lineage_sub: "سابقه تاریخی ردپای نسب سلطان یوسف اول از طریق مادرش، ام عمار، به پیامبر اسلام",
+    lineage_full_heading: "نسب مادری کامل",
+    lineage_btn_expand: "مشاهده دفترچه کامل تبار مادری",
+    lineage_btn_collapse: "بستن دفترچه تبار",
+    lineage_root: "جد ریشهای",
+    lineage_5th_imam: "خط امام پنجم",
+    lineage_37th: "سی و هفتمین جد بزرگ",
+    lineage_sufi: "عارف صوفی",
+    lineage_bihar: "بزرگ خاندان بهار",
+    lineage_incumbent: "شاغل فعلی",
+
+    // Society, Culture & Economy Module
+    culture_heritage_heading: "میراث و ادویه‌جات",
+    culture_heritage_text1:
+      "چشم‌انداز فرهنگی ارزش‌های کلاسیک اسلامی، میراث منطقه‌ای جنوب آسیا/خاورمیانه و سنت‌های دریایی دره راریتان را ترکیب می‌کند.",
+    culture_heritage_text2:
+      "گروه‌های جامعه سلطنت بر حرفه عطر‌های گیاهی، مناظرات الهیاتی سنتی و حفظ تاریخ‌های دودمانی تمرکز دارند.",
+    culture_economy_heading: "اقتصاد معنوی و خانگی",
+    culture_economy_text1:
+      "اقتصاد با یک چارچوب تولید خانگی مشخص می‌شود. با توجه به محدودیت‌های جغرافیایی، شهروندان بر تولید صنایع دستی با کیفیت، خدمات دیجیتال و پردازش ادویه‌جات تمرکز دارند.",
+    culture_economy_text2:
+      "ذخایر خزانه کاملاً تنظیم شده و دینار قاسمی به یورو (EUR) متصل است تا یکپارچگی اقتصادی تضمین شود.",
+
+    // Global Footer
+    footer_rights:
+      "سلطنت قاسمی. تمامی حقوق محفوظ است ۲۰۲۶ © دفتر ثبت اسناد امپراتوری، سرشماری و ثبت خارجی، اسماعیل‌آباد.",
+    footer_compliance:
+      "پادشاهی مشروطه مستقل • نیوجرسی مرکزی • منطبق با قانون ۱۸ ایالات متحده § ۱۳۸۵",
 
     // Legislative & Factions Tables
     tbl_party_faction: "جناح حزبی",
@@ -437,15 +576,61 @@ export const TRANSLATIONS: Record<LanguageCode, Record<string, any>> = {
     profile_etymology:
       "وجہ تسمیہ: یہ نام ثقافتی شجرہ نسب اور زبان کے ملاپ کو ظاہر کرتا ہے۔ اسماعیل موجودہ سلطان کے محترم والد، سیدی اسماعیل الرانیری کے اعزاز میں ہے۔ لاحقہ (آباد) فارسی سے ماخوذ ہے، جس کا مطلب 'آباد جگہ'، 'قصبہ' یا 'شہر' ہے، جو خوشحالی اور بہترین نظم و ضبط پر قائم بستی کی علامت ہے۔",
 
-    // National Anthem Component (Exact Prompt Urdu Translation)
+    // National Anthem Component (Exact Prompt Urdu Subtext Translation with Noto Nastaliq Font)
     anthem_header: "سلطنتِ القاسمیہ کا قومی ترانہ (\"میرا وطن سلامت رہے\")",
     anthem_badge: "قومی ترانہ • النشيد الوطني",
     anthem_stanza1_trans:
       "میرا وطن سلامت رہے، عزت اور یقین کے ساتھ / عظمت کی سلطنت، ایک محفوظ قلعہ / دنیاؤں میں ہمارا سبز پرچم / حق اور انصاف کے ہم وفادار ہیں۔",
     anthem_stanza2_trans:
-      "غبان کے جنگلات سے ایک نور چمکا / بھلائی کی جماعت میں اتحاد جمع ہوا / ہم مضبوط عزم کے ساتھ وطن تعمیر کرتے ہیں / اور یوسف ہمارے درمیان ایک رہنما اور ستون ہیں۔",
+      "غبان کے جِنگلات سے ایک نور چمکا / بھلائی کی جماعت میں اتحاد جمع ہوا / ہم مضبوط عزم کے ساتھ وطن تعمیر کرتے ہیں / اور یوسف ہمارے درمیان ایک رہنما اور ستون ہیں۔",
     anthem_stanza3_trans:
       "ہماری جانیں اس مٹی پر قربان ہیں / اور سمندروں پار بھی عزت و عظمت پھیلی ہے / اللہ سلطان اور وطن کی حفاظت فرمائے / ہم وقت کے گزرنے کے ساتھ بھی سر بلند رہیں گے۔",
+
+    // Geographical Weather Module
+    weather_box_title: "جغرافیائی موسم کا پروفائل",
+    weather_profile_sub: "علاقائی آب و ہوا کا پروفائل (CFA)",
+    weather_annual_precip: "سالانہ بارش: 114 سینٹی میٹر جمع شدہ",
+    weather_winter_low: "سردیوں کا کم از کم درجہ حرارت: -5°C اوسط جنوری",
+    weather_summer_high: "گرمیوں کا زیادہ سے زیادہ درجہ حرارت: 30°C اوسط جولائی",
+    weather_classification:
+      "آب و ہوا کی درجہ بندی: مرطوب ذیلی گرمسیری (Cfa)۔ سلطنت چار الگ الگ موسموں کا تجربہ کرتی ہے جس میں گرم، مرطوب گرمیاں اور سرد، برفانی سردیاں شامل ہیں۔",
+
+    // Defense Doctrine Module
+    defense_title: "دفاعی نظریہ",
+    defense_heading: "جیش السلطنت القاسمیہ (قاسمی سلطنت کی افواج)",
+    defense_body:
+      "قومی دفاعی فورس، جیش السلطنت القاسمیہ، خالصتاً رسمی اور ثقافتی تعمیر نو کی صلاحیت میں خدمات انجام دیتی ہے۔ میزبان ملک کے مقامی اور وفدرل قوانین (خاص طور پر پوسی کومٹیٹس ایکٹ - 18 یو ایس کوڈ § 1385 کے تحت ریاستہائے متحدہ کے وفاقی قانون) کے ساتھ مکمل تعمیل برقرار رکھنے کے لیے، افواج کو داخلی قانون نافذ کرنے والے اقدامات، سول پولیسنگ، یا فعال حرکیاتی کارروائیوں سے مکمل طور پر منع کیا گیا ہے۔ ان کے فرائض سلطان کے لیے اعزازی گارڈ کے طور پر خدمات انجام دینے، مقامی ثقافتی تقریبات کو مربوط کرنے، تاریخی رجسٹروں کو برقرار رکھنے اور ہنگامی تیاریوں کی مشقوں تک محدود ہیں۔",
+
+    // Matrilineal Lineage Module
+    lineage_title: "مادری شجرہ نسب (شجرہ النسب)",
+    lineage_sub: "شاہی تاریخ جو سلطان یوسف اول کے مادری شجرہ نسب کو ان کی والدہ ام عمار کے ذریعے نبی کریم تک پہنچاتی ہے",
+    lineage_full_heading: "مکمل مادری شجرہ نسب",
+    lineage_btn_expand: "مکمل مادری شجرہ نسب کا رجسٹر دیکھیں",
+    lineage_btn_collapse: "شجرہ نسب کا رجسٹر بند کریں",
+    lineage_root: "بنیادی بزرگ",
+    lineage_5th_imam: "پانچویں امام کی نسل",
+    lineage_37th: "37 ویں پردادا",
+    lineage_sufi: "صوفی بزرگ",
+    lineage_bihar: "بہار کے بزرگ",
+    lineage_incumbent: "موجودہ سربراہ",
+
+    // Society, Culture & Economy Module
+    culture_heritage_heading: "ورثہ اور مصالحہ جات",
+    culture_heritage_text1:
+      "ثقافتی منظر نامہ کلاسیکی اسلامی اقدار، علاقائی جنوبی ایشیائی/مشرق وسطیٰ کے ورثے اور راریتان وادی کی بحری روایات کو جوڑتا ہے۔",
+    culture_heritage_text2:
+      "سلطنت کے کمیونٹی گروپس قدرتی خوشبوؤں کے فن، روایتی علمی مناظروں اور شاہی تاریخ کے تحفظ پر توجہ مرکوز کرتے ہیں۔",
+    culture_economy_heading: "روحانی اور گھریلو معیشت",
+    culture_economy_text1:
+      "معیشت کی خصوصیت گھریلو پیداواری فریم ورک ہے۔ جغرافیائی حدود کی وجہ سے، شہری اعلیٰ معیار کے ہاتھ کے کام، ڈیجیٹل خدمات اور مصالحہ جات کی پروسیسنگ پر توجہ دیتے ہیں۔",
+    culture_economy_text2:
+      "خزانے کے ذخائر کو سختی سے منظم کیا جاتا ہے، جس میں قاسمی دینار کو معاشی سالمیت کی ضمانت کے لیے یورو (EUR) سے مربوط کیا گیا ہے۔",
+
+    // Global Footer
+    footer_rights:
+      "سلطنت القاسمیہ۔ جملہ حقوق محفوظ ہیں 2026 © شاہی رجسٹری آف ڈیڈز، مردم شماری، اور فارن رجسٹری، اسماعیل آباد۔",
+    footer_compliance:
+      "خودمختار آئینی بادشاہت • سینٹرل نیو جرسی • تعمیل بمطابق 18 یو ایس کوڈ § 1385",
 
     // Legislative & Factions Tables
     tbl_party_faction: "جماعتی دھڑا",

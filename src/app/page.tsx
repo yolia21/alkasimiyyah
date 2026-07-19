@@ -790,7 +790,7 @@ function MainPortalContent() {
               {/* Climate Data / Weather Box */}
               <section className="max-w-xl mx-auto space-y-4">
                 <h3 className="text-xl font-serif font-bold text-ottoman-red-900 text-center">
-                  Geographical Weather Profile
+                  {t("weather_box_title")}
                 </h3>
                 <WeatherBox />
               </section>
@@ -816,26 +816,18 @@ function MainPortalContent() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-stone-700 text-sm leading-relaxed">
                   <div className="space-y-3">
                     <h4 className="font-serif text-lg font-semibold text-ottoman-red-900">
-                      Heritage &amp; Spices
+                      {t("culture_heritage_heading")}
                     </h4>
-                    <p>
-                      The cultural landscape combines classical Islamic values, regional South Asian/MENA heritage, and Raritan Valley maritime traditions.
-                    </p>
-                    <p>
-                      Sultanate community groups focus heavily on botanical fragrance craft, traditional theological debates, and the preservation of dynastic histories.
-                    </p>
+                    <p>{t("culture_heritage_text1")}</p>
+                    <p>{t("culture_heritage_text2")}</p>
                   </div>
 
                   <div className="space-y-3">
                     <h4 className="font-serif text-lg font-semibold text-ottoman-red-900">
-                      Spiritual &amp; Home Economy
+                      {t("culture_economy_heading")}
                     </h4>
-                    <p>
-                      The economy is characterized by a modest, home-based production framework. Due to geographic limitations, citizens focus on producing high-quality artisanal crafts, digital services, and spice processing (specializing in dried dates and traditional culinary blends).
-                    </p>
-                    <p>
-                      Treasury reserves are strictly regulated, with the Kasimi Dinar pegged firmly to the Euro (EUR) to guarantee economic integrity.
-                    </p>
+                    <p>{t("culture_economy_text1")}</p>
+                    <p>{t("culture_economy_text2")}</p>
                   </div>
                 </div>
 
@@ -856,7 +848,7 @@ function MainPortalContent() {
                       </p>
                     </div>
 
-                    {/* Verses Container (Arabic Text Always Displayed + Dynamic Stanza Translation Below) */}
+                    {/* Verses Container (Arabic Text Always Displayed + Dynamic Stanza Subtext Translation Below) */}
                     <div className="max-w-xl mx-auto py-4 px-6 bg-ottoman-red-900/60 border border-brass-gold-500/30 rounded-xl space-y-6 text-ivory-50" dir="rtl">
                       
                       {/* Stanza 1 */}
@@ -868,7 +860,7 @@ function MainPortalContent() {
                           بالحقِ والعدلِ نَحنُ نَدين
                         </p>
                         {language !== "ar" && (
-                          <p className="text-xs italic text-brass-gold-300/90 font-serif pt-1 leading-relaxed" dir={isRTL ? "rtl" : "ltr"}>
+                          <p className={`text-xs italic text-brass-gold-300/90 pt-1 leading-relaxed ${language === "ur" ? "font-urdu text-sm" : "font-serif"}`} dir={isRTL ? "rtl" : "ltr"}>
                             {t("anthem_stanza1_trans")}
                           </p>
                         )}
@@ -883,7 +875,7 @@ function MainPortalContent() {
                           ويُوسُفُ فينا إمامٌ وَقُطب
                         </p>
                         {language !== "ar" && (
-                          <p className="text-xs italic text-brass-gold-300/90 font-serif pt-1 leading-relaxed" dir={isRTL ? "rtl" : "ltr"}>
+                          <p className={`text-xs italic text-brass-gold-300/90 pt-1 leading-relaxed ${language === "ur" ? "font-urdu text-sm" : "font-serif"}`} dir={isRTL ? "rtl" : "ltr"}>
                             {t("anthem_stanza2_trans")}
                           </p>
                         )}
@@ -898,7 +890,7 @@ function MainPortalContent() {
                           نَبقى أُباةً عَلى مَرِّ الزَّمَن
                         </p>
                         {language !== "ar" && (
-                          <p className="text-xs italic text-brass-gold-300/90 font-serif pt-1 leading-relaxed" dir={isRTL ? "rtl" : "ltr"}>
+                          <p className={`text-xs italic text-brass-gold-300/90 pt-1 leading-relaxed ${language === "ur" ? "font-urdu text-sm" : "font-serif"}`} dir={isRTL ? "rtl" : "ltr"}>
                             {t("anthem_stanza3_trans")}
                           </p>
                         )}
@@ -923,21 +915,13 @@ function MainPortalContent() {
               {/* Jaysh al-Saltanah (Military) */}
               <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
                 <div className="border-b border-ivory-200 pb-3">
-                  <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest">Defense Doctrine</span>
+                  <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest">{t("defense_title")}</span>
                   <h3 className="text-xl font-serif font-bold text-ottoman-red-950">
-                    Jaysh al-Saltanah al-Qasimiyyah (Forces of the Kasimid Sultanate)
+                    {t("defense_heading")}
                   </h3>
                 </div>
-                <div className="space-y-3 text-stone-700 text-sm leading-relaxed">
-                  <p>
-                    The national defense force, <strong>Jaysh al-Saltanah al-Qasimiyyah</strong>, serves in a strictly ceremonial and cultural reenactment capacity. 
-                  </p>
-                  <p>
-                    In order to maintain absolute compliance with local and federal statutes of the host nation (specifically United States federal law under the <strong>Posse Comitatus Act - 18 U.S. Code § 1385</strong>), the forces are entirely prohibited from executing domestic law enforcement actions, civil policing, or active kinetic operations. 
-                  </p>
-                  <p>
-                    Their duties are limited to serving as honor guards for the Sultan, coordinating local cultural events, maintaining historical registries, and preparing emergency preparedness drills.
-                  </p>
+                <div className="space-y-3 text-stone-700 text-sm leading-relaxed font-sans">
+                  <p>{t("defense_body")}</p>
                 </div>
               </section>
 
@@ -1213,17 +1197,11 @@ function MainPortalContent() {
           </p>
           
           <p className="text-ivory-200/80">
-            © {new Date().getFullYear()} The Kasimid Sultanate. All Rights Reserved. 
-            <br />
-            Imperial Registry of Deeds, Census, and Foreign Registry, Ismailabad.
+            {t("footer_rights")}
           </p>
           
           <div className="flex justify-center space-x-4 text-brass-gold-400 font-serif text-[10px] tracking-wide pt-2 border-t border-ottoman-red-900/60 max-w-md mx-auto">
-            <span>Sovereign Constitutional Monarchy</span>
-            <span>•</span>
-            <span>Central New Jersey</span>
-            <span>•</span>
-            <span>Compliant with 18 U.S.C. § 1385</span>
+            <span>{t("footer_compliance")}</span>
           </div>
         </div>
       </footer>

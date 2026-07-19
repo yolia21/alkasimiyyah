@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface AncestorNode {
   generationText: string;
@@ -11,34 +12,35 @@ interface AncestorNode {
 
 export default function Lineage() {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const { t, language, isRTL } = useLanguage();
 
   const keyMilestones: AncestorNode[] = [
     {
-      generationText: "Prophesy",
+      generationText: t("lineage_root"),
       name: "Prophet Muhammad (PBUH)",
       historicalNote: "The final Messenger of Islam. Root ancestor of the family line.",
       isMilestone: true,
     },
     {
-      generationText: "5th Imam Line",
+      generationText: t("lineage_5th_imam"),
       name: "Imam Muhammad al-Baqir",
       historicalNote: "2nd great-grandson of the Prophet Muhammad, 5th Imam in classical lineage.",
       isMilestone: true,
     },
     {
-      generationText: "37th Great-Grandfather",
+      generationText: t("lineage_37th"),
       name: "Abdullah al-Baqir",
       historicalNote: "Son of the 5th Imam; established early branches of the maternal lineage.",
       isMilestone: true,
     },
     {
-      generationText: "13th Century",
+      generationText: t("lineage_sufi"),
       name: "Sheikh Uthman Sher Sawar (1200-)",
       historicalNote: "Eminent Sufi saint and disciple of Baba Farid who migrated to India.",
       isMilestone: true,
     },
     {
-      generationText: "Bihar Patriarch",
+      generationText: t("lineage_bihar"),
       name: "Muhammad Farid",
       historicalNote: "Eponymous founder of Faridpur, Bihar; noted scholar and administrator.",
       isMilestone: true,
@@ -50,14 +52,14 @@ export default function Lineage() {
       isMilestone: true,
     },
     {
-      generationText: "The Incumbent",
+      generationText: t("lineage_incumbent"),
       name: "Yusuf Raniri (Sultan Yusuf I)",
       historicalNote: "Current Sovereign of the Kasimid Sultanate, reigning through the matrilineal line.",
       isMilestone: true,
     },
   ];
 
-  // The correct 45-generation sequence provided by the user
+  // The 45-generation sequence
   const fullLineage: string[] = [
     "Prophet Muhammad (PBUH)",
     "Fatimah al-Zahra (married Ali bin Abi Talib)",
@@ -110,19 +112,19 @@ export default function Lineage() {
     <div className="rounded-2xl border border-ivory-300 bg-white p-6 shadow-sm hover:border-brass-gold-400 transition-all duration-300 space-y-6">
       <div>
         <h4 className="text-xl font-serif font-bold text-ottoman-red-950">
-          The Matrilineal Lineage (Shajarah al-Nasab)
+          {t("lineage_title")}
         </h4>
         <p className="text-xs text-stone-500 font-sans tracking-wide mt-1">
-          Historical record tracing Sultan Yusuf I's lineage through his mother, Umm Ammaar, to the Prophet Muhammad
+          {t("lineage_sub")}
         </p>
       </div>
 
       {/* Key Milestones Vertical Timeline */}
-      <div className="relative border-l border-brass-gold-400 pl-6 space-y-6 py-2 ml-3">
+      <div className={`relative ${isRTL ? "border-r-2 pr-6 mr-3" : "border-l-2 pl-6 ml-3"} border-brass-gold-400 space-y-6 py-2`}>
         {keyMilestones.map((node, idx) => (
           <div key={idx} className="relative">
             {/* Timeline node marker */}
-            <div className="absolute -left-[31px] top-1.5 w-4 h-4 bg-ottoman-red-900 border-2 border-brass-gold-400 rounded-full flex items-center justify-center">
+            <div className={`absolute ${isRTL ? "-right-[31px]" : "-left-[31px]"} top-1.5 w-4 h-4 bg-ottoman-red-900 border-2 border-brass-gold-400 rounded-full flex items-center justify-center`}>
               <div className="w-1.5 h-1.5 bg-white rounded-full" />
             </div>
             
@@ -147,7 +149,7 @@ export default function Lineage() {
           onClick={() => setIsExpanded(!isExpanded)}
           className="w-full flex items-center justify-between text-xs font-semibold bg-ivory-100 hover:bg-brass-gold-100 text-ottoman-red-900 border border-ivory-300 rounded-lg px-4 py-3 transition-colors focus:outline-none"
         >
-          <span>{isExpanded ? "Collapse Ancestral ledger" : "View Full Matrilineal Ancestral Ledger"}</span>
+          <span>{isExpanded ? t("lineage_btn_collapse") : t("lineage_btn_expand")}</span>
           <svg
             className={`w-4 h-4 text-brass-gold-600 transform transition-transform duration-300 ${
               isExpanded ? "rotate-180" : ""
@@ -164,16 +166,16 @@ export default function Lineage() {
         {isExpanded && (
           <div className="mt-4 p-4 bg-ivory-50 rounded-xl border border-ivory-200 animate-fadeIn space-y-2">
             <h5 className="font-serif text-xs font-bold text-ottoman-red-950 uppercase tracking-widest mb-3 border-b border-ivory-300 pb-1.5">
-              Complete Matrilineal Lineage
+              {t("lineage_full_heading")}
             </h5>
             <ol className="list-decimal list-inside space-y-1.5 text-xs text-stone-700 font-mono leading-relaxed">
               {fullLineage.map((name, idx) => (
                 <li key={idx} className={idx + 1 === fullLineage.length ? "text-ottoman-red-900 font-bold font-serif" : ""}>
                   <span className="text-stone-800">{name}</span>
-                  {idx === 0 && <span className="text-stone-400 text-[10px] ml-1.5">(Root Ancestor)</span>}
-                  {idx === 5 && <span className="text-brass-gold-700 text-[10px] ml-1.5">(37th Great-Grandfather)</span>}
-                  {idx === 17 && <span className="text-brass-gold-700 text-[10px] ml-1.5">(Sufi Saint)</span>}
-                  {idx === 44 && <span className="text-brass-gold-700 text-[10px] ml-1.5">(The Incumbent Sultan)</span>}
+                  {idx === 0 && <span className="text-stone-400 text-[10px] mx-1.5">({t("lineage_root")})</span>}
+                  {idx === 5 && <span className="text-brass-gold-700 text-[10px] mx-1.5">({t("lineage_37th")})</span>}
+                  {idx === 17 && <span className="text-brass-gold-700 text-[10px] mx-1.5">({t("lineage_sufi")})</span>}
+                  {idx === 44 && <span className="text-brass-gold-700 text-[10px] mx-1.5">({t("lineage_incumbent")})</span>}
                 </li>
               ))}
             </ol>
