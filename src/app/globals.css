@@ -76,5 +76,29 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  top: 0px !important;
 }
 
+/* Google Translate styling cleanup */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+.goog-te-gadget-icon {
+  display: none !important;
+}
+.goog-te-gadget-simple {
+  background-color: rgba(51, 2, 5, 0.9) !important;
+  border: 1px solid rgba(194, 155, 56, 0.5) !important;
+  border-radius: 0.75rem !important;
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+  color: #dfc491 !important;
+}
+.goog-te-gadget-simple .goog-te-menu-value span {
+  color: #dfc491 !important;
+  font-weight: 600 !important;
+}
+.goog-te-menu-value span:nth-child(3),
+.goog-te-menu-value span:nth-child(5) {
+  display: none !important;
+}

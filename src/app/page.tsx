@@ -8,7 +8,7 @@ import ProfileCard from "@/components/ProfileCard";
 import Lineage from "@/components/Lineage";
 import TerritorialMap from "@/components/TerritorialMap";
 import LanguageSelector from "@/components/LanguageSelector";
-import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import {
   PoliticalPartiesTable,
   ProvincesTable,
@@ -31,11 +31,6 @@ interface TabItem {
 
 function MainPortalContent() {
   const [activeTab, setActiveTab] = useState<TabID>("home");
-  const { t, isRTL, language, getNewsArticles, getLeaders, getHistoryEras } = useLanguage();
-
-  const newsArticles = getNewsArticles();
-  const leaders = getLeaders();
-  const historyErasData = getHistoryEras();
 
   // Sync tab with URL search parameter (?tab=...)
   useEffect(() => {
@@ -61,25 +56,152 @@ function MainPortalContent() {
   };
 
   const tabs: TabItem[] = [
-    { id: "home", label: t("tab_home"), arabicLabel: "نظرة عامة والعاصمة" },
-    { id: "regions", label: t("tab_regions"), arabicLabel: "المناطق الإدارية" },
-    { id: "government", label: t("tab_government"), arabicLabel: "البلاط الملكي والشورى" },
-    { id: "history", label: t("tab_history"), arabicLabel: "التاريخ والنسب" },
-    { id: "culture", label: t("tab_culture"), arabicLabel: "الثقافة والجيش" },
-    { id: "relations", label: t("tab_relations"), arabicLabel: "العلاقات الخارجية" },
-    { id: "documents", label: t("tab_documents"), arabicLabel: "أحدث الأخبار والمراسيم" },
+    { id: "home", label: "Overview & Capital", arabicLabel: "نظرة عامة والعاصمة" },
+    { id: "regions", label: "Administrative Regions", arabicLabel: "المناطق الإدارية" },
+    { id: "government", label: "Royal Court & Shura", arabicLabel: "البلاط الملكي والشورى" },
+    { id: "history", label: "History & Lineage", arabicLabel: "التاريخ والنسب" },
+    { id: "culture", label: "Culture & Military", arabicLabel: "الثقافة والجيش" },
+    { id: "relations", label: "Foreign Relations", arabicLabel: "العلاقات الخارجية" },
+    { id: "documents", label: "News & Decrees", arabicLabel: "أحدث الأخبار والمراسيم" },
   ];
 
-  // Dynamic Accordion items using translation state
-  const historyEras = historyErasData.map((era) => ({
-    title: era.title,
-    subtitle: era.subtitle,
-    content: (
-      <div className="space-y-2">
-        <p>{era.content}</p>
-      </div>
-    ),
-  }));
+  // Detailed Historical Eras Accordion (Pure English)
+  const historyEras = [
+    {
+      title: "Prehistoric Record: Lenape Inhabitants",
+      subtitle: "Indigenous Stewardship & Raritan Corridor",
+      content: (
+        <div className="space-y-2">
+          <p>
+            Long before modern administrative boundaries were established, the physical territory along the Raritan River and the Trans Old Bridge Road corridor was sustained by the ancestral habitation of the <strong>Unami band</strong> of the <strong>Lenape Nation</strong>.
+          </p>
+          <p>
+            The Unami stewards maintained seasonal paths and agricultural grounds along the river waterways, establishing the human ecological foundation of Central New Jersey.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "Colonial Period & Crown Grants (1664–1737)",
+      subtitle: "English Sovereign Control & Brownville Settlement",
+      content: (
+        <div className="space-y-2">
+          <p>
+            English sovereign control over the territory was formalized in <strong>1664</strong>, culminating in the erection of Middlesex County boundaries in <strong>1683</strong>.
+          </p>
+          <p>
+            In <strong>1737</strong>, a landmark 1,000-acre Crown land grant was issued to John and Susannah Brown, formally establishing the historical sector of <strong>&quot;Brownville&quot;</strong> (Browntown / Trans Old Bridge Road sector).
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "Revolutionary War & 19th Century (1778–1975)",
+      subtitle: "Road to Monmouth & Township Incorporation",
+      content: (
+        <div className="space-y-2">
+          <p>
+            During the American Revolutionary War, the corridor served as a strategic crossroads for troop movements leading toward the pivotal <strong>Battle of Monmouth (1778)</strong>.
+          </p>
+          <p>
+            The surrounding municipal region was incorporated as <strong>Madison Township in 1869</strong>, and subsequently renamed <strong>Old Bridge Township in 1975</strong>.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "Late 20th Century Demographic Shift (1999–2001)",
+      subtitle: "The Y2K Migration & Royal Lineage Settlement",
+      content: (
+        <div className="space-y-2">
+          <p>
+            At the turn of the 21st century, a major migration wave of South Asian and Middle Eastern technology professionals arrived in Central New Jersey to perform crucial infrastructure adjustments resolving the Y2K computer bug.
+          </p>
+          <p>
+            This movement brought the ancestral lineages of the royal family to the region between <strong>1999 and 2001</strong>, establishing the vibrant cultural, academic, and economic network of the modern citizenry.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "Early Independence Movements (1999–2021)",
+      subtitle: "Waliustan & The Hashemia Proclamation",
+      content: (
+        <div className="space-y-2">
+          <p>
+            Micronational governance began in <strong>1999</strong> with the founding of the <em>Islamic Republic of Waliustan</em> by ten Pakistani immigrants.
+          </p>
+          <p>
+            On <strong>August 31, 2021</strong>, the <em>Kingdom of Hashemia</em> was proclaimed, establishing Qadirabad with an initial population of 80 residents. A royal election on September 1, 2021, formally chose the Hashemite dynastic framework.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "The Hashemian Era & Conflicts (2021–2023)",
+      subtitle: "Civil Strife, Expansion, and Territorial Annexations",
+      content: (
+        <div className="space-y-3">
+          <p>
+            This era saw intense political activity and rapid territorial expansion, marked by pivotal events:
+          </p>
+          <div className="pl-4 border-l-2 border-brass-gold-400 py-1 space-y-2 text-xs bg-white rounded p-3">
+            <p>
+              <strong>• Hashemian Civil War (Oct 10, 2021):</strong> Neutralized the West Qadirabad progressive federalist faction to restore administrative authority.
+            </p>
+            <p>
+              <strong>• Hashemian National Project (Jan 8, 2022):</strong> Annexed Khaled City and Badayun utilizing tactical bicycle mobility.
+            </p>
+            <p>
+              <strong>• Decker Rebellion Suppression (Jan 23, 2022):</strong> Neutralized internal dissident uprisings to maintain state security.
+            </p>
+            <p>
+              <strong>• Annexation of Tartary (Oct 22, 2022):</strong> Formally annexed the Republic of Tartary and its capital, Tarillamun.
+            </p>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "The VECTO Era & Cyber Warfare (2023–2024)",
+      subtitle: "International Alliances & The USR Crusade",
+      content: (
+        <div className="space-y-3">
+          <p>
+            On <strong>July 5, 2023</strong>, the state joined UMN and VECTO, rebranding to the <em>Hashemite Kingdom of Raritania</em> on July 15. The state suffered the &quot;Dark Age&quot; server destruction in August 2023, followed immediately by digital platform reconstruction and the founding of UNAM on August 6, 2023.
+          </p>
+          <p>
+            On <strong>November 22, 2023</strong>, the realm mounted a successful defense against the USR &quot;Grand Crusade,&quot; which led to the complete structural collapse of the USR on February 4, 2024.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "The Raritan Caliphate (2024–2025)",
+      subtitle: "Caliphal Governance & Dynastic Abdication",
+      content: (
+        <div className="space-y-2">
+          <p>
+            On <strong>December 30, 2024</strong>, the state proclaimed the <em>Raritan Caliphate</em>, shifting state machinery toward classical caliphal governance principles and marking the formal abdication of traditional royal titles by the Majidid family.
+          </p>
+        </div>
+      ),
+    },
+    {
+      title: "Establishment of the Kasimid Sultanate (2025–Present)",
+      subtitle: "Constitutional Order & Reign of Sultan Yusuf I",
+      content: (
+        <div className="space-y-2">
+          <p>
+            Following the unilateral dissolution of caliphal structures due to administrative over-expansion, the modern <strong>Constitution of the Kasimid Sultanate</strong> was ratified on <strong>July 24, 2025</strong>.
+          </p>
+          <p>
+            The constitution established a bicameral Majlis with political advisor <em>Jasbirji XV</em> appointed as inaugural Minister of Culture. On <strong>May 11, 2026</strong>, the Grand Vizier role transitioned from Mikail Jidar to <em>Ali Al Masry</em>.
+          </p>
+        </div>
+      ),
+    },
+  ];
 
   return (
     <div className="flex-1 flex flex-col">
@@ -94,22 +216,22 @@ function MainPortalContent() {
           <div className="flex flex-col md:flex-row items-center gap-5 text-center md:text-left">
             <Flag width={180} height={120} />
             <div className="space-y-1">
-              <span className="block font-arabic text-brass-gold-400 text-3xl md:text-4xl leading-relaxed tracking-wide animate-pulse" dir="rtl">
-                {t("site_title")}
+              <span className="block font-arabic text-brass-gold-400 text-3xl md:text-4xl leading-relaxed tracking-wide animate-pulse notranslate" translate="no" dir="rtl">
+                سلطنة القاسمية
               </span>
               <h1 className="text-2xl md:text-3xl font-bold font-serif tracking-widest text-ivory-100">
-                {t("site_title")}
+                THE KASIMID SULTANATE
               </h1>
               <p className="text-xs uppercase tracking-widest text-brass-gold-300 font-sans font-medium">
-                {t("site_subtitle")}
+                Official Sovereign Government Portal • Central New Jersey
               </p>
             </div>
           </div>
 
-          {/* Right side: Motto + Language Selector + Portal button */}
+          {/* Right side: Motto + Google Translate Selector + Portal button */}
           <div className="flex flex-col items-center md:items-end gap-4">
 
-            {/* Top Bar Utilities: Language Selector & Citizen Portal */}
+            {/* Top Bar Utilities: Google Translate & Citizen Portal */}
             <div className="flex items-center gap-3">
               <LanguageSelector />
 
@@ -122,23 +244,23 @@ function MainPortalContent() {
                 <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
                 </svg>
-                {t("citizen_portal")}
-                <span className="font-arabic text-[11px] font-normal opacity-80" dir="rtl">
-                  ({t("portal_sublabel")})
+                Citizen Portal
+                <span className="font-arabic text-[11px] font-normal opacity-80 notranslate" translate="no" dir="rtl">
+                  (ديوان خاص)
                 </span>
               </a>
             </div>
 
             {/* National Motto Panel */}
             <div className="border border-brass-gold-500/40 bg-ottoman-red-950/60 rounded-xl p-4 max-w-sm text-center md:text-right shadow-inner">
-              <span className="block font-arabic text-brass-gold-300 text-lg mb-1 leading-normal" dir="rtl">
-                &quot;{t("motto_text")}&quot;
+              <span className="block font-arabic text-brass-gold-300 text-lg mb-1 leading-normal notranslate" translate="no" dir="rtl">
+                &quot;لا يوجد إلا طريق واحد، وهو طريق الله&quot;
               </span>
               <p className="text-xs italic text-ivory-200 font-serif">
-                &quot;{t("motto_text")}&quot;
+                &quot;There is only one way, and that is the way of God&quot;
               </p>
               <div className="mt-2 text-[9px] uppercase tracking-wider text-brass-gold-400/80 font-semibold font-sans">
-                {t("motto_sublabel")}
+                National Motto of the Sultanate
               </div>
             </div>
 
@@ -161,11 +283,9 @@ function MainPortalContent() {
                 }`}
               >
                 <span className="font-sans text-xs tracking-wide whitespace-nowrap">{tab.label}</span>
-                {language === "en" && (
-                  <span className="font-arabic text-[10px] mt-0.5 opacity-80" dir="rtl">
-                    {tab.arabicLabel}
-                  </span>
-                )}
+                <span className="font-arabic text-[10px] mt-0.5 opacity-80 notranslate" translate="no" dir="rtl">
+                  {tab.arabicLabel}
+                </span>
               </button>
             ))}
           </div>
@@ -179,7 +299,7 @@ function MainPortalContent() {
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
             </svg>
-            {t("citizen_portal")}
+            Citizen Portal
           </a>
         </div>
       </nav>
@@ -199,20 +319,20 @@ function MainPortalContent() {
                 
                 <div className="max-w-2xl space-y-4 relative z-10">
                   <span className="inline-block px-3 py-1 bg-brass-gold-600 text-ottoman-red-950 text-[10px] uppercase font-bold tracking-widest rounded-full">
-                    {t("sovereign_proclamation")}
+                    Sovereign Proclamation
                   </span>
                   <h2 className="text-3xl font-serif font-bold text-ivory-50 leading-tight">
-                    {t("welcome_title")}
+                    Welcome to the Sovereign Gateway
                   </h2>
                   <p className="text-sm text-ivory-200 leading-relaxed font-sans">
-                    {t("welcome_desc")}
+                    The Kasimid Sultanate is a sovereign micronation in Central New Jersey. Anchored by traditional Islamic governance structures, the Sultanate combines historic legal heritage with modern civic administration, fostering a sustainable home economy and cultural enrichment for its citizens.
                   </p>
                   <div className="pt-2 flex flex-wrap gap-3">
                     <span className="inline-flex items-center text-xs text-brass-gold-300 bg-ottoman-red-900/60 px-3 py-1.5 rounded-lg border border-brass-gold-600/20">
-                      {t("established_date")}
+                      Established: July 25, 2025
                     </span>
                     <span className="inline-flex items-center text-xs text-brass-gold-300 bg-ottoman-red-900/60 px-3 py-1.5 rounded-lg border border-brass-gold-600/20">
-                      {t("capital_name")}
+                      Capital: Ismailabad
                     </span>
                   </div>
                 </div>
@@ -223,20 +343,20 @@ function MainPortalContent() {
                 <div className="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#c29b38_1px,transparent_1px)] [background-size:16px_16px]" />
                 <div className="relative z-10 space-y-3">
                   <span className="text-[10px] font-bold text-brass-gold-400 uppercase tracking-widest block">
-                    {t("creed_title")} • العقيدة السيادية
+                    The Sovereign&apos;s Creed • <span className="notranslate" translate="no">العقيدة السيادية</span>
                   </span>
-                  <p className="font-arabic text-brass-gold-300 text-2xl md:text-3xl leading-relaxed py-1" dir="rtl">
+                  <p className="font-arabic text-brass-gold-300 text-2xl md:text-3xl leading-relaxed py-1 notranslate" translate="no" dir="rtl">
                     ”بفضلِ باری تعالیٰ، حصولِ ہر خواب ممکن“
                   </p>
                   <blockquote className="text-sm italic text-ivory-200 font-serif max-w-xl mx-auto">
-                    &quot;{t("creed_text")}&quot;
+                    &quot;By the grace of God, the attainment of every dream is possible.&quot;
                   </blockquote>
                   <div className="pt-2 border-t border-brass-gold-600/30 max-w-xs mx-auto">
                     <h5 className="font-serif text-xs font-bold text-brass-gold-400">
-                      {t("sultan_title")}
+                      Sultan Yusuf I
                     </h5>
                     <p className="text-[9px] uppercase tracking-wider text-stone-400 font-semibold font-sans mt-0.5">
-                      {t("sultan_sub")}
+                      Sultan of the Kasimids
                     </p>
                   </div>
                 </div>
@@ -245,14 +365,14 @@ function MainPortalContent() {
               {/* Quick Stats Grid */}
               <section className="space-y-4">
                 <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
-                  {t("indicators_title")}
+                  National Indicators &amp; Fast Facts
                 </h3>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                   <StatCard
-                    label={t("stat_capital_label")}
-                    value={t("stat_capital_val")}
-                    subtitle={t("stat_capital_sub")}
+                    label="Imperial Capital"
+                    value="Ismailabad (إسماعيل آباد)"
+                    subtitle="Administrative center and royal seat"
                     icon={
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -260,9 +380,9 @@ function MainPortalContent() {
                     }
                   />
                   <StatCard
-                    label={t("stat_pop_label")}
-                    value={t("stat_pop_val")}
-                    subtitle={t("stat_pop_sub")}
+                    label="Citizen Population"
+                    value="104 Citizens"
+                    subtitle="88.46% Asian | 80.77% Islam"
                     icon={
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -270,9 +390,9 @@ function MainPortalContent() {
                     }
                   />
                   <StatCard
-                    label={t("stat_area_label")}
-                    value={t("stat_area_val")}
-                    subtitle={t("stat_area_sub")}
+                    label="Total Sovereign Area"
+                    value="0.078 sq km (0.03 sq mi)"
+                    subtitle="Consisting of Ghabaan & Jama’ah"
                     icon={
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
@@ -280,9 +400,9 @@ function MainPortalContent() {
                     }
                   />
                   <StatCard
-                    label={t("stat_overseas_label")}
-                    value={t("stat_overseas_val")}
-                    subtitle={t("stat_overseas_sub")}
+                    label="Overseas Territories"
+                    value="1 Territory (Al Maqsoodi)"
+                    subtitle="4.87 acres (212,189 sq ft) located in Gadap Town, Karachi"
                     icon={
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 002.5-2.5V7.435M12 21a9 9 0 100-18 9 9 0 000 18z" />
@@ -290,9 +410,9 @@ function MainPortalContent() {
                     }
                   />
                   <StatCard
-                    label={t("stat_curr_label")}
-                    value={t("stat_curr_val")}
-                    subtitle={t("stat_curr_sub")}
+                    label="National Currency"
+                    value="Kasimi Dinar (QD)"
+                    subtitle="Pegged fixed rate: 1 QD = 2 EUR"
                     icon={
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -300,9 +420,9 @@ function MainPortalContent() {
                     }
                   />
                   <StatCard
-                    label={t("stat_hdi_label")}
-                    value={t("stat_hdi_val")}
-                    subtitle={t("stat_hdi_sub")}
+                    label="Human Dev. Index (HDI)"
+                    value="0.955"
+                    subtitle="Category: Very High human development"
                     icon={
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -313,18 +433,22 @@ function MainPortalContent() {
                 </div>
               </section>
 
-              {/* Dynamic Multilingual Capital City Profile Card */}
+              {/* Protected Imperial Capital Profile Card */}
               <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
                 <div className="border-b border-ivory-200 pb-3">
                   <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest">Featured Profile</span>
                   <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
-                    {t("profile_title")}
+                    Ismailabad <span className="notranslate" translate="no">(إسماعيل آباد)</span> — Imperial Capital
                   </h3>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
                   <div className="space-y-3 text-stone-700 text-sm leading-relaxed font-sans">
-                    <p>{t("profile_body")}</p>
-                    <p>{t("profile_etymology")}</p>
+                    <p>
+                      <strong>Ismailabad</strong> serves as the administrative capital and dynastic seat of the Sultanate. Comprising a carefully cataloged territory, it stands as the heart of governmental operations, treasury archives, and the Shura chamber.
+                    </p>
+                    <p>
+                      <strong>Etymology:</strong> The name represents a synthesis of cultural lineage and language. <em>Ismail</em> is in honor of the revered father of the current Sultan, Sidi Isma’il al-Raniri. The suffix <em>-abad</em> is derived from Persian, meaning &quot;cultivated place,&quot; &quot;town,&quot; or &quot;city,&quot; symbolizing a settlement founded on prosperity and structure.
+                    </p>
                   </div>
                   
                   {/* Photograph of Capital */}
@@ -595,22 +719,48 @@ function MainPortalContent() {
                 </p>
               </div>
 
-              {/* Dynamic Multilingual Profile Cards Grid */}
+              {/* 3-Column Profile Cards Grid */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-                {leaders.map((leader, idx) => (
-                  <ProfileCard
-                    key={idx}
-                    name={leader.name}
-                    arabicName={leader.arabicName}
-                    title={leader.title}
-                    subTitle={leader.subTitle}
-                    born={leader.born}
-                    origin={leader.origin}
-                    association={leader.association}
-                    initials={leader.name.substring(0, 2).toUpperCase()}
-                    bio={leader.bio}
-                  />
-                ))}
+                
+                {/* The Sultan */}
+                <ProfileCard
+                  name="King Yusuf bin Isma’il al-Raniri I"
+                  arabicName="يوسف بن إسماعيل الرانيري الأول"
+                  title="Sultan of the Kasimid Sultanate"
+                  subTitle="House of Majidid • OIM Chairman"
+                  born="21 January 2008"
+                  origin="House of Majidid"
+                  association="Dynastic Crown"
+                  initials="Y I"
+                  bio="Sultan Yusuf I began his sovereign reign as the King and Caliph of Raritania from 2014 until 2025. Following constitutional negotiations and the desire to build a more stable, legacy-oriented state, he formally dissolved the Caliphate and established the constitutional monarchy of the Kasimid Sultanate on 25 July 2025, honoring his ancestor Kasim al-Raniri. He also serves as Chairman of the Organization of Islamic Micronations (OIM)."
+                />
+
+                {/* Grand Vizier */}
+                <ProfileCard
+                  name="Ali Al Masry (Ali Shihali)"
+                  arabicName="علي المصري"
+                  title="Grand Vizier & Prime Minister"
+                  subTitle="Leader of Al-Hizb al-Islami"
+                  born="9 February 2009"
+                  origin="Alexandria, Egypt"
+                  association="Al-Hizb al-Islami ruling party"
+                  initials="AM"
+                  bio="Ali Al Masry was born in Alexandria, Egypt, and is a key figure in the Ayal Ali clan. Serving as Grand Vizier, he leads the ruling party of the Sultanate. Outside of statecraft, he is noted for his linguistic achievements, serving as the creator of the Umaedic language, and holds administrative control over internal affairs."
+                />
+
+                {/* Chairman of the Shura */}
+                <ProfileCard
+                  name="Habibullah Mikail Al-Asad"
+                  arabicName="حبيب الله ميكائيل الأسد"
+                  title="Chairman of the Consultative Shura"
+                  subTitle="Incumbent since 28 Dec 2024"
+                  born="11 September 2008"
+                  origin="Brooklyn, NY"
+                  association="Consultative Assembly"
+                  initials="HA"
+                  bio="Habibullah Mikail Al-Asad was born in Brooklyn, NY. He took office as Chairman of the Shura Council on 28 December 2024. He presides over legislative advising and coordinates council assemblies, serving as a vital bridge between the citizenry and the Grand Vizier's administration."
+                />
+
               </div>
 
               {/* The Bicameral Majlis (Parliament) Block */}
@@ -618,14 +768,14 @@ function MainPortalContent() {
                 <div className="border-b border-ivory-200 pb-3 flex flex-wrap items-center justify-between gap-2">
                   <div>
                     <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block">
-                      Legislative Structure • المجلس التشريعي
+                      Legislative Structure • <span className="notranslate" translate="no">المجلس التشريعي</span>
                     </span>
                     <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
-                      {t("majlis_header")}
+                      The Bicameral Majlis (Parliament)
                     </h3>
                   </div>
                   <span className="text-xs font-mono font-semibold px-3 py-1 bg-ivory-100 text-stone-700 border border-ivory-300 rounded-full">
-                    {t("majlis_sub")}
+                    Codified under July 24, 2025 Constitution
                   </span>
                 </div>
 
@@ -636,23 +786,23 @@ function MainPortalContent() {
                     
                     <div className="flex items-center justify-between border-b border-brass-gold-500/30 pb-3">
                       <span className="text-[10px] font-bold text-brass-gold-400 uppercase tracking-widest">
-                        {t("shura_sub")}
+                        Upper Chamber • <span className="notranslate" translate="no">مجلس الشورى</span>
                       </span>
                       <span className="text-xs font-serif font-semibold text-brass-gold-300">
-                        Upper Chamber
+                        Appointed Council
                       </span>
                     </div>
 
                     <h4 className="font-serif text-xl font-bold text-ivory-50">
-                      {t("shura_title")}
+                      The Majlis al-Shura (Consultative Council)
                     </h4>
 
                     <p className="text-xs text-brass-gold-300 font-semibold font-serif">
-                      {t("shura_presided")}
+                      Presided over by Chairman Habibullah Mikail Al-Asad
                     </p>
 
                     <p className="text-xs text-ivory-200/90 font-sans leading-relaxed pt-1">
-                      {t("shura_desc")}
+                      Led by Chairman Habibullah Mikail Al-Asad, this appointed council serves as the primary advisory body to the Sultan. It focuses on Islamic jurisprudence, constitutional review, and long-term state policy, ensuring all royal decrees align with the foundational values of the Sultanate.
                     </p>
                   </div>
 
@@ -660,23 +810,23 @@ function MainPortalContent() {
                   <div className="bg-ivory-50 rounded-2xl p-6 border border-ivory-300 shadow-sm space-y-3">
                     <div className="flex items-center justify-between border-b border-ivory-200 pb-3">
                       <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest">
-                        {t("assembly_sub")}
+                        Lower Chamber • <span className="notranslate" translate="no">مجلس الشعب</span>
                       </span>
                       <span className="text-xs font-serif font-semibold text-stone-600">
-                        Lower Chamber
+                        Representative Body
                       </span>
                     </div>
 
                     <h4 className="font-serif text-xl font-bold text-ottoman-red-950">
-                      {t("assembly_title")}
+                      The People&apos;s Assembly
                     </h4>
 
                     <p className="text-xs text-stone-500 font-semibold font-sans">
-                      {t("assembly_rep")}
+                      Representing the 104 Registered Citizens
                     </p>
 
                     <p className="text-xs text-stone-700 font-sans leading-relaxed pt-1">
-                      {t("assembly_desc")}
+                      A representative body designed to voice the interests of the 104 registered citizens. It focuses on localized community affairs, cultural preservation, and grassroots initiatives, drafting civil proposals to be reviewed by the Grand Vizier and the Shura.
                     </p>
                   </div>
                 </div>
@@ -685,7 +835,7 @@ function MainPortalContent() {
               {/* Factions Section */}
               <section className="space-y-4">
                 <h3 className="text-xl font-serif font-bold text-ottoman-red-900 border-b border-ivory-300 pb-2">
-                  {t("tbl_party_faction")} &amp; Factions Registry
+                  Consultative Assembly &amp; Factions Registry
                 </h3>
                 <PoliticalPartiesTable />
               </section>
@@ -702,7 +852,7 @@ function MainPortalContent() {
                 <Lineage />
               </section>
 
-              {/* Multilingual History Timeline */}
+              {/* History Timeline */}
               <section className="space-y-4">
                 <div>
                   <h3 className="text-2xl font-serif font-bold text-ottoman-red-950">
@@ -734,7 +884,7 @@ function MainPortalContent() {
               <section className="space-y-4">
                 <div className="flex justify-between items-end border-b border-ivory-300 pb-2">
                   <h3 className="text-xl font-serif font-bold text-ottoman-red-900">
-                    Overseas Territories • أقاليم ما وراء البحار
+                    Overseas Territories • <span className="notranslate" translate="no">أقاليم ما وراء البحار</span>
                   </h3>
                   <span className="text-xs text-stone-500 font-sans font-medium">
                     Crown-Administered Lands
@@ -747,7 +897,7 @@ function MainPortalContent() {
                       <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block">Crown Territory</span>
                       <h4 className="font-serif text-xl font-bold text-ottoman-red-950 flex flex-wrap items-center gap-2">
                         <span>Overseas Territory of Al Maqsoodi</span>
-                        <span className="font-arabic text-base text-brass-gold-700 font-normal" dir="rtl">
+                        <span className="font-arabic text-base text-brass-gold-700 font-normal notranslate" translate="no" dir="rtl">
                           (إقليم المقصودي ما وراء البحار)
                         </span>
                       </h4>
@@ -790,7 +940,7 @@ function MainPortalContent() {
               {/* Climate Data / Weather Box */}
               <section className="max-w-xl mx-auto space-y-4">
                 <h3 className="text-xl font-serif font-bold text-ottoman-red-900 text-center">
-                  {t("weather_box_title")}
+                  Geographical Weather Profile
                 </h3>
                 <WeatherBox />
               </section>
@@ -816,40 +966,49 @@ function MainPortalContent() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-stone-700 text-sm leading-relaxed">
                   <div className="space-y-3">
                     <h4 className="font-serif text-lg font-semibold text-ottoman-red-900">
-                      {t("culture_heritage_heading")}
+                      Heritage &amp; Spices
                     </h4>
-                    <p>{t("culture_heritage_text1")}</p>
-                    <p>{t("culture_heritage_text2")}</p>
+                    <p>
+                      The cultural landscape combines classical Islamic values, regional South Asian/MENA heritage, and Raritan Valley maritime traditions.
+                    </p>
+                    <p>
+                      Sultanate community groups focus heavily on botanical fragrance craft, traditional theological debates, and the preservation of dynastic histories.
+                    </p>
                   </div>
 
                   <div className="space-y-3">
                     <h4 className="font-serif text-lg font-semibold text-ottoman-red-900">
-                      {t("culture_economy_heading")}
+                      Spiritual &amp; Home Economy
                     </h4>
-                    <p>{t("culture_economy_text1")}</p>
-                    <p>{t("culture_economy_text2")}</p>
+                    <p>
+                      The economy is characterized by a modest, home-based production framework. Due to geographic limitations, citizens focus on producing high-quality artisanal crafts, digital services, and spice processing (specializing in dried dates and traditional culinary blends).
+                    </p>
+                    <p>
+                      Treasury reserves are strictly regulated, with the Kasimi Dinar pegged firmly to the Euro (EUR) to guarantee economic integrity.
+                    </p>
                   </div>
                 </div>
 
-                {/* Multilingual National Anthem Component Block */}
+                {/* PROTECTED National Anthem Component Block */}
                 <div className="mt-6 border-2 border-brass-gold-500/50 bg-gradient-to-br from-ottoman-red-950 to-ottoman-red-900 rounded-2xl p-6 md:p-8 text-center text-ivory-100 shadow-lg relative overflow-hidden">
                   <div className="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(#c29b38_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
                   
                   <div className="relative z-10 space-y-6">
                     <div>
                       <span className="text-[10px] uppercase font-bold tracking-widest text-brass-gold-400 bg-brass-gold-500/10 border border-brass-gold-500/30 px-3 py-1 rounded-full">
-                        {t("anthem_badge")}
+                        National Anthem • <span className="notranslate" translate="no">النشيد الوطني</span>
                       </span>
-                      <h4 className="font-arabic text-2xl md:text-3xl text-brass-gold-300 font-bold mt-3" dir="rtl">
+                      {/* Protected Arabic Title */}
+                      <h4 className="font-arabic text-2xl md:text-3xl text-brass-gold-300 font-bold mt-3 notranslate" translate="no" dir="rtl">
                         النشيد الوطني للسلطنة القاسمية (عاشت بلادي)
                       </h4>
                       <p className="text-xs font-serif text-ivory-200/80 tracking-wide mt-1">
-                        {t("anthem_header")}
+                        National Anthem of the Kasimid Sultanate (&quot;Long Live My Country&quot;)
                       </p>
                     </div>
 
-                    {/* Verses Container (Arabic Text Always Displayed + Dynamic Stanza Subtext Translation Below) */}
-                    <div className="max-w-xl mx-auto py-4 px-6 bg-ottoman-red-900/60 border border-brass-gold-500/30 rounded-xl space-y-6 text-ivory-50" dir="rtl">
+                    {/* PROTECTED Arabic Verses Container (Blocked from Google Translate) */}
+                    <div className="max-w-xl mx-auto py-4 px-6 bg-ottoman-red-900/60 border border-brass-gold-500/30 rounded-xl space-y-6 text-ivory-50 notranslate" translate="no" dir="rtl">
                       
                       {/* Stanza 1 */}
                       <div className="space-y-2 border-b border-brass-gold-600/30 pb-4">
@@ -859,11 +1018,6 @@ function MainPortalContent() {
                           رايَتُنا الخضراءُ في العالَمين<br />
                           بالحقِ والعدلِ نَحنُ نَدين
                         </p>
-                        {language !== "ar" && (
-                          <p className={`text-xs italic text-brass-gold-300/90 pt-1 leading-relaxed ${language === "ur" ? "font-urdu text-sm" : "font-serif"}`} dir={isRTL ? "rtl" : "ltr"}>
-                            {t("anthem_stanza1_trans")}
-                          </p>
-                        )}
                       </div>
 
                       {/* Stanza 2 */}
@@ -874,11 +1028,6 @@ function MainPortalContent() {
                           نَبني الديارَ بعَزمٍ صُلب<br />
                           ويُوسُفُ فينا إمامٌ وَقُطب
                         </p>
-                        {language !== "ar" && (
-                          <p className={`text-xs italic text-brass-gold-300/90 pt-1 leading-relaxed ${language === "ur" ? "font-urdu text-sm" : "font-serif"}`} dir={isRTL ? "rtl" : "ltr"}>
-                            {t("anthem_stanza2_trans")}
-                          </p>
-                        )}
                       </div>
 
                       {/* Stanza 3 */}
@@ -889,11 +1038,6 @@ function MainPortalContent() {
                           حَفِظَ اللهُ السُّلطانَ والوَطَن<br />
                           نَبقى أُباةً عَلى مَرِّ الزَّمَن
                         </p>
-                        {language !== "ar" && (
-                          <p className={`text-xs italic text-brass-gold-300/90 pt-1 leading-relaxed ${language === "ur" ? "font-urdu text-sm" : "font-serif"}`} dir={isRTL ? "rtl" : "ltr"}>
-                            {t("anthem_stanza3_trans")}
-                          </p>
-                        )}
                       </div>
 
                     </div>
@@ -915,13 +1059,21 @@ function MainPortalContent() {
               {/* Jaysh al-Saltanah (Military) */}
               <section className="bg-white p-6 rounded-2xl border border-ivory-300 shadow-sm space-y-4">
                 <div className="border-b border-ivory-200 pb-3">
-                  <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest">{t("defense_title")}</span>
+                  <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest">Defense Doctrine</span>
                   <h3 className="text-xl font-serif font-bold text-ottoman-red-950">
-                    {t("defense_heading")}
+                    Jaysh al-Saltanah al-Qasimiyyah (Forces of the Kasimid Sultanate)
                   </h3>
                 </div>
                 <div className="space-y-3 text-stone-700 text-sm leading-relaxed font-sans">
-                  <p>{t("defense_body")}</p>
+                  <p>
+                    The national defense force, <strong>Jaysh al-Saltanah al-Qasimiyyah</strong>, serves in a strictly ceremonial and cultural reenactment capacity. 
+                  </p>
+                  <p>
+                    In order to maintain absolute compliance with local and federal statutes of the host nation (specifically United States federal law under the <strong>Posse Comitatus Act - 18 U.S. Code § 1385</strong>), the forces are entirely prohibited from executing domestic law enforcement actions, civil policing, or active kinetic operations. 
+                  </p>
+                  <p>
+                    Their duties are limited to serving as honor guards for the Sultan, coordinating local cultural events, maintaining historical registries, and preparing emergency preparedness drills.
+                  </p>
                 </div>
               </section>
 
@@ -1068,106 +1220,97 @@ function MainPortalContent() {
 
               {/* Section Header */}
               <div className="text-center space-y-2 pb-4 border-b border-ivory-300">
-                <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block">
+                <span className="text-[10px] font-bold text-brass-gold-700 uppercase tracking-widest block notranslate" translate="no">
                   الجريدة الرسمية والمراسيم السلطانية
                 </span>
                 <h2 className="text-3xl font-serif font-bold text-ottoman-red-950">
-                  {t("tab_documents")}
+                  News &amp; Royal Decrees
                 </h2>
                 <p className="text-sm text-stone-500 font-sans max-w-lg mx-auto">
                   Official gazette, royal decrees, state honors, and diplomatic proclamations issued by the Royal Diwan.
                 </p>
               </div>
 
-              {/* Dynamic Multilingual News Feed Stack */}
+              {/* Pure English News Articles Grid */}
               <div className="space-y-6">
-                {newsArticles.map((article, idx) => (
-                  <article
-                    key={idx}
-                    className={`rounded-2xl p-6 md:p-8 shadow-sm space-y-5 transition-all duration-200 ${
-                      idx === 0
-                        ? "bg-gradient-to-br from-ottoman-red-950 via-ottoman-red-900 to-ottoman-red-950 text-ivory-100 border-2 border-brass-gold-500 shadow-xl relative overflow-hidden"
-                        : "bg-white border border-ivory-300 hover:border-brass-gold-400"
-                    }`}
-                  >
-                    {/* Metadata Row */}
-                    <div
-                      className={`flex flex-wrap items-center justify-between gap-3 border-b pb-4 ${
-                        idx === 0 ? "border-brass-gold-500/30" : "border-ivory-200"
-                      }`}
-                    >
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`px-3 py-1 font-serif font-bold text-xs rounded-full uppercase tracking-wider shadow-sm ${
-                            idx === 0
-                              ? "bg-brass-gold-500 text-ottoman-red-950"
-                              : "bg-ottoman-red-900 text-brass-gold-300"
-                          }`}
-                        >
-                          {article.category}
-                        </span>
-                        <span
-                          className={`font-arabic text-xs px-2.5 py-0.5 rounded-full border ${
-                            idx === 0
-                              ? "text-brass-gold-300 bg-brass-gold-500/10 border-brass-gold-500/20"
-                              : "text-ottoman-red-800 bg-ivory-100 border-ivory-300"
-                          }`}
-                          dir="rtl"
-                        >
-                          {article.categoryArabic}
-                        </span>
-                      </div>
-                      <time
-                        className={`text-xs font-mono font-medium flex items-center gap-1.5 ${
-                          idx === 0 ? "text-brass-gold-300" : "text-stone-500"
-                        }`}
-                      >
-                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        {article.date}
-                      </time>
-                    </div>
-
-                    {/* Headline */}
-                    <div>
-                      <h3
-                        className={`font-serif text-2xl md:text-3xl font-bold leading-tight ${
-                          idx === 0 ? "text-ivory-50" : "text-ottoman-red-950"
-                        }`}
-                      >
-                        {article.headline}
-                      </h3>
-                    </div>
-
-                    {/* Article Content Body */}
-                    <div
-                      className={`space-y-4 text-sm font-sans leading-relaxed border-t pt-4 ${
-                        idx === 0
-                          ? "text-ivory-200/90 border-brass-gold-500/20"
-                          : "text-stone-700 border-ivory-200"
-                      }`}
-                    >
-                      {article.bodyParagraphs.map((para, pIdx) => (
-                        <p key={pIdx}>{para}</p>
-                      ))}
-                    </div>
-
-                    {/* Official Seal / Signature Badge */}
-                    <div
-                      className={`pt-4 border-t flex items-center justify-between text-xs font-serif ${
-                        idx === 0
-                          ? "border-brass-gold-500/30 text-brass-gold-400"
-                          : "border-ivory-200 text-stone-500"
-                      }`}
-                    >
-                      <span>{article.issuedBy}</span>
-                      <span className="font-arabic text-sm" dir="rtl">
-                        الديوان الملكي
+                
+                {/* News Article 1 */}
+                <article className="relative bg-gradient-to-br from-ottoman-red-950 via-ottoman-red-900 to-ottoman-red-950 text-ivory-100 rounded-2xl border-2 border-brass-gold-500 shadow-xl overflow-hidden p-6 md:p-8 space-y-5">
+                  <div className="absolute top-0 right-0 w-64 h-64 bg-brass-gold-500/5 rounded-full blur-3xl pointer-events-none" />
+                  
+                  <div className="flex flex-wrap items-center justify-between gap-3 relative z-10 border-b border-brass-gold-500/30 pb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="px-3 py-1 bg-brass-gold-500 text-ottoman-red-950 font-serif font-bold text-xs rounded-full uppercase tracking-wider shadow-sm">
+                        Royal Decree
+                      </span>
+                      <span className="font-arabic text-brass-gold-300 text-xs px-2.5 py-0.5 rounded-full bg-brass-gold-500/10 border border-brass-gold-500/20 notranslate" translate="no" dir="rtl">
+                        وسام علي شهالي
                       </span>
                     </div>
-                  </article>
-                ))}
+                    <time className="text-xs font-mono font-medium text-brass-gold-300 flex items-center gap-1.5">
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      13 July 2026
+                    </time>
+                  </div>
+
+                  <div className="space-y-2 relative z-10">
+                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-ivory-50 leading-tight">
+                      Sultanate Establishes The Order of Ali Shihali; Awards Grand Collar to Imruland President
+                    </h3>
+                  </div>
+
+                  <div className="space-y-4 text-ivory-200/90 text-sm font-sans leading-relaxed relative z-10 border-t border-brass-gold-500/20 pt-4">
+                    <p>
+                      By royal decree of Sultan Yusuf I, the Kasimid Sultanate has officially established its first state order of merit, <strong className="text-brass-gold-300 font-serif">The Order of Ali Shihali</strong> (<span className="font-arabic text-brass-gold-200 notranslate" translate="no" dir="rtl">وسام علي شهالي</span>). Named in honor of the incumbent Vizier, Ali Al Masry (Ali Shihali), the Order is designed to recognize exceptional diplomatic, political, and civil service to the Sultanate and the broader intermicronational community.
+                    </p>
+                    <p>
+                      The Order features three grades: Grand Collar, Commander, and Member. The inaugural induction took place upon the Order&apos;s establishment, with the Sultan bestowing the highest grade, the <strong className="text-brass-gold-300 font-serif">Grand Collar</strong>, upon <strong className="text-brass-gold-200">Showib Ahmmed</strong>, President of the Democratic People&apos;s Republic of Imruland and former Chairman of the Organization of Islamic Micronations (OIM).
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-brass-gold-500/30 flex items-center justify-between text-xs font-serif text-brass-gold-400 relative z-10">
+                    <span>Issued by Order of Sultan Yusuf I</span>
+                    <span className="font-arabic text-sm notranslate" translate="no" dir="rtl">الديوان الملكي</span>
+                  </div>
+                </article>
+
+                {/* News Article 2 */}
+                <article className="bg-white rounded-2xl border border-ivory-300 p-6 md:p-8 shadow-sm space-y-5 hover:border-brass-gold-400 transition-all duration-200">
+                  <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ivory-200 pb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="px-3 py-1 bg-ottoman-red-900 text-brass-gold-300 font-serif font-bold text-xs rounded-full uppercase tracking-wider shadow-sm">
+                        OIM Leadership
+                      </span>
+                      <span className="font-arabic text-ottoman-red-800 text-xs px-2.5 py-0.5 rounded-full bg-ivory-100 border border-ivory-300 notranslate" translate="no" dir="rtl">
+                        رئاسة منظمة الميكرونations الإسلامية
+                      </span>
+                    </div>
+                    <time className="text-xs font-mono font-medium text-stone-500 flex items-center gap-1.5">
+                      <svg className="w-3.5 h-3.5 text-brass-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      01 July 2026
+                    </time>
+                  </div>
+
+                  <div className="space-y-1">
+                    <h3 className="font-serif text-2xl font-bold text-ottoman-red-950 leading-snug">
+                      Sultan Yusuf I Assumes Chairmanship of the OIM Following Election Victory
+                    </h3>
+                  </div>
+
+                  <div className="space-y-3 text-stone-700 text-sm font-sans leading-relaxed border-t border-ivory-200 pt-4">
+                    <p>
+                      On 1 July 2026, Sultan Yusuf I officially assumed the office of Chairman of the Organization of Islamic Micronations (OIM), succeeding outgoing Chairman Showib Ahmmed.
+                    </p>
+                    <p>
+                      The transition of leadership follows a decisive late June election in which the Sultan defeated his opponent, Amir Abbas Arya&apos;i of Arsalania, to secure the seat. Upon taking office, Sultan Yusuf I immediately appointed Al-Mu&apos;tazz billah of the State of Rovia to serve as Vice-Chair.
+                    </p>
+                  </div>
+                </article>
+
               </div>
 
               {/* Seal Note */}
@@ -1183,7 +1326,7 @@ function MainPortalContent() {
         </Suspense>
       </main>
 
-      {/* Official State Footer */}
+      {/* Official State Footer with Protected Royal Diwan Branding */}
       <footer className="bg-ottoman-red-950 text-white border-t-2 border-brass-gold-500 py-8 px-4 mt-12 text-center text-xs font-sans space-y-3 relative">
         <div className="absolute inset-0 opacity-5 pointer-events-none bg-[radial-gradient(#c29b38_1.5px,transparent_1.5px)] [background-size:24px_24px]" />
         
@@ -1192,16 +1335,23 @@ function MainPortalContent() {
             <Flag width={90} height={60} />
           </div>
           
-          <p className="text-brass-gold-300 uppercase tracking-widest font-semibold">
+          {/* PROTECTED Royal Diwan Calligraphy Branding */}
+          <p className="text-brass-gold-300 uppercase tracking-widest font-semibold notranslate" translate="no" dir="rtl">
             دیوانِ خاص سلطنتِ القاسميه
           </p>
           
           <p className="text-ivory-200/80">
-            {t("footer_rights")}
+            © {new Date().getFullYear()} The Kasimid Sultanate. All Rights Reserved.
+            <br />
+            Imperial Registry of Deeds, Census, and Foreign Registry, Ismailabad.
           </p>
           
           <div className="flex justify-center space-x-4 text-brass-gold-400 font-serif text-[10px] tracking-wide pt-2 border-t border-ottoman-red-900/60 max-w-md mx-auto">
-            <span>{t("footer_compliance")}</span>
+            <span>Sovereign Constitutional Monarchy</span>
+            <span>•</span>
+            <span>Central New Jersey</span>
+            <span>•</span>
+            <span>Compliant with 18 U.S.C. § 1385</span>
           </div>
         </div>
       </footer>

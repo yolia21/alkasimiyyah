@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useLanguage } from "@/context/LanguageContext";
 
 // --- IMPERIAL TIME WIDGET ---
 
@@ -76,8 +75,6 @@ export function LocalTimeWidget() {
 // --- DYNAMIC CURRENCY CONVERTER ---
 
 export function CurrencyConverter() {
-  const { t } = useLanguage();
-
   const [eurToUsd, setEurToUsd] = useState<number>(1.08); // fallback: 1 EUR = 1.08 USD
   const [isLoadingRate, setIsLoadingRate] = useState<boolean>(true);
   const [lastUpdated, setLastUpdated] = useState<string>("");
@@ -280,7 +277,6 @@ export function CurrencyConverter() {
 
 export function WeatherBox() {
   const [isCelsius, setIsCelsius] = useState<boolean>(true);
-  const { t } = useLanguage();
 
   const summerHigh = isCelsius ? "30°C" : "86°F";
   const winterLow = isCelsius ? "-5°C" : "23°F";
@@ -304,7 +300,7 @@ export function WeatherBox() {
             />
           </svg>
           <span className="text-xs font-semibold uppercase tracking-wider">
-            {t("weather_profile_sub")}
+            Regional Climate Profile (Cfa)
           </span>
         </div>
 
@@ -321,7 +317,7 @@ export function WeatherBox() {
         {/* Summer averages */}
         <div className="text-center p-3 bg-ivory-50 rounded-lg border border-ivory-200">
           <span className="block text-[10px] uppercase font-semibold text-stone-500 tracking-wider">
-            {t("weather_summer_high")}
+            Summer High
           </span>
           <span className="block text-xl font-bold font-mono text-amber-700 mt-1">
             {summerHigh}
@@ -332,7 +328,7 @@ export function WeatherBox() {
         {/* Winter averages */}
         <div className="text-center p-3 bg-ivory-50 rounded-lg border border-ivory-200">
           <span className="block text-[10px] uppercase font-semibold text-stone-500 tracking-wider">
-            {t("weather_winter_low")}
+            Winter Low
           </span>
           <span className="block text-xl font-bold font-mono text-sky-800 mt-1">
             {winterLow}
@@ -343,7 +339,7 @@ export function WeatherBox() {
         {/* Precipitation */}
         <div className="text-center p-3 bg-ivory-50 rounded-lg border border-ivory-200">
           <span className="block text-[10px] uppercase font-semibold text-stone-500 tracking-wider">
-            {t("weather_annual_precip")}
+            Annual Precip
           </span>
           <span className="block text-xl font-bold font-mono text-ottoman-red-800 mt-1">
             {precipitation}
@@ -354,7 +350,7 @@ export function WeatherBox() {
 
       <div className="mt-4 p-3 bg-ottoman-red-950 text-brass-gold-100 text-xs rounded border border-brass-gold-600/30">
         <span className="font-semibold block mb-0.5">Climate Classification:</span>
-        {t("weather_classification")}
+        Humid Subtropical (Cfa). The Sultanate experiences four distinct seasons with hot, humid summers and cold, snowy winters.
       </div>
     </div>
   );
