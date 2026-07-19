@@ -72,12 +72,6 @@
   background: var(--color-ottoman-red-600);
 }
 
-/* Hide ONLY the top banner, keep the popup dropdown menu alive */
-.goog-te-banner-frame,
-.goog-te-banner-frame.skiptranslate { 
-    display: none !important; 
-}
-
 /* Stop Google from pushing the body down */
 body { 
     top: 0px !important; 
@@ -87,43 +81,62 @@ body {
     font-family: var(--font-sans);
 }
 
-/* Hide the ugly "Powered by Google" text and logo */
-.goog-logo-link { 
+/* Hide ONLY the top banner, keep the popup dropdown menu alive */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate { 
     display: none !important; 
 }
 
-.goog-te-gadget-icon { 
-    display: none !important; 
+/* --- GOOGLE TRANSLATE DROPDOWN FIX --- */
+
+/* 1. Prevent the container from getting squished */
+#google_translate_element {
+  min-width: 130px; /* Gives the dropdown enough room to breathe */
+  display: flex;
+  align-items: center;
 }
 
-.goog-te-gadget { 
-    color: transparent !important; 
-    font-size: 0px !important;
+/* 2. Hide the "Powered by Google" text safely without breaking structure */
+.goog-te-gadget {
+  font-size: 0px !important; 
+  color: transparent !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.goog-te-gadget .goog-te-combo { 
-    color: #dfc491 !important; 
-    background-color: rgba(51, 2, 5, 0.9) !important;
-    border: 1px solid rgba(194, 155, 56, 0.5) !important;
-    border-radius: 0.75rem !important;
-    padding: 4px 8px !important;
-    font-size: 12px !important;
-    font-weight: 600 !important;
-    outline: none !important;
+/* 3. Hide the Google Logo completely */
+.goog-te-gadget .goog-logo-link,
+.goog-te-gadget > span,
+.goog-te-gadget-icon {
+  display: none !important;
+}
+
+/* 4. Style the actual dropdown menu to match your custom theme */
+.goog-te-combo {
+  background-color: #330205 !important;
+  color: #dfc491 !important;
+  border: 1px solid #dfc491 !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  cursor: pointer;
+  outline: none;
 }
 
 .goog-te-gadget-simple {
-  background-color: rgba(51, 2, 5, 0.9) !important;
-  border: 1px solid rgba(194, 155, 56, 0.5) !important;
-  border-radius: 0.75rem !important;
+  background-color: #330205 !important;
+  border: 1px solid #dfc491 !important;
+  border-radius: 4px !important;
   padding: 4px 8px !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
   color: #dfc491 !important;
 }
 
 .goog-te-gadget-simple .goog-te-menu-value span {
   color: #dfc491 !important;
-  font-weight: 600 !important;
+  font-weight: bold !important;
 }
 
 .goog-te-menu-value span:nth-child(3),
