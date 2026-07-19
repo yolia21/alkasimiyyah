@@ -1042,13 +1042,17 @@ function MainPortalContent() {
 
                     </div>
 
-                    {/* Styled HTML5 Audio Player */}
-                    <div className="pt-2 max-w-md mx-auto flex flex-col items-center gap-2">
-                      <audio controls className="w-full h-10 rounded-lg accent-brass-gold-500">
-                        <source src="/national-anthem.mp3" type="audio/mpeg" />
-                        Your browser does not support the audio element.
-                      </audio>
-                      <span className="text-[10px] text-brass-gold-400/80 font-sans uppercase tracking-wider">
+                    {/* Google Drive National Anthem Audio Player */}
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px', marginBottom: '20px' }}>
+                      <iframe 
+                        src="https://drive.google.com/file/d/1ygQBDYuwE-qtjHDxLUNZT_zC-0N-x5PX/preview" 
+                        width="320" 
+                        height="80" 
+                        allow="autoplay" 
+                        style={{ border: 'none', borderRadius: '8px' }}
+                        title="National Anthem of the Kasimid Sultanate"
+                      ></iframe>
+                      <span className="text-[10px] text-brass-gold-400/80 font-sans uppercase tracking-wider mt-1">
                         Official Ceremonial Rendition
                       </span>
                     </div>
