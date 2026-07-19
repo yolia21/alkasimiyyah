@@ -1049,7 +1049,7 @@ function MainPortalContent() {
                         controlsList="nodownload noplaybackrate"
                         style={{ outline: 'none', width: '320px', borderRadius: '8px' }}
                       >
-                        <source src="https://drive.google.com/uc?export=download&id=1ygQBDYuwE-qtjHDxLUNZT_zC-0N-x5PX" type="audio/mpeg" />
+                        <source src="/national-anthem.mp3" type="audio/mpeg" />
                         Your browser does not support the audio element.
                       </audio>
                       <span className="text-[10px] text-brass-gold-400/80 font-sans uppercase tracking-wider mt-1">
