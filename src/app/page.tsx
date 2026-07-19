@@ -1056,6 +1056,148 @@ function MainPortalContent() {
                         Official Ceremonial Rendition
                       </span>
                     </div>
+
+                    {/* Line-by-Line Anthem Lyrics & Diplomatic English Translation */}
+                    <div className="max-w-2xl mx-auto pt-6 border-t border-brass-gold-500/30 space-y-6">
+                      <h5 className="font-serif text-xs uppercase font-bold tracking-widest text-brass-gold-400">
+                        Official Line-by-Line Translation • <span translate="no" className="notranslate">الترجمة الرسمية</span>
+                      </h5>
+
+                      {/* Stanza 1 */}
+                      <div className="bg-ottoman-red-900/40 border border-brass-gold-500/20 rounded-xl p-4 md:p-5 space-y-4">
+                        <span className="text-[9px] uppercase font-bold tracking-widest text-brass-gold-400/70 block text-left">
+                          Stanza I • <span translate="no" className="notranslate">المقطع الأول</span>
+                        </span>
+
+                        <div className="space-y-3 font-sans">
+                          <div className="space-y-0.5 text-center">
+                            <span translate="no" className="notranslate font-arabic text-lg md:text-xl text-brass-gold-200 block" dir="rtl">
+                              عاشَت بلادي، بِعزٍّ ويَقين
+                            </span>
+                            <span className="text-xs md:text-sm italic text-ivory-200 font-serif block">
+                              Long live my country, in glory and certainty,
+                            </span>
+                          </div>
+
+                          <div className="space-y-0.5 text-center">
+                            <span translate="no" className="notranslate font-arabic text-lg md:text-xl text-brass-gold-200 block" dir="rtl">
+                              سلطنةُ المجدِ، حِصنٌ أَمين
+                            </span>
+                            <span className="text-xs md:text-sm italic text-ivory-200 font-serif block">
+                              The Sultanate of grandeur, a secure fortress.
+                            </span>
+                          </div>
+
+                          <div className="space-y-0.5 text-center">
+                            <span translate="no" className="notranslate font-arabic text-lg md:text-xl text-brass-gold-200 block" dir="rtl">
+                              رايَتُنا الخضراءُ في العالَمين
+                            </span>
+                            <span className="text-xs md:text-sm italic text-ivory-200 font-serif block">
+                              Our green banner among the worlds,
+                            </span>
+                          </div>
+
+                          <div className="space-y-0.5 text-center">
+                            <span translate="no" className="notranslate font-arabic text-lg md:text-xl text-brass-gold-200 block" dir="rtl">
+                              بالحقِ والعدلِ نَحنُ نَدين
+                            </span>
+                            <span className="text-xs md:text-sm italic text-ivory-200 font-serif block">
+                              To truth and justice, we pledge allegiance.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Stanza 2 */}
+                      <div className="bg-ottoman-red-900/40 border border-brass-gold-500/20 rounded-xl p-4 md:p-5 space-y-4">
+                        <span className="text-[9px] uppercase font-bold tracking-widest text-brass-gold-400/70 block text-left">
+                          Stanza II • <span translate="no" className="notranslate">المقطع الثاني</span>
+                        </span>
+
+                        <div className="space-y-3 font-sans">
+                          <div className="space-y-0.5 text-center">
+                            <span translate="no" className="notranslate font-arabic text-lg md:text-xl text-brass-gold-200 block" dir="rtl">
+                              مِن غاباتِ غبانَ نورٌ سَطَع
+                            </span>
+                            <span className="text-xs md:text-sm italic text-ivory-200 font-serif block">
+                              From the forests of Ghabaan, a light has shone,
+                            </span>
+                          </div>
+
+                          <div className="space-y-0.5 text-center">
+                            <span translate="no" className="notranslate font-arabic text-lg md:text-xl text-brass-gold-200 block" dir="rtl">
+                              في جَماعَةِ الخَيرِ شَملٌ جُمِع
+                            </span>
+                            <span className="text-xs md:text-sm italic text-ivory-200 font-serif block">
+                              In the community of goodness, unity is gathered.
+                            </span>
+                          </div>
+
+                          <div className="space-y-0.5 text-center">
+                            <span translate="no" className="notranslate font-arabic text-lg md:text-xl text-brass-gold-200 block" dir="rtl">
+                              نَبني الديارَ بعَزمٍ صُلب
+                            </span>
+                            <span className="text-xs md:text-sm italic text-ivory-200 font-serif block">
+                              We build the lands with solid resolve,
+                            </span>
+                          </div>
+
+                          <div className="space-y-0.5 text-center">
+                            <span translate="no" className="notranslate font-arabic text-lg md:text-xl text-brass-gold-200 block" dir="rtl">
+                              ويُوسُفُ فينا إمامٌ وَقُطب
+                            </span>
+                            <span className="text-xs md:text-sm italic text-ivory-200 font-serif block">
+                              And Yusuf among us is a leader and a pillar.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Stanza 3 */}
+                      <div className="bg-ottoman-red-900/40 border border-brass-gold-500/20 rounded-xl p-4 md:p-5 space-y-4">
+                        <span className="text-[9px] uppercase font-bold tracking-widest text-brass-gold-400/70 block text-left">
+                          Stanza III • <span translate="no" className="notranslate">المقطع الثالث</span>
+                        </span>
+
+                        <div className="space-y-3 font-sans">
+                          <div className="space-y-0.5 text-center">
+                            <span translate="no" className="notranslate font-arabic text-lg md:text-xl text-brass-gold-200 block" dir="rtl">
+                              أرواحُنا فِداءٌ لِهذا الثَّرى
+                            </span>
+                            <span className="text-xs md:text-sm italic text-ivory-200 font-serif block">
+                              Our souls are a sacrifice for this soil,
+                            </span>
+                          </div>
+
+                          <div className="space-y-0.5 text-center">
+                            <span translate="no" className="notranslate font-arabic text-lg md:text-xl text-brass-gold-200 block" dir="rtl">
+                              وما وَراءَ البِحارِ عِزٌّ سَرى
+                            </span>
+                            <span className="text-xs md:text-sm italic text-ivory-200 font-serif block">
+                              And beyond the seas, glory has spread.
+                            </span>
+                          </div>
+
+                          <div className="space-y-0.5 text-center">
+                            <span translate="no" className="notranslate font-arabic text-lg md:text-xl text-brass-gold-200 block" dir="rtl">
+                              حَفِظَ اللهُ السُّلطانَ والوَطَن
+                            </span>
+                            <span className="text-xs md:text-sm italic text-ivory-200 font-serif block">
+                              May God preserve the Sultan and the homeland,
+                            </span>
+                          </div>
+
+                          <div className="space-y-0.5 text-center">
+                            <span translate="no" className="notranslate font-arabic text-lg md:text-xl text-brass-gold-200 block" dir="rtl">
+                              نَبقى أُباةً عَلى مَرِّ الزَّمَن
+                            </span>
+                            <span className="text-xs md:text-sm italic text-ivory-200 font-serif block">
+                              We remain proud through the passage of time.
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </section>
