@@ -72,14 +72,13 @@
   background: var(--color-ottoman-red-600);
 }
 
-/* 1. Completely hide the top banner iframe */
-iframe.skiptranslate,
+/* Hide ONLY the top banner, keep the popup dropdown menu alive */
+.goog-te-banner-frame,
 .goog-te-banner-frame.skiptranslate { 
     display: none !important; 
-    visibility: hidden !important; 
 }
 
-/* 2. Stop Google from pushing the website down 40px */
+/* Stop Google from pushing the body down */
 body { 
     top: 0px !important; 
     position: static !important; 
@@ -88,7 +87,7 @@ body {
     font-family: var(--font-sans);
 }
 
-/* 3. Hide the ugly "Powered by Google" text and logo */
+/* Hide the ugly "Powered by Google" text and logo */
 .goog-logo-link { 
     display: none !important; 
 }
